@@ -10,10 +10,11 @@ beta版:[ダウンロード(直リンク)](https://github.com/CoreNion/Ny0bi_Too
 
 # インストールする
 
-まず、[Chromeの拡張機能のページ](chrome://extensions/)を開きます。
+まず、Chrome拡張機能のページを開きます。
 <details>
-    <summary>リンクから開けない場合</summary>
+    <summary>開き方が分からない場合</summary>
     1. 右上の︙(三点のボタン)より、メニューを開き、設定をクリックします。
+    
     2. 設定画面が出たら、左のリストの下の方にある「拡張機能」をクリックします。
 </details>
 
