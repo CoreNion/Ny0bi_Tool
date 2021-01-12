@@ -183,6 +183,8 @@ function applyDarkTextPage(doc, needGrayPage) {
   doc.find("a").not(".book-header *,.game-book-button").css("color", "#5da5ec");
   //tipのbackgroundを設定
   doc.find(".tip,.tip p,.tip-title,.tip strong").css("background", "#335267");
+  //global--text-系で文字色を変えていないもので文字色を白にする
+  doc.find(".global--text-big").css("color","#e8e8e8");
 
   /* プログラミングの教材の設定 */
 
