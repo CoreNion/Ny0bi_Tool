@@ -166,6 +166,7 @@ function applyDarkGuidePage(doc) {
  */
 function applyDarkTextPage(doc, needGrayPage) {
   console.log("Ny0bi_dark:load applyDarkTextPage()");
+  doc.css({ "background-color": "#000000", "color": "#e8e8e8" });
 
   let back_color = null;
 
