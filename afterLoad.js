@@ -176,16 +176,16 @@ function applyDarkTextPage(doc, needGrayPage) {
     back_color = "#000000";
   }
 
-  //本文があるdivの子要素一部の例外以外全てにダークモードを設定(本文があるdivのクラスは二種類存在、main-contentとglobal--wrapper)
-  doc.find('.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red').css({ "background-color": back_color, "color": "#e8e8e8" });
+  //本文があるdivの子要素の一部の例外以外全てにダークモードを設定
+  doc.find('section,section *,.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red,h1,h1 *').css({ "background-color": back_color, "color": "#e8e8e8" });
   //本文のdev自体の背景色を黒にする
-  doc.find(".main-content,.global--wrapper,.index").css("background-color", back_color);
+  doc.find(".main-content,.global--wrapper,.index,.book-body").css("background-color", back_color);
   //通常のリンクの設定
   doc.find("a").not(".book-header *,.game-book-button").css("color", "#5da5ec");
   //tipのbackgroundを設定
   doc.find(".tip,.tip p,.tip-title,.tip strong").css("background", "#335267");
   //global--text-系で文字色を変えていないもので文字色を白にする
-  doc.find(".global--text-big,.global--text-small,.global--text-strong,#text").css("color","#e8e8e8");
+  doc.find(".global--text-big,.global--text-small,.global--text-strong").css("color","#e8e8e8");
 
   /* プログラミングの教材の設定 */
 
