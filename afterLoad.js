@@ -146,6 +146,16 @@ function applyDarkGuidePage(doc) {
     //問題の解説の文字色の改善
     $("head").append('<style>body.exercises .em3 { color: #A1B9FF !important; }</style>');
     $("head").append('<style>body.exercises .em2 { color: #44DB6C !important;; }</style>');
+
+    //聞き取り問題で再生ボタン等にダークモードを適用する
+
+    //音声の部分の背景色を黒にし、タイトル等の色を白にする
+    $("head").append('<style>.component-audio-player { background-color: #202124; }</style>');
+    $("head").append('<style>.component-audio-player-title, .component-audio-player-time { color: #e8e8e8 !important; }</style>');
+    //黒な再生・停止ボタンの色を反転させる
+    $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before { filter: invert(1); }</style>');
+    //触れた時の色を変更
+    $("head").append('<style>.component-audio-player:hover { background-color: #383838; }</style>');
   }
   //音声プレイヤーがあるときの設定
   if ($(".fixed-audio-player-view").length) {
