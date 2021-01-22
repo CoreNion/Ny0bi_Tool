@@ -195,7 +195,7 @@ function applyDarkTextPage(doc, needGrayPage) {
   //tipのbackgroundを設定
   doc.find(".tip,.tip p,.tip-title,.tip strong").css("background", "#335267");
   //global--text-系で文字色を変えていないもので文字色を白にする
-  doc.find(".global--text-big,.global--text-small,.global--text-strong").css("color","#e8e8e8");
+  doc.find(".global--text-big,.global--text-small,.global--text-strong").css("color", "#e8e8e8");
 
   /* プログラミングの教材の設定 */
 
@@ -227,7 +227,7 @@ function applyDarkTextPage(doc, needGrayPage) {
   doc.find(".token.name").css("color", "#9CDCFE");
   doc.find(".token.class-name,.token.constant").css("color", "#4FC1FF");
   doc.find(".token.boolean").css("color", "#569CD6");
-  doc.find(".token.regex-delimiter,.token.regex-source.language-regex").css("color","#C66951");
+  doc.find(".token.regex-delimiter,.token.regex-source.language-regex").css("color", "#C66951");
   //HTML系
   doc.find(".token.tag").css("color", "#3E9CCA");
   doc.find(".token.attr-name").css("color", "#9CDCFE");

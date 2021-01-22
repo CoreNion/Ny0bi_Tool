@@ -20,7 +20,7 @@ $(window).on("load", function () {
         clearInterval(interval);
       }, 3000);
     })
-    
+
     //動画の再生が終わったときに出る理解度のダイアログを黒くする
     const video = document.querySelector('video');
     video.onended = (event) => {
