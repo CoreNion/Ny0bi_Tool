@@ -1,6 +1,6 @@
 {
   "name": "Ny0bi Tool",
-  "version": "0.1",
+  "version": "0.2",
   "manifest_version": 2,
   "description": "N予備校をダークモードにするChrome拡張機能。",
   "icons": {
