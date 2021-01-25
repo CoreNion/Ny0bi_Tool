@@ -3,10 +3,19 @@
   "version": "0.2",
   "manifest_version": 2,
   "description": "N予備校をダークモードにするChrome拡張機能。",
-  "icons": {
-    "16": "./icons/icon16.png",
-    "48": "./icons/icon48.png",
-    "128": "./icons/icon128.png"
+  "icons":{
+    "16": "icons/icon16.png",
+    "48":"icons/icon48.png",
+    "128":"icons/icon128.png"
+  },
+  "browser_action":{
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title":"Ny0bi Toolの設定",
+    "default_popup":"toolbarPopup/popup.html"
   },
   "content_scripts": [
     {
