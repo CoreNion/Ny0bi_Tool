@@ -4,7 +4,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/CoreNion/Ny0bi_Tool?style=plastic)](https://github.com/CoreNion/Ny0bi_Tool/issues)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CoreNion/Ny0bi_Tool?label=Latest%20Release&style=plastic)
 
-N予備校をダークモードにする拡張機能です！ ※このツールは角川ドワンゴ学園非公式です。
+N予備校をダークモードにする拡張機能です！ ※このツールは非公式です。
 
 現在は、Chromeウェブストア等では配信していません。
 
@@ -35,7 +35,7 @@ N予備校をダークモードにする拡張機能です！ ※このツール
 ## 不具合を報告する際は、必ず重複してないか確認し、どのページで起こってるか・URL・スクリーンショットを送信してください。
 
 # ライセンスについて
-Ny0bi Dark Toolは、**Apache License Version 2.0**の下で利用してください。
+Ny0bi Toolは、**Apache License Version 2.0**の下で利用してください。
 
 なお、利用しているライブラリなどのライセンスは、以下の通りです。
 
