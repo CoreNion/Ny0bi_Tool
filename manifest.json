@@ -34,5 +34,6 @@
   "permissions": [
     "*://www.nnn.ed.nico/*",
     "*://nnn.ed.nico/*"
-  ]
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://platform.twitter.com; frame-src 'self' https://platform.twitter.com; img-src 'self' data: https://platform.twitter.com https://syndication.twitter.com; object-src 'self'"
 }

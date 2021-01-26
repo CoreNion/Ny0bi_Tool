@@ -55,3 +55,6 @@ Ny0bi Toolは、**Apache License Version 2.0**の下で利用してください�
 
 - jQuery 3.5.1
   - jQueryはMIT Lisenceです。[詳細情報](https://jquery.org/license/)
+
+- github-buttons v2.14.1
+  - github-buttonsはBSD 2-Clause Licenseです。[リポジトリ](https://github.com/ntkme/github-buttons/)
