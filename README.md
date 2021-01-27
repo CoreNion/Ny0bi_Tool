@@ -4,6 +4,12 @@
 [![GitHub issues](https://img.shields.io/github/issues/CoreNion/Ny0bi_Tool?style=plastic)](https://github.com/CoreNion/Ny0bi_Tool/issues)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/CoreNion/Ny0bi_Tool?label=Latest%20Release&style=plastic)
 
+| 現在閲覧しているBranch | Branch                                                         | 備考                           | 
+| ---------------------- | -------------------------------------------------------------- | ------------------------------ | 
+| ✅                     | main                                                           | リリースで出しているバージョン | 
+|                        | [develop](https://github.com/CoreNion/Ny0bi_Tool/tree/develop) | 現在開発しているバージョン       | 
+|                        |                                                                |                                | 
+
 N予備校をダークモードにする拡張機能です！ ※このツールは非公式です。
 
 現在は、Chromeウェブストア等では配信していません。
@@ -19,7 +25,7 @@ N予備校をダークモードにする拡張機能です！ ※このツール
 
 トップページ等は今後対応します。
 
-## 常用版のインストール方法は[こちら](./docs/installationFile.md)をご覧ください
+## インストール方法は[こちら](./docs/installationFile.md)をご覧ください
 <br>
 
 # トラブルシューティング
