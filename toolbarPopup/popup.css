@@ -30,3 +30,13 @@ p {
   background-color: white; 
   color: #4CAF50;
 }
+
+#updateAvailable {
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+}
+
+#updateAvailable:hover {
+  color: gold;
+}
