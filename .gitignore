@@ -36,3 +36,5 @@ Temporary Items
 # vscode
 .vscode/
 *.code-workspace
+
+developerDocs.md
