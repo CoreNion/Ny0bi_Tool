@@ -10,7 +10,6 @@ $("#checkUpdateButton").on("click", function () {
     $("#lastUpdateCheck").html(date.toLocaleString());
   } else if(updateInt == null){
     alert("エラーが発生しました。\nインターネットに接続されているか確認してください。\nまたは、しばらくたってから、もう一度お試しください。");
-    $("#updateStatus").html("アップデートはありません");
   } else {
     alert("アップデートはありません。");
     $("#updateStatus").html("アップデートはありません");
@@ -32,16 +31,19 @@ function hasUpdate() {
   const clientVer = Number(manifest.version);
   //最新バージョンが書かれているjsonを取得
   $.ajaxSetup({ async: false });
-  //TO DO GithubのApiを利用する
-  $.getJSON("./test.json")
+  //GithubのApiから最新バージョンを取得
+  $.getJSON("https://api.github.com/repos/CoreNion/Ny0bi_Tool/releases/latest")
     .done(function (json) {
+      //tag_nameからタグの名前を取得し、数字のみにする
+      latest = json["tag_name"].replace(/[^0-9.]/g, '');
+      console.log(latest)
       //最新バージョンと比較し最新バージョンだったら0、そうじゃなかったら最新バージョンの数値を入れる
-      latest = json["develop"];
       if (clientVer >= latest) {
         latest = 0;
       }
     })
     .fail(function (err) {
+      //エラー処理
       console.log("Error");
       console.log(err);
       latest = null;
