@@ -40,3 +40,21 @@ p {
 #updateAvailable:hover {
   color: gold;
 }
+
+#tweetButton {
+  display: inline-block;
+  vertical-align: top;
+  background-color: royalblue;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 5px 10px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  text-decoration: none;;
+}
+
+#tweetButton:hover {
+  background-color: white; 
+  color: royalblue;
+}

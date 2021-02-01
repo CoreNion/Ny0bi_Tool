@@ -1,21 +1,21 @@
 {
   "name": "Ny0bi Tool",
   "version": "0.2",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "N予備校をダークモードにするChrome拡張機能。",
-  "icons":{
+  "icons": {
     "16": "icons/icon16.png",
-    "48":"icons/icon48.png",
-    "128":"icons/icon128.png"
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
-  "browser_action":{
+  "action": {
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title":"Ny0bi Toolの設定",
-    "default_popup":"toolbarPopup/popup.html"
+    "default_title": "Ny0bi Toolの設定",
+    "default_popup": "toolbarPopup/popup.html"
   },
   "content_scripts": [
     {
@@ -32,9 +32,11 @@
     }
   ],
   "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
     "*://www.nnn.ed.nico/*",
     "*://nnn.ed.nico/*",
     "storage"
-  ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval' https://platform.twitter.com; frame-src 'self' https://platform.twitter.com; img-src 'self' data: https://platform.twitter.com https://syndication.twitter.com; object-src 'self'"
+  ]
 }
