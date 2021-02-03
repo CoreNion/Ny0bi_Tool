@@ -2,20 +2,19 @@
 
 //ページがロードされた後に実行するもの
 $(window).on("load", function () {
-  const body = $("body");
   //URlのパスを取得
   const path = location.pathname;
 
   if (path.match(/guides\/\d+\/content/)) {
-    applyDarkTextPage(body, false);
+    applyDarkTextPage(false);
   } else if (path.match(/guides/)) {
-    applyDarkGuidePage(body, false);
+    applyDarkGuidePage(false);
   } else if (path.match(/movies/)) {
     applyMovieDarkPage();
   } else if (path.match(/links/)) {
-    applyDarkGuidePage(body, true);
+    applyDarkGuidePage(true);
   } else if (path.match(/references/)) {
-    applyDarkGuidePage(body, false);
+    applyDarkGuidePage(false);
   } else if (path.match(/chapters\/\d+/)) {
     applyDarkChapterPage();
   } else if (path.match(/lessons\/\d+/)) {
@@ -107,28 +106,28 @@ function applyDarkLessonPage() {
 
 /**
  * Guideにあるテキストや問題などにダークモードを適用する関数
- * @param {boolean} hasComprehensionArea 理解度を設定ボタンがあるページか
  */
-function applyDarkGuidePage(doc) {
+function applyDarkGuidePage() {
   console.log("Ny0bi_dark:load applyDarkGuidePage()");
+  const body = $("body");
 
-  doc.css({ "background-color": "#000000", "color": "#e8e8e8" });
+  body.css({ "background-color": "#000000", "color": "#e8e8e8" });
   //上部のタイトルなどが書かれている部分を黒くする
-  doc.find("header").css({ "background-color": "#000000", "color": "#e8e8e8" });
+  body.find("header").css({ "background-color": "#000000", "color": "#e8e8e8" });
 
   if ($(".footer").length) {
     //理解度を指定の部分を黒くする
-    doc.find(".wrapper .footer").css({ "background-color": "#202124", "border-top": "solid 3px #4a4a4a;" });
-    doc.find(".u-button.type-primary-light").css({ "background-color": "#2654bb", "color": "#FFFFFF", "border": "none" });
-    doc.find(".tag-content span").css("color", "#eaeaea")
-    doc.find("head").append('<style>.u-button.type-primary-light:hover { background-color: #00044e; border: none; }</style>');
+    body.find(".wrapper .footer").css({ "background-color": "#202124", "border-top": "solid 3px #4a4a4a;" });
+    body.find(".u-button.type-primary-light").css({ "background-color": "#2654bb", "color": "#FFFFFF", "border": "none" });
+    body.find(".tag-content span").css("color", "#eaeaea")
+    body.find("head").append('<style>.u-button.type-primary-light:hover { background-color: #00044e; border: none; }</style>');
     //「理解できましたか」のダイアログを黒くする
-    doc.find(".modal-window-content").css("background-color", "#2c2c33");
+    body.find(".modal-window-content").css("background-color", "#2c2c33");
   }
   //問題のページの時の設定
   if ($(".exercise").length) {
-    doc.find(".exercise-item").not(".exercise-item *").css({ "background-color": "#202124", "border": "none" });
-    doc.find("li.answers-choice").css("background-color", "#202124");
+    body.find(".exercise-item").not(".exercise-item *").css({ "background-color": "#202124", "border": "none" });
+    body.find("li.answers-choice").css("background-color", "#202124");
 
     //解答の解説の部分の背景色を設定
     $("head").append('<style>.exercise .section-item.explanation { background-color: rgb(255 236 0 / 16%); }</style>');
@@ -160,23 +159,24 @@ function applyDarkGuidePage(doc) {
   //音声プレイヤーがあるときの設定
   if ($(".fixed-audio-player-view").length) {
     //背景をダークモードに
-    doc.find(".component-audio-player-fixed").css("background-color", "#202124");
+    body.find(".component-audio-player-fixed").css("background-color", "#202124");
     //各種文字の文字色を白に
-    doc.find(".component-audio-player-fixed-title,.component-audio-player-fixed-time-control-time").css("color", "#e8e8e8");
+    body.find(".component-audio-player-fixed-title,.component-audio-player-fixed-time-control-time").css("color", "#e8e8e8");
     //見えずらいので再生ボタン等を反転
-    doc.find(".component-audio-player-fixed-button-rewind,.component-audio-player-fixed-button-play-pause,.component-audio-player-fixed-icon,.component-audio-player-fixed-button-playback-rate,.component-audio-player-fixed-close").css("filter", "invert(1)");
+    body.find(".component-audio-player-fixed-button-rewind,.component-audio-player-fixed-button-play-pause,.component-audio-player-fixed-icon,.component-audio-player-fixed-button-playback-rate,.component-audio-player-fixed-close").css("filter", "invert(1)");
   }
 
 }
 
 /**
  * テキストにダークモードを適用する関数
- * @param {jQuery.contents()} doc テキストのdocument(body)
  * @param {boolean} needGrayBack グレーなダークモードが必要か(授業のページ用)
  */
-function applyDarkTextPage(doc, needGrayPage) {
+function applyDarkTextPage(needGrayPage) {
   console.log("Ny0bi_dark:load applyDarkTextPage()");
-  doc.css({ "background-color": "#000000", "color": "#e8e8e8" });
+  const body = $("body");
+  
+  body.css({ "background-color": "#000000", "color": "#e8e8e8" });
 
   let back_color = null;
 
@@ -187,56 +187,56 @@ function applyDarkTextPage(doc, needGrayPage) {
   }
 
   //本文があるdivの子要素の一部の例外以外全てにダークモードを設定
-  doc.find('section,section *,.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red,h1,h1 *').css({ "background-color": back_color, "color": "#e8e8e8" });
+  body.find('section,section *,.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red,h1,h1 *').css({ "background-color": back_color, "color": "#e8e8e8" });
   //本文のdev自体の背景色を黒にする
-  doc.find(".main-content,.global--wrapper,.index,.book-body").css("background-color", back_color);
+  body.find(".main-content,.global--wrapper,.index,.book-body").css("background-color", back_color);
   //通常のリンクの設定
-  doc.find("a").not(".book-header *,.game-book-button").css("color", "#5da5ec");
+  body.find("a").not(".book-header *,.game-book-button").css("color", "#5da5ec");
   //tipのbackgroundを設定
-  doc.find(".tip,.tip p,.tip-title,.tip strong").css("background", "#335267");
+  body.find(".tip,.tip p,.tip-title,.tip strong").css("background", "#335267");
   //global--text-系で文字色を変えていないもので文字色を白にする
-  doc.find(".global--text-big,.global--text-small,.global--text-strong").css("color", "#e8e8e8");
+  body.find(".global--text-big,.global--text-small,.global--text-strong").css("color", "#e8e8e8");
 
   /* プログラミングの教材の設定 */
 
   //コードブロックの設定
   //text-shadowは無効化しないと見えずらくなるため無効化
-  doc.find("code").css({ "background-color": "#222222", "color": "#e8e8e8", "text-shadow": "none" });
+  body.find("code").css({ "background-color": "#222222", "color": "#e8e8e8", "text-shadow": "none" });
   //一行のコードブロックの設定
-  doc.find("pre").css({ "background-color": "#222222", "color": "#e8e8e8" });
+  body.find("pre").css({ "background-color": "#222222", "color": "#e8e8e8" });
   //一部文字色が白色にならない部分があるので修正
-  doc.find(".token.code,.token.interpolation").css("color", "#e8e8e8");
+  body.find(".token.code,.token.interpolation").css("color", "#e8e8e8");
   //キーボードの案内のブロックの背景色の設定
-  doc.find("kbd").css("background-color", "#222222");
+  body.find("kbd").css("background-color", "#222222");
   //タブの設定(Windowsとmacと操作が分かれる部分でよく見るもの)
-  doc.find(".tablink").css({ "background-color": "#37373D", "color": "#e8e8e8" });
+  body.find(".tablink").css({ "background-color": "#37373D", "color": "#e8e8e8" });
 
   //VS Codeのダークモードの配色に変更
   //Codeの行番号はbeforeで処理されているのでHeadのstyleから変更
   $("head").append('<style>.line-numbers span::before { content: attr(data-num); color: #858585 }</style>');
   //関数などの色を変更
   //JavaScript系
-  doc.find(".token.operator").css("background-color", "#222222");
-  doc.find(".token.string").css("color", "#CE9178");
-  doc.find(".token.function").css("color", "#D0DC8B");
-  doc.find(".token.keyword").css("color", "#3E9CCA");
-  doc.find(".token.parameter").css("color", "#9CDCFE");
-  doc.find(".token.number").css("color", "#B5CEA8");
-  doc.find(".token.operator,.token.token.punctuation").css("color", "#D4D4C9");
-  doc.find(".token.doctype-tag").css("color", "#3E9CCA");
-  doc.find(".token.name").css("color", "#9CDCFE");
-  doc.find(".token.class-name,.token.constant").css("color", "#4FC1FF");
-  doc.find(".token.boolean").css("color", "#569CD6");
-  doc.find(".token.regex-delimiter,.token.regex-source.language-regex").css("color", "#C66951");
+  body.find(".token.operator").css("background-color", "#222222");
+  body.find(".token.string").css("color", "#CE9178");
+  body.find(".token.function").css("color", "#D0DC8B");
+  body.find(".token.keyword").css("color", "#3E9CCA");
+  body.find(".token.parameter").css("color", "#9CDCFE");
+  body.find(".token.number").css("color", "#B5CEA8");
+  body.find(".token.operator,.token.token.punctuation").css("color", "#D4D4C9");
+  body.find(".token.bodytype-tag").css("color", "#3E9CCA");
+  body.find(".token.name").css("color", "#9CDCFE");
+  body.find(".token.class-name,.token.constant").css("color", "#4FC1FF");
+  body.find(".token.boolean").css("color", "#569CD6");
+  body.find(".token.regex-delimiter,.token.regex-source.language-regex").css("color", "#C66951");
   //HTML系
-  doc.find(".token.tag").css("color", "#3E9CCA");
-  doc.find(".token.attr-name").css("color", "#9CDCFE");
-  doc.find(".token.attr-value").css("color", "#CE9178");
+  body.find(".token.tag").css("color", "#3E9CCA");
+  body.find(".token.attr-name").css("color", "#9CDCFE");
+  body.find(".token.attr-value").css("color", "#CE9178");
   //差分系
-  doc.find(".token.inserted-sign.inserted").css("background-color", "rgb(255 255 0 / 0.1)");
-  doc.find(".token.line").css("color", "#e8e8e8");
+  body.find(".token.inserted-sign.inserted").css("background-color", "rgb(255 255 0 / 0.1)");
+  body.find(".token.line").css("color", "#e8e8e8");
   //その他
-  doc.find(".token.plain-text,token.each").css("color", "#e8e8e8");
+  body.find(".token.plain-text,token.each").css("color", "#e8e8e8");
 
   /* 普通の教科の教材の設定 */
 
