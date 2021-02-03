@@ -12,6 +12,11 @@ $(function(){
       $("#lastUpdateCheck").html(data.lastCheck);  
     }    
   });
+
+  //バージョンを表示
+  const manifest = chrome.runtime.getManifest();
+  const clientVer = Number(manifest.version);
+  $("#version").html(clientVer);
 });
 
 /* アップデートを確認ボタンが押された時の動作 (Chrome拡張ではonclickが使えないのでjQuery経由で実行) */
