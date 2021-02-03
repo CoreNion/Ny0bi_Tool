@@ -12,9 +12,9 @@ $(window).on("load", function () {
   } else if (path.match(/movies/)) {
     applyMovieDarkPage();
   } else if (path.match(/links/)) {
-    applyDarkGuidePage(true);
-  } else if (path.match(/references/)) {
     applyDarkGuidePage(false);
+  } else if (path.match(/references/)) {
+    applyDarkGuidePage(true);
   } else if (path.match(/chapters\/\d+/)) {
     applyDarkChapterPage();
   } else if (path.match(/lessons\/\d+/)) {
@@ -98,22 +98,44 @@ function applyDarkLessonPage() {
   setTimeout(function () {
     clearInterval(interval);
   }, 3000);
-
-  //テキストを黒くする
-  var iframe = $("iframe").contents();
-  applyDarkTextPage(iframe, true);
 }
 
 /**
  * Guideにあるテキストや問題などにダークモードを適用する関数
+ * @param {boolean} isLessonText 授業用のテキストか
  */
-function applyDarkGuidePage() {
+function applyDarkGuidePage(isLessonText) {
   console.log("Ny0bi_dark:load applyDarkGuidePage()");
   const body = $("body");
 
-  body.css({ "background-color": "#000000", "color": "#e8e8e8" });
+  //applyDarkTextPageで処理できるものならそちらの関数を利用(問題のページでは不具合が発生するため無効化、いずれTextPageの方に結合)
+  if ($("section,section,.main-content,.global--wrapper").length) {
+    if (!$(".exercises").length) {
+      if (isLessonText) {
+        applyDarkTextPage(true);
+      } else {
+        applyDarkTextPage(false);
+      }
+      return;
+    }
+  } 
+
+  let backColor = null;
+  //授業用のテキストの場合、授業のページに表示されるので、授業のページと同化しないようにする
+  if (isLessonText) {
+    backColor = "#202124";
+  } else {
+    backColor = "#000000";
+  }
+  //bodyの色を設定
+  body.css({ "background-color": backColor, "color": "#e8e8e8" });
+
   //上部のタイトルなどが書かれている部分を黒くする
   body.find("header").css({ "background-color": "#000000", "color": "#e8e8e8" });
+  //見出しの色を黒くし、線の色をはっきりさせる(主に特別授業用)
+  body.find("h2,h3,h4,h5,h6").css({ "color": "#FFFFFF", "border-left": "6px solid #0000FF" });
+  //h3の見出しの線をはっきりさせる(主に特別授業用)
+  body.find("h3").css("border-bottom", "2px solid #0000ff");
 
   if ($(".footer").length) {
     //理解度を指定の部分を黒くする
@@ -170,14 +192,11 @@ function applyDarkGuidePage() {
 
 /**
  * テキストにダークモードを適用する関数
- * @param {boolean} needGrayBack グレーなダークモードが必要か(授業のページ用)
+ * @param {boolean} needGrayPage 背景がグレーなダークモードが必要か(授業のページ用)
  */
 function applyDarkTextPage(needGrayPage) {
   console.log("Ny0bi_dark:load applyDarkTextPage()");
   const body = $("body");
-  
-  body.css({ "background-color": "#000000", "color": "#e8e8e8" });
-
   let back_color = null;
 
   if (needGrayPage) {
@@ -185,6 +204,8 @@ function applyDarkTextPage(needGrayPage) {
   } else {
     back_color = "#000000";
   }
+
+  body.css({ "background-color": back_color, "color": "#e8e8e8" });
 
   //本文があるdivの子要素の一部の例外以外全てにダークモードを設定
   body.find('section,section *,.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red,h1,h1 *').css({ "background-color": back_color, "color": "#e8e8e8" });
