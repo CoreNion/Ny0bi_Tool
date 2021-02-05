@@ -183,6 +183,12 @@ function applyDarkTextPage(needGrayPage) {
     $("head").append('<style>.exercise .section-item.explanation { background-color: rgb(255 236 0 / 16%); }</style>');
     //触れた時の色を変更
     $("head").append('<style>.exercise .section-item.question-list ul.answers li.answers-choice:hover { background-color: #383838 !important; }</style>');
+    //〇の色がほぼ同化するので反転
+    $("head").append('<style>li.answers-choice::before { filter: invert(1); }</style>');
+    //✅の色を修正
+    $("head").append('<style> li.answers-choice.answers-selected::before { filter: inherit; }</style>');
+    $("head").append('<style> li.answers-choice.answers-selected::before { filter: inherit; }</style>');
+    $("head").append('<style>.answered .exercise .section-item.question-list ul.answers li.answers-choice[data-correct="true"]::before { filter: inherit; }</style>');
     //選択した時の色を設定
     $("head").append('<style>.exercise .section-item.question-list ul.answers li.answers-choice.answers-selected { background-color: #4f73e3 !important; }</style>');
     //正解の物の色を背景色を設定
