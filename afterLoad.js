@@ -108,17 +108,14 @@ function applyDarkGuidePage(isLessonText) {
   console.log("Ny0bi_dark:load applyDarkGuidePage()");
   const body = $("body");
 
-  //applyDarkTextPageで処理できるものならそちらの関数を利用(問題のページでは不具合が発生するため無効化、いずれTextPageの方に結合)
+  //applyDarkTextPageで処理できるものならそちらの関数を利用
   if ($("section,section,.main-content,.global--wrapper").length) {
-    if (!$(".exercises").length) {
-      if (isLessonText) {
-        applyDarkTextPage(true);
-      } else {
-        applyDarkTextPage(false);
-      }
-      return;
+    if (isLessonText) {
+      applyDarkTextPage(true);
+    } else {
+      applyDarkTextPage(false);
     }
-  } 
+  }
 
   let backColor = null;
   //授業用のテキストの場合、授業のページに表示されるので、授業のページと同化しないようにする
@@ -137,6 +134,7 @@ function applyDarkGuidePage(isLessonText) {
   //h3の見出しの線をはっきりさせる(主に特別授業用)
   body.find("h3").css("border-bottom", "2px solid #0000ff");
 
+  //理解度を設定ボタンがあるとき
   if ($(".footer").length) {
     //理解度を指定の部分を黒くする
     body.find(".wrapper .footer").css({ "background-color": "#202124", "border-top": "solid 3px #4a4a4a;" });
@@ -146,48 +144,6 @@ function applyDarkGuidePage(isLessonText) {
     //「理解できましたか」のダイアログを黒くする
     body.find(".modal-window-content").css("background-color", "#2c2c33");
   }
-  //問題のページの時の設定
-  if ($(".exercise").length) {
-    body.find(".exercise-item").not(".exercise-item *").css({ "background-color": "#202124", "border": "none" });
-    body.find("li.answers-choice").css("background-color", "#202124");
-
-    //解答の解説の部分の背景色を設定
-    $("head").append('<style>.exercise .section-item.explanation { background-color: rgb(255 236 0 / 16%); }</style>');
-    //触れた時の色を変更
-    $("head").append('<style>.exercise .section-item.question-list ul.answers li.answers-choice:hover { background-color: #383838 !important; }</style>');
-    //選択した時の色を設定
-    $("head").append('<style>.exercise .section-item.question-list ul.answers li.answers-choice.answers-selected { background-color: #4f73e3 !important; }</style>');
-    //正解の物の色を背景色を設定
-    $("head").append('<style>.answered .exercise .section-item.question-list ul.answers li.answers-choice[data-correct="true"] { background-color: #00c541 !important; }</style>');
-    //解説のページの領域の背景色を変更
-    $("head").append('<style>.wrapper .container .links { background-color: #202124; }</style>');
-    //英語で単語を選択する物にダークモードを反映
-    $("head").append('<style>body.exercises.fill-box .fill-list li.fill-list-item { background-color: #202124; }</style>');
-    $("head").append('<style>body.exercises.fill-box .fill-list li.fill-list-item:hover { background-color: #383838; }</style>');
-    //問題の解説の文字色の改善
-    $("head").append('<style>body.exercises .em3 { color: #A1B9FF !important; }</style>');
-    $("head").append('<style>body.exercises .em2 { color: #44DB6C !important;; }</style>');
-
-    //聞き取り問題で再生ボタン等にダークモードを適用する
-
-    //音声の部分の背景色を黒にし、タイトル等の色を白にする
-    $("head").append('<style>.component-audio-player { background-color: #202124; }</style>');
-    $("head").append('<style>.component-audio-player-title, .component-audio-player-time { color: #e8e8e8 !important; }</style>');
-    //黒な再生・停止ボタンの色を反転させる
-    $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before { filter: invert(1); }</style>');
-    //触れた時の色を変更
-    $("head").append('<style>.component-audio-player:hover { background-color: #383838; }</style>');
-  }
-  //音声プレイヤーがあるときの設定
-  if ($(".fixed-audio-player-view").length) {
-    //背景をダークモードに
-    body.find(".component-audio-player-fixed").css("background-color", "#202124");
-    //各種文字の文字色を白に
-    body.find(".component-audio-player-fixed-title,.component-audio-player-fixed-time-control-time").css("color", "#e8e8e8");
-    //見えずらいので再生ボタン等を反転
-    body.find(".component-audio-player-fixed-button-rewind,.component-audio-player-fixed-button-play-pause,.component-audio-player-fixed-icon,.component-audio-player-fixed-button-playback-rate,.component-audio-player-fixed-close").css("filter", "invert(1)");
-  }
-
 }
 
 /**
@@ -208,15 +164,38 @@ function applyDarkTextPage(needGrayPage) {
   body.css({ "background-color": back_color, "color": "#e8e8e8" });
 
   //本文があるdivの子要素の一部の例外以外全てにダークモードを設定
-  body.find('section,section *,.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red,h1,h1 *').css({ "background-color": back_color, "color": "#e8e8e8" });
+  body.find('section,section *,.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red,h1,h1 *,.exercise-item *').css({ "background-color": back_color, "color": "#e8e8e8" });
   //本文のdev自体の背景色を黒にする
   body.find(".main-content,.global--wrapper,.index,.book-body").css("background-color", back_color);
   //通常のリンクの設定
-  body.find("a").not(".book-header *,.game-book-button").css("color", "#5da5ec");
+  body.find("a").not(".book-header *,.game-book-button,#question-btn").css("color", "#5da5ec");
   //tipのbackgroundを設定
   body.find(".tip,.tip p,.tip-title,.tip strong").css("background", "#335267");
   //global--text-系で文字色を変えていないもので文字色を白にする
   body.find(".global--text-big,.global--text-small,.global--text-strong").css("color", "#e8e8e8");
+
+  //問題用の設定
+  if ($(".exercise").length) {
+    body.find(".exercise-item").css("background-color", "#202124");
+    body.find("li.answers-choice").css("background-color", "#202124");
+
+    //解答の解説の部分の背景色を設定
+    $("head").append('<style>.exercise .section-item.explanation { background-color: rgb(255 236 0 / 16%); }</style>');
+    //触れた時の色を変更
+    $("head").append('<style>.exercise .section-item.question-list ul.answers li.answers-choice:hover { background-color: #383838 !important; }</style>');
+    //選択した時の色を設定
+    $("head").append('<style>.exercise .section-item.question-list ul.answers li.answers-choice.answers-selected { background-color: #4f73e3 !important; }</style>');
+    //正解の物の色を背景色を設定
+    $("head").append('<style>.answered .exercise .section-item.question-list ul.answers li.answers-choice[data-correct="true"] { background-color: #00c541 !important; }</style>');
+    //解説のページの領域の背景色を変更
+    $("head").append('<style>.wrapper .container .links { background-color: #202124; }</style>');
+    //英語で単語を選択する物にダークモードを反映
+    $("head").append('<style>body.exercises.fill-box .fill-list li.fill-list-item { background-color: #202124; }</style>');
+    $("head").append('<style>body.exercises.fill-box .fill-list li.fill-list-item:hover { background-color: #383838; }</style>');
+    //問題の解説の文字色の改善
+    $("head").append('<style>body.exercises .em3 { color: #A1B9FF !important; }</style>');
+    $("head").append('<style>body.exercises .em2 { color: #44DB6C !important;; }</style>');
+  }
 
   /* プログラミングの教材の設定 */
 
@@ -263,10 +242,10 @@ function applyDarkTextPage(needGrayPage) {
 
   //英語系の設定
   //音声の部分の背景色を黒に
-  $("head").append('<style>.component-audio-player { background-color: #202124; }</style>');
-  $("head").append('<style>.component-audio-player-title, .component-audio-player-time { color: #e8e8e8 !important; }</style>');
+  $("head").append('<style>.component-audio-player, .component-audio-player-fixed { background-color: #202124; }</style>');
+  $("head").append('<style>.component-audio-player-title, .component-audio-player-time, .component-audio-player-fixed-title,.component-audio-player-fixed-time-control-time { color: #e8e8e8 !important; }</style>');
   //黒な再生・停止ボタンの色を反転させる
-  $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before { filter: invert(1); }</style>');
+  $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before, .component-audio-player-play-stop, .component-audio-player-fixed-button-rewind, .component-audio-player-fixed-button-play-pause, .component-audio-player-fixed-icon, .component-audio-player-fixed-button-playback-rate, .component-audio-player-fixed-close { filter: invert(1); }</style>');
   //触れた時の色を変更
   $("head").append('<style>.component-audio-player:hover { background-color: #383838; }</style>');
 }
