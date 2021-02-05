@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
+  <title>Ny0bi Tool Menu</title>
+</head>
+<body>
+  <h2>Ny0bi Tool Menu</h2>
+
+  <h3>アップデート情報</h3>
+  <p>
+    <span style="font-weight: bold;" id="updateStatus">アップデートはありません。</span>
+    <br>
+    <span>最終確認:</span><span id="lastUpdateCheck">N/A</span>
+    <br>
+    <button id="checkUpdateButton">アップデートを確認</button>
+  </p>
+
+  <h3>この拡張機能について</h3>
+  <p>
+    <span style="font-size: 15px;">Version:<span id="version"></span> <b>Develop Branch</b></span>
+    <br>
+    <!-- Github Repository -->
+    <a class="github-button" href="https://github.com/CoreNion/Ny0bi_Tool" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" aria-label="Star CoreNion/Ny0bi_Tool on GitHub">Github Repository</a>
+    <br> <br>
+    <span style="font-size: 13px;"><b>問題の報告は製作者かIssuesで報告してください。</b></span>
+    <!-- Issues -->
+    <a class="github-button" href="https://github.com/CoreNion/Ny0bi_Tool/issues" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-issue-opened" data-size="large" aria-label="Issue CoreNion/Ny0bi_Tool on GitHub">Issue</a>
+    <!-- Twitter Mention-->
+    <a href="https://twitter.com/intent/tweet?screen_name=CoreiNion&ref_src=twsrc%5Etfw" id="tweetButton" target="_blank" rel="noopener noreferrer" >製作者(@CoreiNion)へツイート</a>
+  </p>
+
+  <script src="../library/jquery-3.5.1.min.js"></script>
+  <script async defer src="../library/github-buttons.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

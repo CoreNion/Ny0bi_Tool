@@ -1,0 +1,60 @@
+body {
+  background-color: #343946;
+  color: white;
+  width: 380px;
+  height: 310px;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+#checkUpdateButton {
+  display: block;
+  margin:0 0 0 auto;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#checkUpdateButton:hover {
+  background-color: white; 
+  color: #4CAF50;
+}
+
+#updateAvailable {
+  font-weight: bold;
+  font-size: 15px;
+  color: white;
+}
+
+#updateAvailable:hover {
+  color: gold;
+}
+
+#tweetButton {
+  display: inline-block;
+  vertical-align: top;
+  background-color: royalblue;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  padding: 5px 10px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  text-decoration: none;;
+}
+
+#tweetButton:hover {
+  background-color: white; 
+  color: royalblue;
+}
