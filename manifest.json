@@ -36,7 +36,6 @@
   ],
   "host_permissions": [
     "*://www.nnn.ed.nico/*",
-    "*://nnn.ed.nico/*",
-    "storage"
+    "*://nnn.ed.nico/*"
   ]
 }
