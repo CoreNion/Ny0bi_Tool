@@ -19,6 +19,8 @@ $(window).on("load", function () {
     applyDarkChapterPage();
   } else if (path.match(/lessons\/\d+/)) {
     applyDarkLessonPage();
+  } else if (path.match(/short_tests/)) {
+    applyDarkChapterPage();
   }
 });
 
@@ -50,6 +52,8 @@ function applyDarkChapterPage() {
   body.find(".u-button").css({ "background-color": "#505050", "border": "#505050" });
   //教材名の文字色を白に
   body.find(".u-list.has-linked-children>li>a").css("color", "#e8e8e8");
+  //テストの開始前ページで、中のiframeの背景色をグレーにする
+  body.find(".p-short-test-cover").css("background-color","#202124");
   //教材や授業を触ったときの色を変更
   $("head").append('<style>.u-list.has-linked-children>li>a:hover { background-color: #383838; }</style>');
   //進行度のバーの色を調整
