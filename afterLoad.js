@@ -21,11 +21,15 @@ $(window).on("load", function () {
     applyDarkLessonPage();
   } else if (path.match(/short_tests/)) {
     applyDarkChapterPage();
+  } else if (path.match(/short_test_sets/)) {
+    applyDarkTestExercises();
+  } else if (path.match(/short_test_sessions/)) {
+    applyDarkTestPage();
   }
 });
 
 /**
- * 教材のページにダークモードを適用する関数
+ * 教材のページとテスト開始前のページにダークモードを適用する関数
  */
 function applyDarkChapterPage() {
   console.log("Ny0bi_dark:load applyDarkChapterPage()");
@@ -281,9 +285,19 @@ function applyMovieDarkPage() {
 }
 
 /**
+ * テストの問題のiframeにダークモードを適用する関数
+ */
+function applyDarkTestExercises() {
+  console.log("Ny0bi_dark:load applyDarkTestExercises()");
+  console.log("Ny0bi_dark:このページは未実装ですが、今後対応します。");
+}
+
+/**
  * テストのページにダークモードを適用する
  */
 function applyDarkTestPage() {
   console.log("Ny0bi_dark:load applyDarkTestPage()");
-  console.log("Ny0bi_dark:このページは未実装ですが、今後対応します。");
+
+  //bodyにダークモードを適用
+  $("body").css({"background-color": "#000", "color": "#e8e8e8"});
 }
