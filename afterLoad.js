@@ -22,7 +22,7 @@ $(window).on("load", function () {
   } else if (path.match(/short_tests/)) {
     applyDarkChapterPage();
   } else if (path.match(/short_test_sets/)) {
-    applyDarkTestExercises();
+    applyDarkGuidePage(true);
   } else if (path.match(/short_test_sessions/)) {
     applyDarkTestPage();
   }
@@ -57,7 +57,7 @@ function applyDarkChapterPage() {
   //教材名の文字色を白に
   body.find(".u-list.has-linked-children>li>a").css("color", "#e8e8e8");
   //テストの開始前ページで、中のiframeの背景色をグレーにする
-  body.find(".p-short-test-cover").css("background-color","#202124");
+  body.find(".p-short-test-cover").css("background-color", "#202124");
   //教材や授業を触ったときの色を変更
   $("head").append('<style>.u-list.has-linked-children>li>a:hover { background-color: #383838; }</style>');
   //進行度のバーの色を調整
@@ -109,16 +109,16 @@ function applyDarkLessonPage() {
 }
 
 /**
- * Guideにあるテキストや問題などにダークモードを適用する関数
- * @param {boolean} isLessonText 授業用のテキストか
+ * テキストや問題などにダークモードを適用する関数
+ * @param {boolean} needDarkBackColor BackgroundColorをグレーにするか
  */
-function applyDarkGuidePage(isLessonText) {
+function applyDarkGuidePage(needDarkBackColor) {
   console.log("Ny0bi_dark:load applyDarkGuidePage()");
   const body = $("body");
 
   //applyDarkTextPageで処理できるものならそちらの関数を利用
   if ($("section,section,.main-content,.global--wrapper").length) {
-    if (isLessonText) {
+    if (needDarkBackColor) {
       applyDarkTextPage(true);
     } else {
       applyDarkTextPage(false);
@@ -127,7 +127,7 @@ function applyDarkGuidePage(isLessonText) {
 
   let backColor = null;
   //授業用のテキストの場合、授業のページに表示されるので、授業のページと同化しないようにする
-  if (isLessonText) {
+  if (needDarkBackColor) {
     backColor = "#202124";
   } else {
     backColor = "#000000";
@@ -155,7 +155,7 @@ function applyDarkGuidePage(isLessonText) {
 }
 
 /**
- * テキストにダークモードを適用する関数
+ * テキストや問題などにダークモードを適用する関数
  * @param {boolean} needGrayPage 背景がグレーなダークモードが必要か(授業のページ用)
  */
 function applyDarkTextPage(needGrayPage) {
@@ -285,19 +285,21 @@ function applyMovieDarkPage() {
 }
 
 /**
- * テストの問題のiframeにダークモードを適用する関数
- */
-function applyDarkTestExercises() {
-  console.log("Ny0bi_dark:load applyDarkTestExercises()");
-  console.log("Ny0bi_dark:このページは未実装ですが、今後対応します。");
-}
-
-/**
  * テストのページにダークモードを適用する
  */
 function applyDarkTestPage() {
   console.log("Ny0bi_dark:load applyDarkTestPage()");
-
+  const seeArea = $("#root > div > div > div > div > div > div");
   //bodyにダークモードを適用
-  $("body").css({"background-color": "#000", "color": "#e8e8e8"});
+  $("body").css({ "background-color": "#000", "color": "#e8e8e8" });
+
+  //テスト名の部分を黒くする
+  seeArea.eq(1).find("div > div").eq(0).css({ "background-color": "#202124", "border-bottom": "1px solid rgb(255 255 255 / 30%)" });
+  //上のバーにダークモードを適用
+  seeArea.eq(0).css("background-color", "#222222");
+  //テストをやめるボタンを黒くする
+  seeArea.eq(0).find("a").css({ "background-color": "#505050", "border": "#505050", "color": "#8ca8ff" });
+  //タイマーを黒くする
+  seeArea.eq(0).find("span").css({ "background-color": "#222222", "border-right": "1px solid rgb(255 255 255 / 30%)", "border-left": "1px solid rgb(255 255 255 / 30%)"});
+
 }
