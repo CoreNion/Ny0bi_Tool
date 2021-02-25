@@ -289,17 +289,26 @@ function applyMovieDarkPage() {
  */
 function applyDarkTestPage() {
   console.log("Ny0bi_dark:load applyDarkTestPage()");
-  const seeArea = $("#root > div > div > div > div > div > div");
-  //bodyにダークモードを適用
   $("body").css({ "background-color": "#000", "color": "#e8e8e8" });
 
-  //テスト名の部分を黒くする
-  seeArea.eq(1).find("div > div").eq(0).css({ "background-color": "#202124", "border-bottom": "1px solid rgb(255 255 255 / 30%)" });
+  const path = location.pathname;
+  let seeArea = null;
+  seeArea = $("#root > div > div > div > div > div > div");
+
+  //各項目のテスト名の部分を黒くする
+  for (let i = 0; i <= seeArea.eq(1).children().length; i++) {
+    seeArea.eq(1).find("div > div").eq(i).css({ "background-color": "#202124", "border-bottom": "1px solid rgb(255 255 255 / 30%)" })
+  }
   //上のバーにダークモードを適用
   seeArea.eq(0).css("background-color", "#222222");
   //テストをやめるボタンを黒くする
   seeArea.eq(0).find("a").css({ "background-color": "#505050", "border": "#505050", "color": "#8ca8ff" });
   //タイマーを黒くする
-  seeArea.eq(0).find("span").css({ "background-color": "#222222", "border-right": "1px solid rgb(255 255 255 / 30%)", "border-left": "1px solid rgb(255 255 255 / 30%)"});
+  seeArea.eq(0).find("span").css({ "background-color": "#222222", "border-right": "1px solid rgb(255 255 255 / 30%)", "border-left": "1px solid rgb(255 255 255 / 30%)" });
+
+  //下のバーを黒くする
+  seeArea.eq(2).css("background-color", "#222222");
+  //ボタンを黒くする
+  seeArea.eq(2).find("button").not(seeArea.eq(2).find("button").eq(1)).css({ "background-color": "#505050", "color": "#95c0ff" });
 
 }
