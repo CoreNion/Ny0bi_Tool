@@ -76,8 +76,8 @@ function applyDarkLessonPage() {
   //上部のバーにダークモードを設定する
   const topBar = body.find("#root > div > div").eq(0);
   topBar.css("background-color", "#292A2D");
-  //「N予備校とは」などと書かれている部分の文字色の設定
-  topBar.find("ul *,ul").css("color", "#8AB4F8");
+  //「N予備校とは」などと書かれている部分の文字/背景色の設定
+  topBar.find("ul *,ul").css({"color": "#8AB4F8", "background-color":"#292A2D"});
 
   //コメビューを黒くする
   $("head").append('<style>textarea { background-color: #202124; color: #e8e8e8; }</style>');
