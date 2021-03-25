@@ -294,7 +294,7 @@ function applyDarkTestPage() {
 
   //習熟度テストの結果のページの埋め込み用
   if (path.match(/contents/)) {
-    console.log("Ny0bi_Tool:Detection of embedded proficiency test results.");
+    console.log("Ny0bi_dark:Detection of embedded proficiency test results.");
     $(".p-short-test-review").css("background-color", "#222222");
     //総評の背景の色を変更
     $(".review").css("background-color", "rgb(255 236 0 / 30%)");
@@ -303,24 +303,45 @@ function applyDarkTestPage() {
     $(".answers").css({ "background-color": "#292a2d", "border": "solid 1px rgb(255 255 255 / 20%)" });
     $(".answer ul").css("border", "solid 1px rgb(255 255 255 / 10%)");
     $(".answer").css("border-bottom", "solid 1px rgb(255 255 255 / 10%)")
-  } else {
-    let seeArea = null;
-    seeArea = $("#root > div > div > div > div > div > div");
 
-    //各項目のテスト名の部分を黒くする
-    for (let i = 0; i <= seeArea.eq(1).children().length; i++) {
-      seeArea.eq(1).find("div > div").eq(i).css({ "background-color": "#202124", "border-bottom": "1px solid rgb(255 255 255 / 30%)" })
+  } else {
+    let inResultPage = path.match(/result/);
+    let bottomBar = null;
+    let topBar = null;
+    let centorContents = null;
+
+    if (inResultPage) {
+      //習熟度テストの"結果のページ"のセレクタをセット
+      bottomBar = $("#root > div > div > div > div > div").eq(1);
+      topBar = $("#root > div > div > div > div").eq(0);
+      centorContents = $("#root > div > div > div > div > div").eq(0);
+    } else {
+      //習熟度テストのセレクタをセット
+      bottomBar = $("#root > div > div > div > div > div > div").eq(2);
+      topBar = $("#root > div > div > div > div > div > div").eq(0);
+      centorContents = $("#root > div > div > div > div > div > div").eq(1);
     }
+
+    if (inResultPage) {
+      //習熟度テストの名前の部分を黒くする(結果のページの場合、ページの読み込みが完了した時点では、テストの各問題は読み込まれない)
+      centorContents.find("div").css({ "background-color": "#202124", "border-bottom": "1px solid rgb(255 255 255 / 30%)" });
+    } else {
+      //各問題にある習熟度テストの名前の部分を黒くする
+      for (let i = 0; i <= centorContents.children().length; i++) {
+        centorContents.find("div > div").eq(i).css({ "background-color": "#202124", "border-bottom": "1px solid rgb(255 255 255 / 30%)" })
+      }
+    }
+
     //上のバーにダークモードを適用
-    seeArea.eq(0).css("background-color", "#222222");
+    topBar.css("background-color", "#222222");
     //テストをやめるボタンを黒くする
-    seeArea.eq(0).find("a").css({ "background-color": "#505050", "border": "#505050", "color": "#8ca8ff" });
+    topBar.find("a").css({ "background-color": "#505050", "border": "#505050", "color": "#8ca8ff" });
     //タイマーを黒くする
-    seeArea.eq(0).find("span").css({ "background-color": "#222222", "border-right": "1px solid rgb(255 255 255 / 30%)", "border-left": "1px solid rgb(255 255 255 / 30%)" });
+    topBar.find("span").css({ "background-color": "#222222", "border-right": "1px solid rgb(255 255 255 / 30%)", "border-left": "1px solid rgb(255 255 255 / 30%)" });
 
     //下のバーを黒くする
-    seeArea.eq(2).css("background-color", "#222222");
+    bottomBar.css("background-color", "#222222");
     //ボタンを黒くする
-    seeArea.eq(2).find("button").not(seeArea.eq(2).find("button").eq(1)).css({ "background-color": "#505050", "color": "#95c0ff" });
+    bottomBar.find("button, a").not(bottomBar.find("button").eq(1)).css({ "background-color": "#505050", "color": "#95c0ff" });
   }
 }
