@@ -305,7 +305,8 @@ function applyDarkTestPage() {
     $(".answer").css("border-bottom", "solid 1px rgb(255 255 255 / 10%)")
 
   } else {
-    let inResultPage = path.match(/result/);
+    //ResultPageかは中のdivの量で判断(後で問題が読み込まれた時は、通常のテストのページと同じ動作をしないとダークモードが反映されないため)
+    let inResultPage = $("#root > div > div > div > div > div").eq(0).find("div").children().length == 3;
     let bottomBar = null;
     let topBar = null;
     let centorContents = null;
@@ -322,26 +323,49 @@ function applyDarkTestPage() {
       centorContents = $("#root > div > div > div > div > div > div").eq(1);
     }
 
-    if (inResultPage) {
-      //習熟度テストの名前の部分を黒くする(結果のページの場合、ページの読み込みが完了した時点では、テストの各問題は読み込まれない)
-      centorContents.find("div").css({ "background-color": "#202124", "border-bottom": "1px solid rgb(255 255 255 / 30%)" });
-    } else {
-      //各問題にある習熟度テストの名前の部分を黒くする
-      for (let i = 0; i <= centorContents.children().length; i++) {
-        centorContents.find("div > div").eq(i).css({ "background-color": "#202124", "border-bottom": "1px solid rgb(255 255 255 / 30%)" })
-      }
-    }
+    //習熟度テストの名前の部分を黒くする
+    classCSSPatcher(centorContents.find("div > div"), "background-color", "#202124");
+    classCSSPatcher(centorContents.find("div > div"), "border-bottom", "1px solid rgb(255 255 255 / 30%)");
 
     //上のバーにダークモードを適用
     topBar.css("background-color", "#222222");
-    //テストをやめるボタンを黒くする
-    topBar.find("a").css({ "background-color": "#505050", "border": "#505050", "color": "#8ca8ff" });
-    //タイマーを黒くする
-    topBar.find("span").css({ "background-color": "#222222", "border-right": "1px solid rgb(255 255 255 / 30%)", "border-left": "1px solid rgb(255 255 255 / 30%)" });
-
-    //下のバーを黒くする
-    bottomBar.css("background-color", "#222222");
     //ボタンを黒くする
-    bottomBar.find("button, a").not(bottomBar.find("button").eq(1)).css({ "background-color": "#505050", "color": "#95c0ff" });
+    topBar.find("a").css({ "background-color": "#505050", "border": "#505050", "color": "#8ca8ff" });
+    if (!inResultPage) {
+      //タイマーを黒くする
+      topBar.find("span").css({ "background-color": "#222222", "border-right": "1px solid rgb(255 255 255 / 30%)", "border-left": "1px solid rgb(255 255 255 / 30%)" });
+    }
+
+    //下のバーにダークモードを適用
+    if (inResultPage) {
+      //背景にダークモードを適用
+      classCSSPatcher(bottomBar, "background-color", "#222222");
+      //ボタンを黒くする
+      classCSSPatcher(bottomBar.find("button"), "background-color", "#505050");
+      classCSSPatcher(bottomBar.find("a"), "background-color", "#505050");
+      classCSSPatcher(bottomBar.find("button"), "color", "#95c0ff");
+      classCSSPatcher(bottomBar.find("a"), "color", "#95c0ff");
+    } else {
+      //下のバーを黒くする
+      bottomBar.css("background-color", "#222222");
+      //ボタンを黒くする
+      bottomBar.find("button, a").not(bottomBar.find("button").eq(1)).css({ "background-color": "#505050", "color": "#95c0ff" });
+    }
   }
+}
+
+/**
+ * クラスにCSSの変更を恒久的に適用する関数
+ * 
+ * (複数選択できないため、恒久的にしなくても良いクラスの場合は、この関数を使うことは非推奨です)
+ * @param {JQuery<HTMLElement>} element 変更したいHTMLElement
+ * @param {string} property 変更したいCSSのプロパティ名
+ * @param {string} changedValue 変更後の値
+ */
+function classCSSPatcher(element, property, changedValue) {
+  //所属しているクラス一覧を取得し、クラス名の一文字目に.を付け、配列化
+  const elementClassArrary = ("." + element.attr("class").split(' ').join(' .')).split(' ');
+
+  //headにstyleを追加(elementに適用されるclassは基本最後尾に書いているので、最後尾のclassにstyleを追加する)
+  $("head").append("<style> " + elementClassArrary[elementClassArrary.length - 1] + " { " + property + ": " + changedValue + " }</style>");
 }
