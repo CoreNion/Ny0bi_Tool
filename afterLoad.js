@@ -7,7 +7,7 @@ $(window).on("load", function () {
 
   if (path.match(/guides\/\d+\/content/)) {
     applyDarkTextPage(false);
-  } else if (path.match(/guides/)) {
+  } else if (path.match(/guides/) || path.match(/evaluation_tests/)) {
     applyDarkGuidePage(false);
   } else if (path.match(/movies/)) {
     applyMovieDarkPage();
@@ -204,6 +204,9 @@ function applyDarkTextPage(needGrayPage) {
     //問題の解説の文字色の改善
     $("head").append('<style>body.exercises .em3 { color: #A1B9FF !important; }</style>');
     $("head").append('<style>body.exercises .em2 { color: #44DB6C !important;; }</style>');
+    //記述式の問題での、inputの色を設定
+    body.find(".exercise .section-item .type-descriptive .answers").css("background-color", "#202124");
+    body.find("input[type=text], textarea").css("color", "#f6f6f6");
   }
 
   /* プログラミングの教材の設定 */
