@@ -54,6 +54,9 @@ function applyDarkChapterPage() {
   $("head").append('<style>.u-list.has-linked-children>li>a:hover { background-color: #383838; }</style>');
   //進行度のバーの色を調整
   $("head").append('<style>.u-progress { background-color: rgb(191 191 191); }</style>');
+  //必修授業でまだ見れない授業の色を調整
+  $("head").append('<style>.p-chapter-show .l-column-common.section .u-list li a.is-gate-closed::after { filter: invert(1); }</style>');
+  $("head").append('<style>.p-chapter-show .l-column-common.section .u-list li.supplement>a.is-gate-closed { filter: invert(1); }</style>');
 }
 
 /**
