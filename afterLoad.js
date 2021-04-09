@@ -7,7 +7,7 @@ $(window).on("load", function () {
 
   if (path.match(/guides\/\d+\/content/)) {
     applyDarkTextPage(false);
-  } else if (path.match(/guides/)) {
+  } else if (path.match(/guides/) || path.match(/evaluation_tests/)) {
     applyDarkGuidePage(false);
   } else if (path.match(/movies/)) {
     applyMovieDarkPage();
@@ -62,6 +62,9 @@ function applyDarkChapterPage() {
   $("head").append('<style>.u-list.has-linked-children>li>a:hover { background-color: #383838; }</style>');
   //進行度のバーの色を調整
   $("head").append('<style>.u-progress { background-color: rgb(191 191 191); }</style>');
+  //必修授業でまだ見れない授業の色を調整
+  $("head").append('<style>.p-chapter-show .l-column-common.section .u-list li a.is-gate-closed::after { filter: invert(1); }</style>');
+  $("head").append('<style>.p-chapter-show .l-column-common.section .u-list li.supplement>a.is-gate-closed { filter: invert(1); }</style>');
 }
 
 /**
@@ -84,8 +87,8 @@ function applyDarkLessonPage() {
   //上部のバーにダークモードを設定する
   const topBar = body.find("#root > div > div").eq(0);
   topBar.css("background-color", "#292A2D");
-  //「N予備校とは」などと書かれている部分の文字色の設定
-  topBar.find("ul *,ul").css("color", "#8AB4F8");
+  //「N予備校とは」などと書かれている部分の文字/背景色の設定
+  topBar.find("ul *,ul").css({"color": "#8AB4F8", "background-color":"#292A2D"});
 
   //コメビューを黒くする
   $("head").append('<style>textarea { background-color: #202124; color: #e8e8e8; }</style>');
@@ -209,6 +212,9 @@ function applyDarkTextPage(needGrayPage) {
     //問題の解説の文字色の改善
     $("head").append('<style>body.exercises .em3 { color: #A1B9FF !important; }</style>');
     $("head").append('<style>body.exercises .em2 { color: #44DB6C !important;; }</style>');
+    //記述式の問題での、inputの色を設定
+    body.find(".exercise .section-item .type-descriptive .answers").css("background-color", "#202124");
+    body.find("input[type=text], textarea").css("color", "#f6f6f6");
   }
 
   /* プログラミングの教材の設定 */
