@@ -36,6 +36,8 @@ function applyDarkChapterPage() {
   topBar.css("background-color", "#222222");
   const top_li = topBar.find(".u-global-navigation-pages *");
   top_li.css("color", "#e8e8e8");
+  //設定に触ったときの色を変更
+  $("head").append('<style>.l-header .u-global-navigation>.u-global-navigation-pages li.u-global-navigation-account-menu>ul li.setting>.menu .menu-items li a:hover { background-color: #383838; }</style>')
 
   //タイトルを黒くする
   body.find(".typo-page-title").css("color", "#FFF");
