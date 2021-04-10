@@ -69,8 +69,7 @@ function hasUpdate() {
       latestVerArray = latestVerStr.split(".");
 
       //最新バージョンと比較し、アップデートがあったらreleaseURLにURLを入れる
-      for (let i = 0; i <= latestVerArray.length; i++) {
-        console.log(latestVerArray[i] + " " + clientVerArray[i]);
+      for (let i = 0; i < latestVerArray.length; i++) {
         if (!(latestVerArray[i] <= clientVerArray[i]) && !(latestVerArray[i] == undefined)) {
           hasUpdate = true;
           releaseURL = json["html_url"];
@@ -80,7 +79,7 @@ function hasUpdate() {
       }
 
       //最新バージョンの値を保存
-      chrome.storage.local.set({ 'latest': latestVerArray });
+      chrome.storage.local.set({ 'latest': latestVerStr });
       //アップデートが無い時の処理
       if (!hasUpdate) {
         latestVerStr = 0;
