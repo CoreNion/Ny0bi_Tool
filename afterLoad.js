@@ -7,7 +7,7 @@ $(window).on("load", function () {
 
   if (path.match(/guides\/\d+\/content/)) {
     applyDarkTextPage(false);
-  } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/)) {
+  } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/) || path.match(/evaluation_reports/) || path.match(/essay_reports/)) {
     applyDarkGuidePage(false);
   } else if (path.match(/movies/)) {
     applyMovieDarkPage();
