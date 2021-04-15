@@ -7,7 +7,7 @@ $(window).on("load", function () {
 
   if (path.match(/guides\/\d+\/content/)) {
     applyDarkTextPage(false);
-  } else if (path.match(/guides/) || path.match(/evaluation_tests/)) {
+  } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/) || path.match(/evaluation_reports/) || path.match(/essay_reports/)) {
     applyDarkGuidePage(false);
   } else if (path.match(/movies/)) {
     applyMovieDarkPage();
@@ -42,6 +42,8 @@ function applyDarkChapterPage() {
   topBar.css("background-color", "#222222");
   const top_li = topBar.find(".u-global-navigation-pages *");
   top_li.css("color", "#e8e8e8");
+  //設定に触ったときの色を変更
+  $("head").append('<style>.l-header .u-global-navigation>.u-global-navigation-pages li.u-global-navigation-account-menu>ul li.setting>.menu .menu-items li a:hover { background-color: #383838; }</style>')
 
   //タイトルを黒くする
   body.find(".typo-page-title").css("color", "#FFF");
@@ -50,14 +52,12 @@ function applyDarkChapterPage() {
   //教材・授業の一覧にダークモードを適用する
   //全体の色をダークにし、コースとコースの境界線のボーダー色を変更する
   body.find(".u-card").css({ "background-color": "#202124", "color": "#FFF", "border": "none" });
-  body.find(".u-list.has-linked-children>li").css("border", "solid 1px #2f2f2f");
-  //"自信がない"のみの部分にダークモードを設定
+  $("head").append('<style>.u-list.has-linked-children>li { border: solid 1px #2f2f2f} </style>');
+  //フィルターを適用するボタンの色にダークモード適用
   body.find(".u-filter").css({ "background-color": "#353535", "border": "solid 1px #929292;" });
   body.find(".u-button").css({ "background-color": "#505050", "border": "#505050" });
   //教材名の文字色を白に
-  body.find(".u-list.has-linked-children>li>a").css("color", "#e8e8e8");
-  //テストの開始前ページで、中のiframeの背景色をグレーにする
-  body.find(".p-short-test-cover").css("background-color", "#202124");
+  $("head").append('<style>.u-list.has-linked-children>li>a { color: #e8e8e8 } </style>');
   //教材や授業を触ったときの色を変更
   $("head").append('<style>.u-list.has-linked-children>li>a:hover { background-color: #383838; }</style>');
   //進行度のバーの色を調整
