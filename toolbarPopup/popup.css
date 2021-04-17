@@ -2,7 +2,7 @@ body {
   background-color: #343946;
   color: white;
   width: 380px;
-  height: 310px;
+  height: 380px;
 }
 
 h2 {
@@ -41,11 +41,9 @@ p {
   color: gold;
 }
 
-#tweetButton {
+.snsButton {
   display: inline-block;
   vertical-align: top;
-  background-color: royalblue;
-  color: white;
   border-radius: 3px;
   border: none;
   padding: 5px 10px;
@@ -54,7 +52,22 @@ p {
   text-decoration: none;;
 }
 
-#tweetButton:hover {
+#slackChannel {
+  background-color: #1F286F;
+  color: white;
+}
+
+#slackChannel:hover {
   background-color: white; 
-  color: royalblue;
+  color: #1F286F;
+}
+
+#twitterDM {
+  background-color: #00acee;
+  color: white;
+}
+
+#twitterDM:hover {
+  background-color: white;
+  color: #00acee;
 }
