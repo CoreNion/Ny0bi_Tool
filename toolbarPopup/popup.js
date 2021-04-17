@@ -1,7 +1,7 @@
 //DOMがロードされた後に実行するもの
 $(function () {
   //ストレージから各種情報を取得
-  chrome.storage.local.get(["latest", "lastCheck", "releaseURL"], function (data) {
+  chrome.storage.local.get(["latest", "lastCheck", "releaseURL", "setDarkMode"], function (data) {
     //アップデートがある場合
     if (data.releaseURL) {
       //アップデートの情報を表示
@@ -11,6 +11,12 @@ $(function () {
     if (data.lastCheck) {
       $("#lastUpdateCheck").html(data.lastCheck);
     }
+    //拡張機能が有効かどうか確認し、チェックボックスに反映
+    if (data.setDarkMode) {
+      $("#extensionSwitcher").prop("checked", true);
+    } else {
+      $("#extensionSwitcher").prop("checked", false);
+    }
   });
 
   //バージョンを表示
@@ -18,12 +24,15 @@ $(function () {
 });
 
 //拡張機能の有効/無効化ボタンが押された時の動作
-$("#extensionSwitcher").on("change", function() {
-  if($("#extensionSwitcher").prop("checked")) {
-    alert("checked!")
+$("#extensionSwitcher").on("change", function () {
+  if ($("#extensionSwitcher").prop("checked")) {
+    //有効化状態を保存
+    chrome.storage.local.set({ 'setDarkMode': true });
   } else {
-    alert("unchecked!");
+    //無効化状態を保存
+    chrome.storage.local.set({ 'setDarkMode': false });
   }
+  alert("変更を適用するにはページを再読み込みしてください。");
 })
 
 /* アップデートを確認ボタンが押された時の動作 (Chrome拡張ではonclickが使えないのでjQuery経由で実行) */

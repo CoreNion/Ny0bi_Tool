@@ -2,30 +2,35 @@
 
 //ページがロードされた後に実行するもの
 $(window).on("load", function () {
-  //URlのパスを取得
-  const path = location.pathname;
+  //ダークモードを有効にする設定がしてある場合のみ実行
+  chrome.storage.local.get("setDarkMode", function (data) {
+    if (data.setDarkMode) {
+      //URlのパスを取得
+      const path = location.pathname;
 
-  if (path.match(/guides\/\d+\/content/)) {
-    applyDarkTextPage(false);
-  } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/) || path.match(/evaluation_reports/) || path.match(/essay_reports/)) {
-    applyDarkGuidePage(false);
-  } else if (path.match(/movies/)) {
-    applyMovieDarkPage();
-  } else if (path.match(/links/)) {
-    applyDarkGuidePage(false);
-  } else if (path.match(/references/)) {
-    applyDarkGuidePage(true);
-  } else if (path.match(/chapters\/\d+/)) {
-    applyDarkChapterPage();
-  } else if (path.match(/lessons\/\d+/)) {
-    applyDarkLessonPage();
-  } else if (path.match(/short_tests/)) {
-    applyDarkChapterPage();
-  } else if (path.match(/short_test_sets/)) {
-    applyDarkGuidePage(true);
-  } else if (path.match(/short_test_sessions/)) {
-    applyDarkTestPage();
-  }
+      if (path.match(/guides\/\d+\/content/)) {
+        applyDarkTextPage(false);
+      } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/) || path.match(/evaluation_reports/) || path.match(/essay_reports/)) {
+        applyDarkGuidePage(false);
+      } else if (path.match(/movies/)) {
+        applyMovieDarkPage();
+      } else if (path.match(/links/)) {
+        applyDarkGuidePage(false);
+      } else if (path.match(/references/)) {
+        applyDarkGuidePage(true);
+      } else if (path.match(/chapters\/\d+/)) {
+        applyDarkChapterPage();
+      } else if (path.match(/lessons\/\d+/)) {
+        applyDarkLessonPage();
+      } else if (path.match(/short_tests/)) {
+        applyDarkChapterPage();
+      } else if (path.match(/short_test_sets/)) {
+        applyDarkGuidePage(true);
+      } else if (path.match(/short_test_sessions/)) {
+        applyDarkTestPage();
+      }
+    }
+  });
 });
 
 /**
@@ -88,7 +93,7 @@ function applyDarkLessonPage() {
   const topBar = body.find("#root > div > div").eq(0);
   topBar.css("background-color", "#292A2D");
   //「N予備校とは」などと書かれている部分の文字/背景色の設定
-  topBar.find("ul *,ul").css({"color": "#8AB4F8", "background-color":"#292A2D"});
+  topBar.find("ul *,ul").css({ "color": "#8AB4F8", "background-color": "#292A2D" });
 
   //コメビューを黒くする
   $("head").append('<style>textarea { background-color: #202124; color: #e8e8e8; }</style>');
