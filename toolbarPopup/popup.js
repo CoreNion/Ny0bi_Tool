@@ -13,9 +13,9 @@ $(function () {
     }
     //拡張機能が有効かどうか確認し、チェックボックスに反映
     if (data.setDarkMode) {
-      $("#extensionSwitcher").prop("checked", true);
+      $("input[name=darkmodeSwitcher]").prop("checked", true);
     } else {
-      $("#extensionSwitcher").prop("checked", false);
+      $("input[name=darkmodeSwitcher]").prop("checked", false);
     }
   });
 
@@ -24,8 +24,8 @@ $(function () {
 });
 
 //拡張機能の有効/無効化ボタンが押された時の動作
-$("#extensionSwitcher").on("change", function () {
-  if ($("#extensionSwitcher").prop("checked")) {
+$("input[name=darkmodeSwitcher]").on("change", function () {
+  if ($("input[name=darkmodeSwitcher]").prop("checked")) {
     //有効化状態を保存
     chrome.storage.local.set({ 'setDarkMode': true });
   } else {

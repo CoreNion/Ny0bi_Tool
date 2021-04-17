@@ -50,3 +50,6 @@ Ny0bi Toolは、**Apache License Version 2.0**の下で利用してください�
 
 - github-buttons v2.14.1
   - github-buttonsはBSD 2-Clause Licenseです。[リポジトリ](https://github.com/ntkme/github-buttons/)
+
+- CSS Checkbox Library 1.5.2
+  - CSS Checkbox LibraryはMIT Licenseです。[リポジトリ](https://github.com/hunzaboy/CSS-Checkbox-Library)
