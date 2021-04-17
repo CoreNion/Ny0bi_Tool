@@ -17,6 +17,15 @@ $(function () {
   $("#version").html(chrome.runtime.getManifest().version);
 });
 
+//拡張機能の有効/無効化ボタンが押された時の動作
+$("#extensionSwitcher").on("change", function() {
+  if($("#extensionSwitcher").prop("checked")) {
+    alert("checked!")
+  } else {
+    alert("unchecked!");
+  }
+})
+
 /* アップデートを確認ボタンが押された時の動作 (Chrome拡張ではonclickが使えないのでjQuery経由で実行) */
 $("#checkUpdateButton").on("click", function () {
   $("#updateStatus").html("確認中です...");
