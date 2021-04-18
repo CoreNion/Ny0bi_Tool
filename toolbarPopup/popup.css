@@ -62,12 +62,12 @@ p {
   color: #1F286F;
 }
 
-#twitterDM {
-  background-color: #00acee;
+#googleForms {
+  background-color: #00508D;
   color: white;
 }
 
-#twitterDM:hover {
+#googleForms:hover {
   background-color: white;
-  color: #00acee;
+  color: #00508D;
 }
