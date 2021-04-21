@@ -54,6 +54,9 @@ function applyDarkChapterPage() {
   body.find(".typo-page-title").css("color", "#FFF");
   body.find(".u-breadcrumbs>li.current > a").css("color", "#dcdcdc");
 
+  //習熟度テストの開始前のページで、中のiframeの背景色をグレーにする
+  body.find(".p-short-test-cover").css("background-color","#202124");
+
   //教材・授業の一覧にダークモードを適用する
   //全体の色をダークにし、コースとコースの境界線のボーダー色を変更する
   body.find(".u-card").css({ "background-color": "#202124", "color": "#FFF", "border": "none" });
