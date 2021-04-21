@@ -20,10 +20,6 @@ N予備校をダークモードにする拡張機能です！ ※このツール
 - 生放送のぺージ
 - 教材のページ
 
-# 次期バージョンで計画している機能
-- 習熟度テストのページへ対応
-- popupにダークモード化のオンオフが出来る機能を追加
-
 ## インストール方法は[こちら](https://github.com/CoreNion/Ny0bi_Tool/wiki/Ny0bi-Tool%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E6%96%B9%E6%B3%95(%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%96%B9%E5%BC%8F))をご覧ください
 
 <br>
@@ -36,9 +32,9 @@ N予備校をダークモードにする拡張機能です！ ※このツール
 
 スーパーリロードをすることにより、そのページのキャッシュが消えます。
 
-それでも解決しない場合は、Issueを提出するか、Slack・[Twitter](https://twitter.com/CoreiNion)までお知らせください。
+それでも解決しない場合は、[Issueを提出する](https://github.com/CoreNion/Ny0bi_Tool/issues/new/choose)か、[Slackのチャンネル(N/S高生のみ)](https://n-highschool.slack.com/archives/C01UTQK4ZSQ)での報告、または[不具合/意見報告用のフォーム](https://forms.gle/o3o4ccZ11Qb6gCiSA)までお知らせください。
 
-## 不具合を報告する際は、必ず[既知の不具合](https://github.com/CoreNion/Ny0bi_Tool/issues)ではないか確認し、どのページで起こってるか・URL・スクリーンショットを送信してください。
+## 不具合を報告する際は、必ず[既知の不具合](https://github.com/CoreNion/Ny0bi_Tool/issues)ではないか確認し、どのページで起こってるか・URL・スクリーンショットなどを送信してください。
 
 # ライセンスについて
 Ny0bi Toolは、**Apache License Version 2.0**の下で利用してください。
