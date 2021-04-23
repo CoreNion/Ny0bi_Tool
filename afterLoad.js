@@ -93,7 +93,7 @@ function applyDarkLessonPage() {
   body.css({ "background-color": "#000000", "color": "#e8e8e8" });
 
   //上部のバーにダークモードを設定する
-  const topBar = body.find("#root > div > div").eq(0);
+  const topBar = body.find("#root > div > div > div").eq(0);
   topBar.css("background-color", "#292A2D");
   //「N予備校とは」などと書かれている部分の文字/背景色の設定
   topBar.find("ul *,ul").css({ "color": "#8AB4F8", "background-color": "#292A2D" });
