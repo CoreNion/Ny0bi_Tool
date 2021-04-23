@@ -2,36 +2,47 @@
 
 //ページがロードされた後に実行するもの
 $(window).on("load", function () {
-  //ダークモードを有効にする設定がしてある場合のみ実行
+  //localのsetDarkMode値を取得
   chrome.storage.local.get("setDarkMode", function (data) {
-    if (data.setDarkMode) {
-      //URlのパスを取得
-      const path = location.pathname;
-
-      if (path.match(/guides\/\d+\/content/)) {
-        applyDarkTextPage(false);
-      } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/) || path.match(/evaluation_reports/) || path.match(/essay_reports/)) {
-        applyDarkGuidePage(false);
-      } else if (path.match(/movies/)) {
-        applyMovieDarkPage();
-      } else if (path.match(/links/)) {
-        applyDarkGuidePage(false);
-      } else if (path.match(/references/)) {
-        applyDarkGuidePage(true);
-      } else if (path.match(/chapters\/\d+/)) {
-        applyDarkChapterPage();
-      } else if (path.match(/lessons\/\d+/)) {
-        applyDarkLessonPage();
-      } else if (path.match(/short_tests/)) {
-        applyDarkChapterPage();
-      } else if (path.match(/short_test_sets/)) {
-        applyDarkGuidePage(true);
-      } else if (path.match(/short_test_sessions/)) {
-        applyDarkTestPage();
-      }
+    //初回起動などで設定したことが無いなどの理由でundefinedな場合は有効化
+    if (data.setDarkMode == undefined) {
+      chrome.storage.local.set({ 'setDarkMode': true });
+      applyDarkMode();
+    } else if (data.setDarkMode) {
+      applyDarkMode();
     }
   });
 });
+
+/**
+ * N予備校のページををダークモードにする関数
+ */
+function applyDarkMode() {
+  //URlのパスを取得
+  const path = location.pathname;
+
+  if (path.match(/guides\/\d+\/content/)) {
+    applyDarkTextPage(false);
+  } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/) || path.match(/evaluation_reports/) || path.match(/essay_reports/)) {
+    applyDarkGuidePage(false);
+  } else if (path.match(/movies/)) {
+    applyMovieDarkPage();
+  } else if (path.match(/links/)) {
+    applyDarkGuidePage(false);
+  } else if (path.match(/references/)) {
+    applyDarkGuidePage(true);
+  } else if (path.match(/chapters\/\d+/)) {
+    applyDarkChapterPage();
+  } else if (path.match(/lessons\/\d+/)) {
+    applyDarkLessonPage();
+  } else if (path.match(/short_tests/)) {
+    applyDarkChapterPage();
+  } else if (path.match(/short_test_sets/)) {
+    applyDarkGuidePage(true);
+  } else if (path.match(/short_test_sessions/)) {
+    applyDarkTestPage();
+  }
+}
 
 /**
  * 教材のページとテスト開始前のページにダークモードを適用する関数
@@ -55,7 +66,7 @@ function applyDarkChapterPage() {
   body.find(".u-breadcrumbs>li.current > a").css("color", "#dcdcdc");
 
   //習熟度テストの開始前のページで、中のiframeの背景色をグレーにする
-  body.find(".p-short-test-cover").css("background-color","#202124");
+  body.find(".p-short-test-cover").css("background-color", "#202124");
 
   //教材・授業の一覧にダークモードを適用する
   //全体の色をダークにし、コースとコースの境界線のボーダー色を変更する
@@ -93,7 +104,7 @@ function applyDarkLessonPage() {
   body.css({ "background-color": "#000000", "color": "#e8e8e8" });
 
   //上部のバーにダークモードを設定する
-  const topBar = body.find("#root > div > div").eq(0);
+  const topBar = body.find("#root > div > div > div").eq(0);
   topBar.css("background-color", "#292A2D");
   //「N予備校とは」などと書かれている部分の文字/背景色の設定
   topBar.find("ul *,ul").css({ "color": "#8AB4F8", "background-color": "#292A2D" });
