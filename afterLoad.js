@@ -306,7 +306,8 @@ function applyMovieDarkPage() {
   body.find("footer").css({ "background-color": "#202124", "border-top": "#4a4a4a" });
   body.find("#root > div > footer > div > button").css({ "background-color": "#2654bb", "color": "#FFFFFF", "border": "none" });
   body.find("head").append('<style>#root > div > footer > div > button:hover { background-color: #00044e; border: none; }</style>');
-  //「理解できましたか」のダイアログを黒くする処理は、クラスが難読化されていて読み込み後ではできないので、afterEvent.jsでボタンを押して要素が出た時に設定する
+  //理解度設定のダイアログを黒くする
+  $("head").append('<style>.ReactModal__Content > div > div > div { background-color: #2c2c33; }<style>');
 }
 
 /**
