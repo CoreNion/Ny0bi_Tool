@@ -300,7 +300,7 @@ function applyMovieDarkPage() {
   //上のタイトルなどが書かれている部分を黒くする
   body.find("header").css({ "background-color": "#000000", "color": "#e8e8e8" });
   //動画が置いてある場所を黒くする
-  body.find("#root > div > div").eq(1).css("background-color", "#000000");
+  $("head").append('<style>#root > div > div:last-of-type { background-color: #000000; }</style>')
 
   //理解度を設定の背景色等を設定
   body.find("footer").css({ "background-color": "#202124", "border-top": "#4a4a4a" });
