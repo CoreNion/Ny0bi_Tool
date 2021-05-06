@@ -15,7 +15,7 @@ $(window).on("load", function () {
 });
 
 /**
- * N予備校のページををダークモードにする関数
+ * N予備校のページをダークモードにする関数
  */
 function applyDarkMode() {
   //URlのパスを取得
@@ -41,6 +41,8 @@ function applyDarkMode() {
     applyDarkGuidePage(true);
   } else if (path.match(/short_test_sessions/)) {
     applyDarkTestPage();
+  } else if (path.match(/home/) || path.match(/lessons/) || path.match(/questions/) || path.match(/notices/) || path.match(/setting/)) {
+    applyDarkHomePage();
   }
 }
 
@@ -378,6 +380,13 @@ function applyDarkTestPage() {
       bottomBar.find("button, a").not(bottomBar.find("button").eq(1)).css({ "background-color": "#505050", "color": "#95c0ff" });
     }
   }
+}
+
+/**
+ * ホーム系統のページ(授業一覧やフォーラムなども含む)にダークモードを適用する関数
+ */
+function applyDarkHomePage() {
+  console.log("Ny0bi_dark:load applyDarkHomePage()");
 }
 
 /**
