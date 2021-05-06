@@ -89,14 +89,6 @@ function applyDarkChapterPage() {
 }
 
 /**
- * 最初のコースなどを選択するページにダークモードを適用する関数
- */
-function applyDarkTopPage() {
-  console.log("Ny0bi_dark:load applyDarkTopPage()");
-  console.log("Ny0bi_dark:このページは未実装ですが、今後サポートされる予定です。")
-}
-
-/**
  * 授業のページにダークモードを適用する関数
  */
 function applyDarkLessonPage() {
@@ -387,6 +379,17 @@ function applyDarkTestPage() {
  */
 function applyDarkHomePage() {
   console.log("Ny0bi_dark:load applyDarkHomePage()");
+  $("body").css({"background-color": "#000", "color":"e8e8e8"});
+  
+  //上部のバーにダークモードを適用する
+  const topBar = $("#root > div > div > div").eq(0);
+  topBar.css("background-color", "#222222");
+  //各種リンクの文字色を白にする
+  const topBarButtons = topBar.find("div > div > a")
+  topBarButtons.css("color","#FFFFFF");
+
+  //中のコンテンツにダークモードを設定する
+  const contents = $("#root > div > div > div").eq(3).find("div").eq(0);
 }
 
 /**
