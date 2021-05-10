@@ -383,27 +383,61 @@ function applyDarkHomePage() {
   
   //上部のバーにダークモードを適用する
   const topBar = $("#root > div > div > div").eq(0);
-  topBar.css("background-color", "#222222");
+  classCSSPatcher(topBar, "background-color", "#222222");
   //各種リンクの文字色を白にする
   const topBarButtons = topBar.find("div > div > a")
   topBarButtons.css("color","#FFFFFF");
 
-  //中のコンテンツにダークモードを設定する
-  const contents = $("#root > div > div > div").eq(3).find("div").eq(0);
+  /* TO DO ホーム系のページでどのサイトを開いても一覧のclassを見つけ出して変更できるようにする */
+  const path = location.pathname;
+  let linklistOffset = null;
+
+  if(path.match(/home/)) {
+    //中のコンテンツへのElement取得
+    const contents = $("#root > div > div > div").eq(3).find("div").eq(0);
+    //授業一覧のElement取得
+    const courceLinks = contents.find("div").eq(0);
+
+    linklistOffset = courceLinks.find("div > div > div > a > div");
+  }
+  /* 一覧系のクラスの色をダークモードに変更(フォーラムではここのクラスは使われていないので適用されない) */
+  //背景色を変更
+  classCSSPatcher(linklistOffset,"background-color","#202124");
+  //触れた時の背景色を変更
+  classCSSPatcher(linklistOffset,"background-color","#383838","hover");
+  //教材の名前の文字色を変更
+  classCSSPatcher(linklistOffset.find("div > div"),"color","#e8e8e8");
+  //それ以外の場合の文字色を変更
+  classCSSPatcher(linklistOffset,"color","#FFF");
+  //教材アイコンの色を変更
+  classCSSPatcher(linklistOffset.find("div > i"),"color","#648aff");
+  //進捗度のバーや文字色を変更
+  classCSSPatcher(linklistOffset.find("div > ul > li"),"background-color","#44db6c");
+  classCSSPatcher(linklistOffset.find("div > ul > li").eq(1),"color","#ffffffcc");
+  classCSSPatcher(linklistOffset.find("div").eq(2),"background-color","rgb(255 255 255 / 8%)");
+  //borderの色の変更
+  classCSSPatcher(linklistOffset,"border-color","#2f2f2f");
 }
 
 /**
- * クラスにCSSの変更を恒久的に適用する関数
+ * Elementが所属しているクラスのCSSの変更を恒久的に適用する関数
  * 
  * (複数選択できないため、恒久的にしなくても良いクラスの場合は、この関数を使うことは非推奨です)
  * @param {JQuery<HTMLElement>} element 変更したいHTMLElement
  * @param {string} property 変更したいCSSのプロパティ名
  * @param {string} changedValue 変更後の値
+ * @param {string} pseudoClass 疑似クラス(必要な場合のみ, ":"は不要)
  */
-function classCSSPatcher(element, property, changedValue) {
+function classCSSPatcher(element, property, changedValue,pseudoClass) {
   //所属しているクラス一覧を取得し、クラス名の一文字目に.を付け、配列化
   const elementClassArrary = ("." + element.attr("class").split(' ').join(' .')).split(' ');
 
   //headにstyleを追加(elementに適用されるclassは基本最後尾に書いているので、最後尾のclassにstyleを追加する)
-  $("head").append("<style> " + elementClassArrary[elementClassArrary.length - 1] + " { " + property + ": " + changedValue + " }</style>");
+  if(pseudoClass) {
+    //疑似クラスが必要な場合
+    $("head").append("<style> " + elementClassArrary[elementClassArrary.length - 1] + ":" + pseudoClass + " { " + property + ": " + changedValue + " }</style>");
+  } else {
+    $("head").append("<style> " + elementClassArrary[elementClassArrary.length - 1] + " { " + property + ": " + changedValue + " }</style>");
+  }
+
 }
