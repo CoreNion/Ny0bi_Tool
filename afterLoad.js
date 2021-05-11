@@ -25,12 +25,12 @@ function applyDarkMode() {
     applyDarkTextPage(false);
   } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/) || path.match(/evaluation_reports/) || path.match(/essay_reports/)) {
     applyDarkGuidePage(false);
+  } else if (path.match(/references/)) {
+    applyDarkGuidePage(true);
   } else if (path.match(/movies/)) {
     applyMovieDarkPage();
   } else if (path.match(/links/)) {
     applyDarkGuidePage(false);
-  } else if (path.match(/references/)) {
-    applyDarkGuidePage(true);
   } else if (path.match(/chapters\/\d+/)) {
     applyDarkChapterPage();
   } else if (path.match(/lessons\/\d+/)) {
