@@ -234,6 +234,8 @@ function applyDarkTextPage(needGrayPage) {
     //記述式の問題での、inputの色を設定
     body.find(".exercise .section-item .type-descriptive .answers").css("background-color", "#202124");
     body.find("input[type=text], textarea").css("color", "#f6f6f6");
+    //先生のコメントの色を調整
+    body.find(".exercise .section-item .type-descriptive .explanation.teacher-comment").css("background-color","#7b7700");
   }
 
   /* プログラミングの教材の設定 */
