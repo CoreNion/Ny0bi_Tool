@@ -399,24 +399,36 @@ function applyDarkHomePage() {
     const contents = $("#root > div > div > div").eq(3).find("div").eq(0);
     //授業一覧のElement取得
     const courceLinks = contents.find("div").eq(0);
-
     linklistOffset = courceLinks.find("div > div > div > a > div");
+
+    /* ページ固有のElementにダークモード適用 */
+    ///一覧系
+    //教材のアイコンの色を変更
+    classCSSPatcher(linklistOffset.find("div > i"),"color","#648aff");
+    //進捗度のバーや文字色を変更
+    classCSSPatcher(linklistOffset.find("div > ul > li"),"background-color","#44db6c");
+    classCSSPatcher(linklistOffset.find("div > ul > li").eq(1),"color","#ffffffcc");
+    classCSSPatcher(linklistOffset.find("div").eq(2),"background-color","rgb(255 255 255 / 8%)");
+    //教材の名前の文字色を変更
+    classCSSPatcher(linklistOffset.find("div > div"),"color","#e8e8e8");
+    //必修授業・課外授業の選択の部分にダークモード適用
+    courceLinks.find("div > ul").eq(0).css({"background-color": "#202124","border-color":"#2f2f2f"});
+    courceLinks.find("div > ul > li > div > a > div").css("color","rgb(255 255 255 / 80%)");
+
+    //Q&A系
+    const qa = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(3) > div");
+    //タイトルの部分にダークモードを適用
+    const qaTitle = qa.find("div").eq(0);
+    qaTitle.css("background-color","#222222");
+    qaTitle.find("h2").css("color","#FFFFFF");
   }
-  /* 一覧系のクラスの色をダークモードに変更(フォーラムではここのクラスは使われていないので適用されない) */
+  /* 一覧系のクラスの色をダークモードに変更(共通の物のみ) */
   //背景色を変更
   classCSSPatcher(linklistOffset,"background-color","#202124");
   //触れた時の背景色を変更
   classCSSPatcher(linklistOffset,"background-color","#383838","hover");
-  //教材の名前の文字色を変更
-  classCSSPatcher(linklistOffset.find("div > div"),"color","#e8e8e8");
   //それ以外の場合の文字色を変更
   classCSSPatcher(linklistOffset,"color","#FFF");
-  //教材アイコンの色を変更
-  classCSSPatcher(linklistOffset.find("div > i"),"color","#648aff");
-  //進捗度のバーや文字色を変更
-  classCSSPatcher(linklistOffset.find("div > ul > li"),"background-color","#44db6c");
-  classCSSPatcher(linklistOffset.find("div > ul > li").eq(1),"color","#ffffffcc");
-  classCSSPatcher(linklistOffset.find("div").eq(2),"background-color","rgb(255 255 255 / 8%)");
   //borderの色の変更
   classCSSPatcher(linklistOffset,"border-color","#2f2f2f");
 }
