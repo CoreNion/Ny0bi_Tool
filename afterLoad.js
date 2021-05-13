@@ -385,9 +385,9 @@ function applyDarkHomePage() {
   
   //上部のバーにダークモードを適用する
   const topBar = $("#root > div > div > div").eq(0);
-  classCSSPatcher(topBar, "background-color", "#222222");
+  topBar.css("background-color", "#222222");
   //各種リンクの文字色を白にする
-  const topBarButtons = topBar.find("div > div > a")
+  const topBarButtons = topBar.find("div > div > div > a");
   topBarButtons.css("color","#FFFFFF");
 
   /* TO DO ホーム系のページでどのサイトを開いても一覧のclassを見つけ出して変更できるようにする */
