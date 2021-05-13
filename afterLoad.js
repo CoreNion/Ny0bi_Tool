@@ -421,6 +421,13 @@ function applyDarkHomePage() {
     const qaTitle = qa.find("div").eq(0);
     qaTitle.css("background-color","#222222");
     qaTitle.find("h2").css("color","#FFFFFF");
+    //各質問のタイトルの文字色を変更
+    qa.find("div > a > div > div:nth-child(2) > div").css("color","#e8e8e8");
+
+    //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
+    const userInfo = courceLinks.find("div:nth-child(2) > div > div > div:nth-child(2)").eq(0);
+    userInfo.css({"background-color":"#202124","border-color":"#8c8c8c"});
+    userInfo.find("div:nth-child(1)").css({"background-color":"#202124","color":"#e8e8e8"});
   }
   /* 一覧系のクラスの色をダークモードに変更(共通の物のみ) */
   //背景色を変更
