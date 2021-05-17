@@ -438,6 +438,8 @@ function applyDarkHomePage() {
   classCSSPatcher(linklistOffset,"color","#FFF");
   //borderの色の変更
   classCSSPatcher(linklistOffset,"border-color","#2f2f2f");
+
+  homePageTopBarTracker(topBar);
 }
 
 /**
