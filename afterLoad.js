@@ -389,6 +389,13 @@ function applyDarkHomePage() {
   //各種リンクの文字色を白にする
   const topBarButtons = topBar.find("div > div > div > a");
   topBarButtons.css("color","#FFFFFF");
+  //アカウント設定などが選択できる場所にダークモード適用
+  const userProfile = topBar.find("div > div > div > div").eq(3);
+  classCSSPatcher(userProfile,"background-color","#202124");
+  classCSSPatcher(userProfile.find("div:nth-child(1)"),"color","#FFFFFF");
+  classCSSPatcher(userProfile.find("div:nth-child(2) > a"),"background-color","#383838","hover");
+  classCSSPatcher(userProfile.find("div:nth-child(3) > a"),"background-color","#383838","hover");
+
 
   /* TO DO ホーム系のページでどのサイトを開いても一覧のclassを見つけ出して変更できるようにする */
   const path = location.pathname;
