@@ -414,6 +414,8 @@ function applyDarkHomePage() {
     //必修授業・課外授業の選択の部分にダークモード適用
     courceLinks.find("div > ul").eq(0).css({"background-color": "#202124","border-color":"#2f2f2f"});
     courceLinks.find("div > ul > li > div > a > div").css("color","rgb(255 255 255 / 80%)");
+    //このページのタイトルの文字色を変更
+    classCSSPatcher(courceLinks.find("div > div > h1"),"color","#e8e8ff");
 
     //Q&A系
     const qa = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(3) > div");
