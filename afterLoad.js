@@ -428,8 +428,10 @@ function applyDarkHomePage() {
 
     //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
     const userInfo = courceLinks.find("div:nth-child(2) > div > div > div:nth-child(2)").eq(0);
-    userInfo.css({"background-color":"#202124","border-color":"#8c8c8c"});
-    userInfo.find("div:nth-child(1)").css({"background-color":"#202124","color":"#e8e8e8"});
+    classCSSPatcher(userInfo,"background-color","#202124",false,2);
+    classCSSPatcher(userInfo,"border-color","#8c8c8c",false,2);
+    classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color","#202124");
+    classCSSPatcher(userInfo.find("div:nth-child(1)"),"color","#e8e8e8");
   }
   /* 一覧系のクラスの色をダークモードに変更(共通の物のみ) */
   //背景色を変更
@@ -452,17 +454,26 @@ function applyDarkHomePage() {
  * @param {string} property 変更したいCSSのプロパティ名
  * @param {string} changedValue 変更後の値
  * @param {string} pseudoClass 疑似クラス(必要な場合のみ, ":"は不要)
+ * @param {number} classNumber 何番目のクラスに適用するかの値(手動指定する場合のみ、デフォルトは最後尾(最優先のクラス))
  */
-function classCSSPatcher(element, property, changedValue,pseudoClass) {
+function classCSSPatcher(element, property, changedValue,pseudoClass,classNumber) {
   //所属しているクラス一覧を取得し、クラス名の一文字目に.を付け、配列化
   const elementClassArrary = ("." + element.attr("class").split(' ').join(' .')).split(' ');
 
-  //headにstyleを追加(elementに適用されるclassは基本最後尾に書いているので、最後尾のclassにstyleを追加する)
-  if(pseudoClass) {
-    //疑似クラスが必要な場合
-    $("head").append("<style> " + elementClassArrary[elementClassArrary.length - 1] + ":" + pseudoClass + " { " + property + ": " + changedValue + " }</style>");
+  //クラスの番号を決定する
+  let className = null;
+  if(classNumber) {
+    className = elementClassArrary[classNumber];
   } else {
-    $("head").append("<style> " + elementClassArrary[elementClassArrary.length - 1] + " { " + property + ": " + changedValue + " }</style>");
+    //指定されていない場合は最後尾(最優先)のクラスに設定する
+    className = elementClassArrary[elementClassArrary.length - 1]
   }
 
+  //headにstyleを追加
+  if(pseudoClass) {
+    //疑似クラスが必要な場合
+    $("head").append("<style> " + className + ":" + pseudoClass + " { " + property + ": " + changedValue + " }</style>");
+  } else {
+    $("head").append("<style> " + className + " { " + property + ": " + changedValue + " }</style>");
+  }
 }
