@@ -346,8 +346,7 @@ function applyDarkTestPage() {
     }
 
     //習熟度テストの名前の部分を黒くする
-    classCSSPatcher(centorContents.find("div > div"), "background-color", "#202124");
-    classCSSPatcher(centorContents.find("div > div"), "border-bottom", "1px solid rgb(255 255 255 / 30%)");
+    classCSSPatcher(centorContents.find("div > div"), "background-color: #202124; border-bottom: 1px solid rgb(255 255 255 / 30%);");
 
     //上のバーにダークモードを適用
     topBar.css("background-color", "#222222");
@@ -361,12 +360,10 @@ function applyDarkTestPage() {
     //下のバーにダークモードを適用
     if (inResultPage) {
       //背景にダークモードを適用
-      classCSSPatcher(bottomBar, "background-color", "#222222");
+      classCSSPatcher(bottomBar, "background-color: #222222;");
       //ボタンを黒くする
-      classCSSPatcher(bottomBar.find("button"), "background-color", "#505050");
-      classCSSPatcher(bottomBar.find("a"), "background-color", "#505050");
-      classCSSPatcher(bottomBar.find("button"), "color", "#95c0ff");
-      classCSSPatcher(bottomBar.find("a"), "color", "#95c0ff");
+      classCSSPatcher(bottomBar.find("button"), "background-color: #505050; color:#95c0ff;");
+      classCSSPatcher(bottomBar.find("a"), "background-color: #505050; color: #95c0ff;");
     } else {
       //下のバーを黒くする
       bottomBar.css("background-color", "#222222");
@@ -391,10 +388,10 @@ function applyDarkHomePage() {
   topBarButtons.css("color","#FFFFFF");
   //アカウント設定などが選択できる場所にダークモード適用
   const userProfile = topBar.find("div > div > div > div").eq(3);
-  classCSSPatcher(userProfile,"background-color","#202124");
-  classCSSPatcher(userProfile.find("div:nth-child(1)"),"color","#FFFFFF");
-  classCSSPatcher(userProfile.find("div:nth-child(2) > a"),"background-color","#383838","hover");
-  classCSSPatcher(userProfile.find("div:nth-child(3) > a"),"background-color","#383838","hover");
+  classCSSPatcher(userProfile,"background-color: #202124;");
+  classCSSPatcher(userProfile.find("div:nth-child(1)"),"color: #FFFFFF;");
+  classCSSPatcher(userProfile.find("div:nth-child(2) > a"),"background-color: #383838;","hover");
+  classCSSPatcher(userProfile.find("div:nth-child(3) > a"),"background-color: #383838;","hover");
 
 
   /* TO DO ホーム系のページでどのサイトを開いても一覧のclassを見つけ出して変更できるようにする */
@@ -411,18 +408,18 @@ function applyDarkHomePage() {
     /* ページ固有のElementにダークモード適用 */
     ///一覧系
     //教材のアイコンの色を変更
-    classCSSPatcher(linklistOffset.find("div > i"),"color","#648aff");
+    classCSSPatcher(linklistOffset.find("div > i"),"color: #648aff;");
     //進捗度のバーや文字色を変更
-    classCSSPatcher(linklistOffset.find("div > ul > li"),"background-color","#44db6c");
-    classCSSPatcher(linklistOffset.find("div > ul > li").eq(1),"color","#ffffffcc");
-    classCSSPatcher(linklistOffset.find("div").eq(2),"background-color","rgb(255 255 255 / 8%)");
+    classCSSPatcher(linklistOffset.find("div > ul > li"),"background-color: #44db6c;");
+    classCSSPatcher(linklistOffset.find("div > ul > li").eq(1),"color: #ffffffcc;");
+    classCSSPatcher(linklistOffset.find("div").eq(2),"background-color: rgb(255 255 255 / 8%);");
     //教材の名前の文字色を変更
-    classCSSPatcher(linklistOffset.find("div > div"),"color","#e8e8e8");
+    classCSSPatcher(linklistOffset.find("div > div"),"color: #e8e8e8;");
     //必修授業・課外授業の選択の部分にダークモード適用
     courceLinks.find("div > ul").eq(0).css({"background-color": "#202124","border-color":"#2f2f2f"});
     courceLinks.find("div > ul > li > div > a > div").css("color","rgb(255 255 255 / 80%)");
     //このページのタイトルの文字色を変更
-    classCSSPatcher(courceLinks.find("div > div > h1"),"color","#e8e8ff");
+    classCSSPatcher(courceLinks.find("div > div > h1"),"color: #e8e8ff;");
 
     //Q&A系
     const qa = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(3) > div");
@@ -435,10 +432,8 @@ function applyDarkHomePage() {
 
     //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
     const userInfo = courceLinks.find("div:nth-child(2) > div > div > div:nth-child(2)").eq(0);
-    classCSSPatcher(userInfo,"background-color","#202124",false,2);
-    classCSSPatcher(userInfo,"border-color","#8c8c8c",false,2);
-    classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color","#202124");
-    classCSSPatcher(userInfo.find("div:nth-child(1)"),"color","#e8e8e8");
+    classCSSPatcher(userInfo,"background-color: #202124; border-color: #8c8c8c;",false,2);
+    classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color: #202124; color: #e8e8e8;");
   } else if(path.match(/lessons/)) {
     //中のコンテンツのElement取得
     const contents = $("#root > div > div:nth-child(2) > div > div");
@@ -447,21 +442,18 @@ function applyDarkHomePage() {
     linklistOffset = lesson.find("div > a > div");
 
     //ページタイトルの文字色を変更
-    classCSSPatcher(lesson.find("div > h1"),"color","#e8e8ff");
+    classCSSPatcher(lesson.find("div > h1"),"color: #e8e8ff;");
 
     //必修授業・課外授業の選択の部分にダークモード適用
     const selectWhenLesson = lesson.find("div > ul").eq(0);
-    classCSSPatcher(selectWhenLesson,"background-color","#202124",false,2);
-    classCSSPatcher(selectWhenLesson,"border-color","#2f2f2f");
-    classCSSPatcher(selectWhenLesson.find("a"),"color","#ffffffcc","hover");
-    classCSSPatcher(selectWhenLesson.find("a"),"color","#ffffffcc","visited");
+    classCSSPatcher(selectWhenLesson,"background-color: #202124; border-color: #2f2f2f;",false,2);
+    classCSSPatcher(selectWhenLesson.find("a"),"color: #ffffffcc;","hover");
+    classCSSPatcher(selectWhenLesson.find("a"),"color: #ffffffcc;","visited");
     //もっと見るの部分にダークモード適用
     const seeMore = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div");
-    classCSSPatcher(seeMore,"background-color","#202124",false,2);
+    classCSSPatcher(seeMore,"background-color: #202124;",false,2);
     const seeMoreButton = seeMore.find("button");
-    classCSSPatcher(seeMoreButton,"background-color","#505050");
-    classCSSPatcher(seeMoreButton,"border-color","#cad7ff");
-    classCSSPatcher(seeMoreButton,"color","#cad7ff");
+    classCSSPatcher(seeMoreButton,"background-color: #505050; border-color: #cad7ff; color: #cad7ff;");
 
     //検索系のところにダークモード適用
     const rightContents = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div");
@@ -471,21 +463,14 @@ function applyDarkHomePage() {
     rightContents.find("div > ul > li").css("background-color","#202124");
     //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
     const userInfo = rightContents.find("div:nth-child(2)").eq(0);
-    classCSSPatcher(userInfo,"background-color","#202124",false,2);
-    classCSSPatcher(userInfo,"border-color","#8c8c8c",false,2);
-    classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color","#202124");
-    classCSSPatcher(userInfo.find("div:nth-child(1)"),"color","#e8e8e8");
+    classCSSPatcher(userInfo,"background-color: #202124; border-color: #8c8c8c;",false,2);
+    classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color: #202124; color: #e8e8e8;");
   }
 
   /* 一覧系のクラスの色をダークモードに変更(共通の物のみ) */
-  //背景色を変更
-  classCSSPatcher(linklistOffset,"background-color","#202124");
+  classCSSPatcher(linklistOffset,"background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
   //触れた時の背景色を変更
-  classCSSPatcher(linklistOffset,"background-color","#383838","hover");
-  //それ以外の場合の文字色を変更
-  classCSSPatcher(linklistOffset,"color","#FFF");
-  //borderの色の変更
-  classCSSPatcher(linklistOffset,"border-color","#2f2f2f");
+  classCSSPatcher(linklistOffset,"background-color: #383838","hover");
 
   homePageTopBarTracker(topBar);
 }
@@ -493,14 +478,12 @@ function applyDarkHomePage() {
 /**
  * Elementが所属しているクラスのCSSの変更を恒久的に適用する関数
  * 
- * (複数選択できないため、恒久的にしなくても良いクラスの場合は、この関数を使うことは非推奨です)
  * @param {JQuery<HTMLElement>} element 変更したいHTMLElement
- * @param {string} property 変更したいCSSのプロパティ名
- * @param {string} changedValue 変更後の値
+ * @param {string} property CSSの内容({}は不要)
  * @param {string} pseudoClass 疑似クラス(必要な場合のみ, ":"は不要)
  * @param {number} classNumber 何番目のクラスに適用するかの値(手動指定する場合のみ、デフォルトは最後尾(最優先のクラス))
  */
-function classCSSPatcher(element, property, changedValue,pseudoClass,classNumber) {
+function classCSSPatcher(element,property,pseudoClass,classNumber) {
   //所属しているクラス一覧を取得し、クラス名の一文字目に.を付け、配列化
   const elementClassArrary = ("." + element.attr("class").split(' ').join(' .')).split(' ');
 
@@ -516,8 +499,8 @@ function classCSSPatcher(element, property, changedValue,pseudoClass,classNumber
   //headにstyleを追加
   if(pseudoClass) {
     //疑似クラスが必要な場合
-    $("head").append("<style> " + className + ":" + pseudoClass + " { " + property + ": " + changedValue + " }</style>");
+    $("head").append("<style> " + className + ":" + pseudoClass + " { " + property + " }</style>");
   } else {
-    $("head").append("<style> " + className + " { " + property + ": " + changedValue + " }</style>");
+    $("head").append("<style> " + className + " { " + property + " }</style>");
   }
 }
