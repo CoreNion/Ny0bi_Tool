@@ -458,9 +458,9 @@ function applyDarkHomePage() {
     //検索系のところにダークモード適用
     const rightContents = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div");
     //検索窓をダークにする
-    rightContents.find("input").css({"color":"#FFFFFF","background-color":"#222222","border-color":"#404040"});
+    classCSSPatcher(rightContents.find("input"),"color: #FFFFFF; background-color: #222222; border-color: #404040;");
     //タグのボタンをダークにする
-    rightContents.find("div > ul > li").css("background-color","#202124");
+    classCSSPatcher(rightContents.find("div > ul > li"),"background-color: #202124;");
     //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
     const userInfo = rightContents.find("div:nth-child(2)").eq(0);
     classCSSPatcher(userInfo,"background-color: #202124; border-color: #8c8c8c;",false,2);
