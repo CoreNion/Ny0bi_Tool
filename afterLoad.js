@@ -465,12 +465,38 @@ function applyDarkHomePage() {
     const userInfo = rightContents.find("div:nth-child(2)").eq(0);
     classCSSPatcher(userInfo,"background-color: #202124; border-color: #8c8c8c;",false,2);
     classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color: #202124; color: #e8e8e8;");
+  } else if(path.match(/questions/)) {
+    /* 各投稿の一覧の部分にダークモードを適用 */
+    //投稿リストの一番上の境界線を削除
+    classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2)"),"border-style: none;");
+
+    //一番上のリストの名前にダークモード適用
+    const forumListTitleDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)");
+    //全体の背景色や境界線関連の色
+    classCSSPatcher(forumListTitleDiv,"background-color: #202124; border-color: #2f2f2f;");
+    //タイトルの文字色
+    classCSSPatcher(forumListTitleDiv.find("h2"),"color: #FFFFFF");
+
+    //フォーラムの各投稿のリンクにダークモード適用 
+    const forumLinkDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)");
+    //全体の背景色や境界線関連の色
+    classCSSPatcher(forumLinkDiv,"background-color: #202124; border-color: #2f2f2f; border-bottom-width: 3px; margin-bottom: 0px;");
+    //リンクに触れた時の背景色色
+    classCSSPatcher(forumLinkDiv,"background-color: #383838;","hover");
+    //投稿のタイトル以外の文字色
+    classCSSPatcher(forumLinkDiv.find("a"),"color: #bbbbbb;");
+    //投稿のタイトルの文字色
+    classCSSPatcher(forumLinkDiv.find("a > div:nth-child(1)"),"color: #e8e8e8;");
+    //投稿のタグ
+    classCSSPatcher(forumLinkDiv.find("a > div:nth-child(2) > ul > li"),"background-color: #ffffff0d;");
   }
 
-  /* 一覧系のクラスの色をダークモードに変更(共通の物のみ) */
-  classCSSPatcher(linklistOffset,"background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
-  //触れた時の背景色を変更
-  classCSSPatcher(linklistOffset,"background-color: #383838","hover");
+  if (linklistOffset) {
+    /* 一覧系のクラスの色をダークモードに変更(共通の物のみ) */
+    classCSSPatcher(linklistOffset, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+    //触れた時の背景色を変更
+    classCSSPatcher(linklistOffset, "background-color: #383838", "hover");
+  }
 
   homePageTopBarTracker(topBar);
 }
