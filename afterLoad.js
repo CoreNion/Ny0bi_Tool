@@ -489,6 +489,23 @@ function applyDarkHomePage() {
     classCSSPatcher(forumLinkDiv.find("a > div:nth-child(1)"),"color: #e8e8e8;");
     //投稿のタグ
     classCSSPatcher(forumLinkDiv.find("a > div:nth-child(2) > ul > li"),"background-color: #ffffff0d;");
+
+    /* 右側の部分にダークモード適用 */
+    //検索窓の色を変更
+    classCSSPatcher($("input"),"color: #FFFFFF; background-color: #222222; border-color: #404040;");
+
+    //カテゴリーから探すの部分にダークモード適用
+    const findbyTagDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(3)");
+    //全体の背景色と境界線の色を変更
+    classCSSPatcher(findbyTagDiv,"background-color: #222222; border-color: #404040;");
+    //「カテゴリーから探す」と書いている部分にダークモード設定
+    classCSSPatcher(findbyTagDiv.find("div:nth-child(1)"),"border-color: #404040");
+    classCSSPatcher(findbyTagDiv.find("div > h2"),"color: #FFFFFF");
+    //タグのジャンルの名前の背景色と線の色を変更
+    classCSSPatcher(findbyTagDiv.find("div > div > h3"),"color: #FFFFFF");
+    classCSSPatcher(findbyTagDiv.find("div > div > h3"),"background-color: #e8e8e80d;","before");
+    //各タグのボタンにダークモード適用
+    classCSSPatcher(findbyTagDiv.find("div > div > div > div > a"),"background-color: #2b2c2f; border-color: #6b6b6b;");
   }
 
   if (linklistOffset) {
