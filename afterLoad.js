@@ -466,10 +466,22 @@ function applyDarkHomePage() {
     classCSSPatcher(userInfo,"background-color: #202124; border-color: #8c8c8c;",false,2);
     classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color: #202124; color: #e8e8e8;");
   } else if(path.match(/questions/)) {
+    /* ページタイトル〜表示する投稿を変更する部分にダークモード適用 */
+    const mainDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(1)");
+    //タイトルの文字色を変更
+    classCSSPatcher(mainDiv.find("h1"),"color: #e8e8ff;");
+    //ガイドを見るボタンの色を変更
+    classCSSPatcher(mainDiv.find("button"),"background-color: #2b2c2f;");
+    //フォーラムの履歴の部分の色を変更
+    classCSSPatcher(mainDiv.find("div").eq(2),"background-color: #2c2c2c; color: #e8e8e8;",null,2);
+    classCSSPatcher(mainDiv.find("p"),"color: #e8e8e8;");
+
+    //表示する投稿を変更する部分の、文字色を変更
+    mainDiv.find("ul > li > a").css("color","#FFFFFF");
+
     /* 各投稿の一覧の部分にダークモードを適用 */
     //投稿リストの一番上の境界線を削除
     classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2)"),"border-style: none;");
-
     //一番上のリストの名前にダークモード適用
     const forumListTitleDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)");
     //全体の背景色や境界線関連の色
