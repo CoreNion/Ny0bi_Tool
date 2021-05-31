@@ -1,4 +1,5 @@
 'use strict';
+URLTracker();
 
 //ページがロードされた後に実行するもの
 $(window).on("load", function () {
@@ -44,6 +45,8 @@ function applyDarkMode() {
   } else if (path.match(/home/) || path.match(/lessons/) || path.match(/questions/) || path.match(/notices/) || path.match(/setting/)) {
     applyDarkHomePage();
   }
+
+  chrome.storage.local.set({ 'nowPage': path });
 }
 
 /**
