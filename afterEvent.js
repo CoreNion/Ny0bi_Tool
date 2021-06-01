@@ -12,28 +12,33 @@ function URLTracker() {
       //URLがかわっった時に実行するもの
       if (!(data.nowPage == path)) {
         console.log(path);
+        //クラスにCSSを適用する時に必要なelementを探して、作られた時にapplyDarkHomePage()を実行
         if (path.match(/questions/)) {
-          Home_needObjectSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div > a");
+          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div > a");
         } else if (path.match(/lessons/)) {
-          Home_needObjectSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > a");
+          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > a");
         } else if (path.match(/home/)) {
-          Home_needObjectSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > div > div > div > a > div");
+          Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > div > div > div > a > div");
         }
         chrome.storage.local.set({ 'nowPage': path });
       }
     });
   });
   if (pageNavigationBar) {
-    //中身の変化の監視を開始
+    //ページ名が書かれている部分の変化の監視を開始
     observer.observe(pageNavigationBar, {
       childList: true
     });
   }
 }
 
-function Home_needObjectSearcher(obj) {
+/**
+ *  [Home系ページ用] 入力されたパスにelementが作られた時に、applyDarkHomePage()を実行する関数 
+ */
+function Home_needElementSearcher(obj) {
   let interval = null;
   let err = false;
+  //100ms毎に存在するか確認、存在するか10秒待っても出なかったら停止
   interval = setInterval(function () {
     if ($(obj).length) {
       try {
