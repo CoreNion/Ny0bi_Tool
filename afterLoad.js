@@ -489,8 +489,15 @@ function applyDarkHomePage() {
     const forumListTitleDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)");
     //全体の背景色や境界線関連の色
     classCSSPatcher(forumListTitleDiv,"background-color: #202124; border-color: #2f2f2f;");
-    //タイトルの文字色
-    classCSSPatcher(forumListTitleDiv.find("h2"),"color: #FFFFFF");
+    //タイトルの文字色(検索以外のページ用)
+    if(!path.match(/search/)) {
+      classCSSPatcher(forumListTitleDiv.find("h2"),"color: #FFFFFF"); 
+    }
+
+    //(検索用)検索結果の件数の文字色にダークモード適用
+    if(path.match(/search/)) {
+      forumListTitleDiv.find("div").eq(3).css("color","#FFF");
+    }
 
     //フォーラムの各投稿のリンクにダークモード適用 
     const forumLinkDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)");
@@ -504,6 +511,8 @@ function applyDarkHomePage() {
     classCSSPatcher(forumLinkDiv.find("a > div:nth-child(1)"),"color: #e8e8e8;");
     //投稿のタグ
     classCSSPatcher(forumLinkDiv.find("a > div:nth-child(2) > ul > li"),"background-color: #ffffff0d;");
+    //次へボタンなどにダークモードダークモード適用
+    classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > ul > li > button"),"background-color: #222222; color:#6187ff;");
 
     /* 右側の部分にダークモード適用 */
     //検索窓の色を変更
