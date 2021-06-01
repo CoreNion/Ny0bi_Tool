@@ -42,7 +42,7 @@ function applyDarkMode() {
     applyDarkGuidePage(true);
   } else if (path.match(/short_test_sessions/)) {
     applyDarkTestPage();
-  } else if (path.match(/home/) || path.match(/lessons/) || path.match(/questions/) || path.match(/notices/) || path.match(/setting/)) {
+  } else if (path.match(/home|lessons|questions|notices|setting|help|/)) {
     applyDarkHomePage();
   }
 
@@ -521,6 +521,20 @@ function applyDarkHomePage() {
     classCSSPatcher(findbyTagDiv.find("div > div > h3"),"background-color: #e8e8e80d;","before");
     //各タグのボタンにダークモード適用
     classCSSPatcher(findbyTagDiv.find("div > div > div > div > a"),"background-color: #2b2c2f; border-color: #6b6b6b;");
+  } else if(path.match(/setting/)) {
+    //タイトルの文字色を変更
+    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1").css("color","#e8e8ff");
+
+    //中央部のメインの設定の色を変更
+    const mainContents = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)");
+    mainContents.css({"background-color":"#222222","color":"#FFFFFF"});
+    //設定一覧の部分の文字色を変更
+    mainContents.find("ul > li > a").css("color","#FFFFFF")
+    //所属先の部分の色を変更
+    mainContents.find("div > div > ul > li").css({"background-color":"#b8fdac","color":"#000000"});
+    //右側のボタンの色を変更
+    classCSSPatcher(mainContents.find("div > div > div > div > a"),"background-color: #4f73e3; color: #FFF; border: 0px");
+    classCSSPatcher(mainContents.find("div > div > div > div > a"),"color: #FFF;","hover");
   }
 
   if (linklistOffset) {
