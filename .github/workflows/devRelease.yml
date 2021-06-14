@@ -29,7 +29,7 @@ jobs:
 
       - name: バージョンをコミット番号に変更
         run: |
-          sha = ${{ github.sha }}
+          sha=${{ github.sha }}
           sed -i -e "/$("#version").html(chrome.runtime.getManifest().version);/d" toolbarPopup/popup.js
       
       - name: zip作成
