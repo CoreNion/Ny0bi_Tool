@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: チェックアウト
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       
       - name: リリース用のタグを削除と作成
         run: |
