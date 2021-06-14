@@ -9,8 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: リリース用のタグを削除と作成
+      - name: チェックアウト
         uses: actions/checkout@v2
+      
+      - name: リリース用のタグを削除と作成
         run: |
             LatestTagName=$(git describe --tags $(git rev-list --tags --max-count=1))
             git tag -d v0.5_canary
@@ -39,8 +41,11 @@ jobs:
           prerelease: true
           body: |
             # このバージョンは、開発ブランチで変更がプッシュされるごとに作成されるバージョンです。
+            
             **開発途中の機能やバグが含まれている場合があります。**
+            
             ## メインで利用することは推奨されません。
+            
             変更履歴は[コミット一覧](https://github.com/CoreNion/Ny0bi_Tool/commits/develop)を閲覧してください。
           name: v0.5 Canary Release
         env:
