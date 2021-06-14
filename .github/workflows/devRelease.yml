@@ -17,10 +17,10 @@ jobs:
       - name: リリース用のタグを削除と作成
         run: |
             LatestTagName=$(git describe --tags $(git rev-list --tags --max-count=1))
-            git tag -d v0.5_canary
-            git tag v0.5_canary
+            git tag -d $LatestTagName
+            git tag v0.5_canary_$(echo ${{ github.sha }} | cut -c1-8)
             url="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
-            git push ${url} v0.5_canary
+            git push ${url} v0.5_canary_$(echo ${{ github.sha }} | cut -c1-8)
 
       - name: 不要なファイルの削除
         run: |
