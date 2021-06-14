@@ -1,0 +1,47 @@
+name: DevelopBranchAutoRelease
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  canaryRelease:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: リリース用のタグを削除と作成
+        uses: actions/checkout@v2
+        run: |
+            LatestTagName=$(git describe --tags $(git rev-list --tags --max-count=1))
+            git tag -d v0.5_canary
+            git tag v0.5_canary
+            url="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
+            git push ${url} v0.5
+
+      - name: 不要なファイルの削除
+        run: |
+          rm -r .github 
+          rm .gitignore README.md icons/originalIcon.png
+
+      - name: バージョンをコミット番号に変更
+        run: |
+          sha = ${{ github.sha }}
+          sed -i -e "/$("#version").html(chrome.runtime.getManifest().version);/d" toolbarPopup/popup.js
+      
+      - name: zip作成
+        run: |
+          zip -r Ny0bi_Tool_${{ github.sha }}.zip .
+      
+      - name: リリース
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Ny0bi_Tool_${{ github.sha }}.zip
+          prerelease: true
+          body: |
+            # このバージョンは、開発ブランチで変更がプッシュされるごとに作成されるバージョンです。
+            **開発途中の機能やバグが含まれている場合があります。**
+            ## メインで利用することは推奨されません。
+            変更履歴は[コミット一覧](https://github.com/CoreNion/Ny0bi_Tool/commits/develop)を閲覧してください。
+          name: v0.5 Canary Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
