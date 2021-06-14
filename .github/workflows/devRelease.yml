@@ -18,7 +18,7 @@ jobs:
       - name: リリース用のタグを削除と作成
         run: |
             LatestTagName=$(git describe --tags $(git rev-list --tags --max-count=1))
-            git tag -d origin $LatestTagName
+            git tag -d ${url} $LatestTagName
             NewTagName=v0.5_canary_$(echo ${{ github.sha }} | cut -c1-8)
             git tag $NewTagName
             url="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
