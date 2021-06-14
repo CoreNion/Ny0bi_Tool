@@ -20,7 +20,7 @@ jobs:
             git tag -d v0.5_canary
             git tag v0.5_canary
             url="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
-            git push ${url} v0.5
+            git push ${url} v0.5_canary
 
       - name: 不要なファイルの削除
         run: |
