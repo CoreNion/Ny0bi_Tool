@@ -29,6 +29,7 @@ jobs:
       - name: 不要なファイルの削除
         run: |
           rm -r .github 
+          rm -r .git 
           rm .gitignore README.md icons/originalIcon.png
 
       - name: バージョンをコミット番号に変更
