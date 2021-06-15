@@ -53,6 +53,6 @@ jobs:
             
             変更履歴は[コミット一覧](https://github.com/CoreNion/Ny0bi_Tool/commits/develop)を閲覧してください。
           name: v0.5 Canary Release
-          tag_name: env.NewTagName
+          tag_name: ${{ env.NewTagName }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
