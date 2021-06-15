@@ -381,7 +381,7 @@ function applyDarkTestPage() {
  */
 function applyDarkHomePage() {
   console.log("Ny0bi_dark:load applyDarkHomePage()");
-  $("body").css({"background-color": "#000", "color":"e8e8e8"});
+  $("body").css({"background-color": "#000", "color":"#e8e8e8"});
   
   //上部のバーにダークモードを適用する
   const topBar = $("#root > div > div > div").eq(0);
@@ -526,6 +526,17 @@ function applyDarkHomePage() {
       classCSSPatcher(replayArea,"background-color: #202124;");
       classCSSPatcher(replayArea.find("textarea"),"background-color: #202124; color: #e8e8e8;");
       classCSSPatcher(replayArea.find("div > div:nth-child(1) > button"),"background-color: #2b2c2f; border-color: #424242;");
+    } else if(path.match(/new/)) {
+      /* フォーラムに投稿を行うページにダークモード適用 */
+
+      //ページタイトルにダークモード適用
+      classCSSPatcher($("form > div > h1"),"color: #e8e8ff;");
+      //コメントの内容を入力する部分ににダークモード適用
+      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1)"),"background-color: #202124; color: #FFFFFF; border-color: #424242;",null,2);
+      classCSSPatcher($("textarea"),"background-color: #202124; color: #e8e8e8;");
+      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(2)"),"background-color: #202124; color: #FFFFFF; border-color: #424242;",null,2);
+      //画像をアップロードボタンにダークモード適用
+      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > button"),"background-color: #2b2c2f; border-color: #424242;");
     } else {
       /* スレッド一覧のページで、タイトル〜表示する投稿を変更する部分にダークモード適用 */
 
@@ -575,22 +586,24 @@ function applyDarkHomePage() {
       }
     }
 
-    /* 右側の部分にダークモード適用 */
-    //検索窓の色を変更
-    classCSSPatcher($("form > div > input"),"color: #FFFFFF; background-color: #222222; border-color: #404040;");
+    if(!(path.match(/new/))) {
+      /* 右側の部分にダークモード適用(フォーラム投稿ページ以外) */
+      //検索窓の色を変更
+      classCSSPatcher($("form > div > input"), "color: #FFFFFF; background-color: #222222; border-color: #404040;");
 
-    //カテゴリーから探すの部分にダークモード適用
-    const findbyTagDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(3)");
-    //全体の背景色と境界線の色を変更
-    classCSSPatcher(findbyTagDiv,"background-color: #222222; border-color: #404040;");
-    //「カテゴリーから探す」と書いている部分にダークモード設定
-    classCSSPatcher(findbyTagDiv.find("div:nth-child(1)"),"border-color: #404040");
-    classCSSPatcher(findbyTagDiv.find("div > h2"),"color: #FFFFFF");
-    //タグのジャンルの名前の背景色と線の色を変更
-    classCSSPatcher(findbyTagDiv.find("div > div > h3"),"color: #FFFFFF");
-    classCSSPatcher(findbyTagDiv.find("div > div > h3"),"background-color: #e8e8e80d;","before");
-    //各タグのボタンにダークモード適用
-    classCSSPatcher(findbyTagDiv.find("div > div > div > div > a"),"background-color: #2b2c2f; border-color: #6b6b6b;");
+      //カテゴリーから探すの部分にダークモード適用
+      const findbyTagDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(3)");
+      //全体の背景色と境界線の色を変更
+      classCSSPatcher(findbyTagDiv, "background-color: #222222; border-color: #404040;");
+      //「カテゴリーから探す」と書いている部分にダークモード設定
+      classCSSPatcher(findbyTagDiv.find("div:nth-child(1)"), "border-color: #404040");
+      classCSSPatcher(findbyTagDiv.find("div > h2"), "color: #FFFFFF");
+      //タグのジャンルの名前の背景色と線の色を変更
+      classCSSPatcher(findbyTagDiv.find("div > div > h3"), "color: #FFFFFF");
+      classCSSPatcher(findbyTagDiv.find("div > div > h3"), "background-color: #e8e8e80d;", "before");
+      //各タグのボタンにダークモード適用
+      classCSSPatcher(findbyTagDiv.find("div > div > div > div > a"), "background-color: #2b2c2f; border-color: #6b6b6b;");
+    }
   } else if(path.match(/setting/)) {
     //ページタイトルの文字色を変更
     $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1").css("color","#e8e8ff");

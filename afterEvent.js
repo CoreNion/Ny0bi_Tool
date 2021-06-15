@@ -12,7 +12,9 @@ function URLTracker() {
       //URLがかわっった時に実行するもの
       if (!(data.nowPage == path)) {
         //クラスにCSSを適用する時に必要なelementを探して、作られた時にapplyDarkHomePage()を実行
-        if (path.match(/questions\/\d+/)) {
+        if (path.match(/questions\/new/)) {
+          Home_needElementSearcher("form > div > div:nth-child(2) > div:nth-child(1)");
+        } else if (path.match(/questions\/\d+/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)");
         } else if (path.match(/questions/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div > a");
