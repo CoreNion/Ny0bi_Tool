@@ -20,6 +20,7 @@ jobs:
             LatestTagName=$(git describe --tags $(git rev-list --tags --max-count=1))
             git tag -d ${url} $LatestTagName
             NewTagName=v0.5_canary_$(echo ${{ github.sha }} | cut -c1-8)
+            echo "NewTagName=${NewTagName}" >> $GITHUB_ENV
             git tag $NewTagName
             url="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}"
             git push ${url} :$LatestTagName
