@@ -520,6 +520,12 @@ function applyDarkHomePage() {
           }
         }
       }
+
+      //返信を送る部分にダークモード適用
+      const replayArea = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(3)");
+      classCSSPatcher(replayArea,"background-color: #202124;");
+      classCSSPatcher(replayArea.find("textarea"),"background-color: #202124; color: #e8e8e8;");
+      classCSSPatcher(replayArea.find("div > div:nth-child(1) > button"),"background-color: #2b2c2f; border-color: #424242;");
     } else {
       /* スレッド一覧のページで、タイトル〜表示する投稿を変更する部分にダークモード適用 */
 
