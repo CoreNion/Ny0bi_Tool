@@ -586,7 +586,7 @@ function applyDarkHomePage() {
     //各タグのボタンにダークモード適用
     classCSSPatcher(findbyTagDiv.find("div > div > div > div > a"),"background-color: #2b2c2f; border-color: #6b6b6b;");
   } else if(path.match(/setting/)) {
-    //タイトルの文字色を変更
+    //ページタイトルの文字色を変更
     $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1").css("color","#e8e8ff");
 
     //中央部のメインの設定の色を変更
@@ -599,6 +599,12 @@ function applyDarkHomePage() {
     //右側のボタンの色を変更
     classCSSPatcher(mainContents.find("div > div > div > div > a"),"background-color: #4f73e3; color: #FFF; border: 0px");
     classCSSPatcher(mainContents.find("div > div > div > div > a"),"color: #FFF;","hover");
+  } else if(path.match(/notices/)) {
+    //ページタイトルの文字色を変更
+    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color","#e8e8ff");;
+
+    //各リンクの部分にダークモード適用
+    linklistOffset = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > a > div");
   }
 
   if (linklistOffset) {

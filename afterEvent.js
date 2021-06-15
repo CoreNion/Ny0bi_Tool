@@ -22,6 +22,8 @@ function URLTracker() {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > div > div > div > a > div");
         } else if (path.match(/setting/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)");
+        } else if (path.match(/notices/)) {
+          Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > a > div");
         }
         chrome.storage.local.set({ 'nowPage': path });
       }
