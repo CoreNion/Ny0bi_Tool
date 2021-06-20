@@ -42,6 +42,8 @@ function applyDarkMode() {
     applyDarkGuidePage(true);
   } else if (path.match(/short_test_sessions/)) {
     applyDarkTestPage();
+  } else if (path.match(/setting\/profile/)) {
+    applyDarkProfileSettingPage();
   } else if (path.match(/home|lessons|questions|notices|setting|help/)) {
     applyDarkHomePage();
   }
@@ -380,6 +382,8 @@ function applyDarkTestPage() {
  * ホーム系統のページ(授業一覧やフォーラムなども含む)にダークモードを適用する関数
  */
 function applyDarkHomePage() {
+  //クラスが難読化されている上他のページとは仕様が異なるためダークモードにする方法がやや特殊です
+
   console.log("Ny0bi_dark:load applyDarkHomePage()");
   $("body").css({"background-color": "#000", "color":"#e8e8e8"});
   
@@ -634,6 +638,32 @@ function applyDarkHomePage() {
   }
 
   homePageTopBarTracker(topBar);
+}
+/**
+ * プロフィール設定のページをダークモードにする関数(profile系のページはsettingと仕様が異なるため別関数化)
+ */
+function applyDarkProfileSettingPage() {
+  console.log("Ny0bi_dark:load applyDarkProfileSettingPage()");
+  const body = $("body").css({ "background-color": "#000000", "color": "#e8e8e8" });
+
+  //上部のバーにダークモード適用
+  const topBar = $(".u-global-navigation");
+  topBar.css("background-color", "#222222");
+  const top_li = $(".u-global-navigation-pages *");
+  top_li.css("color", "#e8e8e8");
+  //設定に触ったときの色を変更
+  $("head").append('<style>.l-header .u-global-navigation>.u-global-navigation-pages li.u-global-navigation-account-menu>ul li.setting>.menu .menu-items li a:hover { background-color: #383838; }</style>');
+
+  //ページタイトルをダークモードに
+  $(".typo-page-title").css("color", "#FFF");
+  $(".u-breadcrumbs>li.current > a").css("color", "#dcdcdc");
+
+  //中身の部分をダークモードにする
+  $(".u-card").css({ "background-color": "#202124", "color": "#FFF", "border": "none" });
+  $(".u-tabs>.u-tabs-item>a").css("color","#e8e8e8");
+  $(".typo-caption, .u-form-input-captions .u-form-input-caption, .u-form .u-form-caption-wrapper>p").css("color","#e8e8e8");
+  $("input[type='text'], textarea, .u-form-select, .u-form-input").css({"color":"#FFFFFF","background-color":"#222222","border-color":"#404040"});
+  $(".bg-warning").css("background-color","#a21c00");
 }
 
 /**
