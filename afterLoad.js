@@ -24,7 +24,7 @@ function applyDarkMode() {
 
   if (path.match(/guides\/\d+\/content/)) {
     applyDarkTextPage(false);
-  } else if (path.match(/guides/) || path.match(/evaluation_tests/) || path.match(/essay_tests/) || path.match(/evaluation_reports/) || path.match(/essay_reports/)) {
+  } else if (path.match(/guides|evaluation_tests|essay_tests|evaluation_reports|essay_reports/)) {
     applyDarkGuidePage(false);
   } else if (path.match(/references/)) {
     applyDarkGuidePage(true);
@@ -42,7 +42,7 @@ function applyDarkMode() {
     applyDarkGuidePage(true);
   } else if (path.match(/short_test_sessions/)) {
     applyDarkTestPage();
-  } else if (path.match(/home|lessons|questions|notices|setting|help|/)) {
+  } else if (path.match(/home|lessons|questions|notices|setting|help/)) {
     applyDarkHomePage();
   }
 
