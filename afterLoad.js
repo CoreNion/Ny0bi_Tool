@@ -44,7 +44,7 @@ function applyDarkMode() {
     applyDarkTestPage();
   } else if (path.match(/setting\/profile/)) {
     applyDarkProfileSettingPage();
-  } else if (path.match(/home|lessons|questions|notices|setting|help/)) {
+  } else if (path.match(/home|lessons|questions|notices|setting|help|courses\/\d+\/chapters/)) {
     applyDarkHomePage();
   }
 
@@ -622,12 +622,12 @@ function applyDarkHomePage() {
     //右側のボタンの色を変更
     classCSSPatcher(mainContents.find("div > div > div > div > a"),"background-color: #4f73e3; color: #FFF; border: 0px");
     classCSSPatcher(mainContents.find("div > div > div > div > a"),"color: #FFF;","hover");
-  } else if(path.match(/notices/)) {
+  } else if(path.match(/notices|courses\/\d+\/chapters/)) {
     //ページタイトルの文字色を変更
     $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color","#e8e8ff");;
 
     //各リンクの部分にダークモード適用
-    linklistOffset = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > a > div");
+    linklistOffset = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div > a > div");
   }
 
   if (linklistOffset) {
