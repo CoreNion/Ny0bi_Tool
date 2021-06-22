@@ -415,9 +415,7 @@ function applyDarkHomePage() {
     //教材のアイコンの色を変更
     classCSSPatcher(linklistOffset.find("div > i"),"color: #648aff;");
     //進捗度のバーや文字色を変更
-    classCSSPatcher(linklistOffset.find("div > ul > li"),"background-color: #44db6c;");
-    classCSSPatcher(linklistOffset.find("div > ul > li").eq(1),"color: #ffffffcc;");
-    classCSSPatcher(linklistOffset.find("div").eq(2),"background-color: rgb(255 255 255 / 8%);");
+    classCSSPatcher(linklistOffset.find("div").eq(2),"background-color: #bfbfbf;");
     //教材の名前の文字色を変更
     classCSSPatcher(linklistOffset.find("div > div"),"color: #e8e8e8;");
     //必修授業・課外授業の選択の部分にダークモード適用
