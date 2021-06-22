@@ -44,7 +44,7 @@ function applyDarkMode() {
     applyDarkTestPage();
   } else if (path.match(/setting\/profile/)) {
     applyDarkProfileSettingPage();
-  } else if (path.match(/home|lessons|questions|notices|setting|help|courses\/\d+\/chapters/)) {
+  } else if (path.match(/home|lessons|questions|notices|setting|help|courses\/\d+\/chapters|packages/)) {
     applyDarkHomePage();
   }
 
@@ -624,10 +624,30 @@ function applyDarkHomePage() {
     classCSSPatcher(mainContents.find("div > div > div > div > a"),"color: #FFF;","hover");
   } else if(path.match(/notices|courses\/\d+\/chapters/)) {
     //ページタイトルの文字色を変更
-    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color","#e8e8ff");;
-
+    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color","#e8e8ff");
     //各リンクの部分にダークモード適用
     linklistOffset = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div > a > div");
+  } else if(path.match(/packages/)) {
+    //ページタイトルの文字色を変更
+    classCSSPatcher($("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1"),"color: #e8e8ff;")
+
+    //左側のジャンル一覧の部分にダークモード適用
+    const genres = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > ul:nth-child(2) > li > a");
+    classCSSPatcher(genres,"color: #e8e8e8;");
+    classCSSPatcher(genres,"background-color: #4f73e3; color: #e8e8e8;","hover");
+
+    //右側のコース一覧の部分にダークモード適用
+    const cources = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:not(:nth-child(2))");
+    classCSSPatcher(cources,"background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+    classCSSPatcher(cources.children("div"),"background-color: #383838;","hover");
+    //折り畳みの中のコースの部分の色の変更
+    classCSSPatcher(cources.find("ul  > a > li > div"),"background-color: #383838;","hover");
+    classCSSPatcher(cources.find("ul  > a > li"),"border-color: #2f2f2f;");
+    classCSSPatcher(cources.find("ul  > a > li > div > h3"),"color: #FFFFFF;");
+    classCSSPatcher(cources.find("ul  > a > li > div > div"),"background-color: #bfbfbf;");
+
+    //コース選択のダイアログの文字色を修正
+    $("head").append('<style> body.ReactModal__Body--open { color: #000000 !important; }  </style>')
   }
 
   if (linklistOffset) {
