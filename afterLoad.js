@@ -207,9 +207,12 @@ function applyDarkTextPage(needGrayPage) {
   //通常のリンクの設定
   body.find("a").not(".book-header *,.game-book-button,#question-btn").css("color", "#5da5ec");
   //tipのbackgroundを設定
-  body.find(".tip,.tip p,.tip-title,.tip strong").css("background", "#335267");
+  body.find(".tip,.tip *").css("background", "#335267");
   //global--text-系で文字色を変えていないもので文字色を白にする
   body.find(".global--text-big,.global--text-small,.global--text-strong").css("color", "#e8e8e8");
+  //「まとめ」のデザインをダークモード化
+  body.find(".summary-h2").css({"background":"linear-gradient(#000000 60%, #000000 60%, #009bff 95%, #000000 95%, #000000 100%)"});
+  $("head").append('<style>.summary-h2:before, .summary-h2:after { background: #000000; }</style>');
 
   //問題用の設定
   if ($(".exercise").length) {
@@ -249,7 +252,7 @@ function applyDarkTextPage(needGrayPage) {
 
   //コードブロックの設定
   //text-shadowは無効化しないと見えずらくなるため無効化
-  body.find("code").css({ "background-color": "#222222", "color": "#e8e8e8", "text-shadow": "none" });
+  body.find("code, code *").css({ "background-color": "#222222", "color": "#e8e8e8", "text-shadow": "none" });
   //一行のコードブロックの設定
   body.find("pre").css({ "background-color": "#222222", "color": "#e8e8e8" });
   //一部文字色が白色にならない部分があるので修正
@@ -281,7 +284,7 @@ function applyDarkTextPage(needGrayPage) {
   body.find(".token.attr-name").css("color", "#9CDCFE");
   body.find(".token.attr-value").css("color", "#CE9178");
   //差分系
-  body.find(".token.inserted-sign.inserted").css("background-color", "rgb(255 255 0 / 0.1)");
+  body.find(".token.inserted-sign.inserted, .token.inserted-sign.inserted *").css("background-color", "#4d4d1c");
   body.find(".token.line").css("color", "#e8e8e8");
   //その他
   body.find(".token.plain-text,token.each").css("color", "#e8e8e8");
