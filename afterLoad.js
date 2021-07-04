@@ -163,6 +163,14 @@ function applyDarkGuidePage(needDarkBackColor) {
   //h3の見出しの線をはっきりさせる(主に特別授業用)
   body.find("h3").css("border-bottom", "2px solid #0000ff");
 
+  //音声プレイヤーをダークモードに(英語用)
+  $("head").append('<style>.component-audio-player, .component-audio-player-fixed { background-color: #202124; border-top: none; }</style>');
+  $("head").append('<style>.component-audio-player-title, .component-audio-player-time, .component-audio-player-fixed-title,.component-audio-player-fixed-time-control-time { color: #e8e8e8 !important; }</style>');
+  //黒な再生・停止ボタンの色を反転させる
+  $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before, .component-audio-player-play-stop, .component-audio-player-fixed-button-rewind, .component-audio-player-fixed-button-play-pause, .component-audio-player-fixed-icon, .component-audio-player-fixed-button-playback-rate, .component-audio-player-fixed-close { background-color: transparent !important; filter: invert(1); }</style>');
+  //触れた時の色を変更
+  $("head").append('<style>.component-audio-player:hover { background-color: #383838; }</style>');
+
   //理解度を設定ボタンがあるとき
   if ($(".footer").length) {
     //理解度を指定の部分を黒くする
@@ -193,7 +201,7 @@ function applyDarkTextPage(needGrayPage) {
   body.css({ "background-color": back_color, "color": "#e8e8e8" });
 
   //本文があるdivの子要素の一部の例外以外全てにダークモードを設定
-  body.find('section,section *,.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red,h1,h1 *,.exercise-item *').css({ "background-color": back_color, "color": "#e8e8e8" });
+  body.find('section,section *,.main-content *,.global--wrapper *').not('pre *,a,kdb,[class*="global--text-"],.tablink,.global--text-red,h1,h1 *,.exercise-item *,.component-audio-player-play-pause').css({ "background-color": back_color, "color": "#e8e8e8" });
   //本文のdev自体の背景色を黒にする
   body.find(".main-content,.global--wrapper,.index,.book-body").css("background-color", back_color);
   //通常のリンクの設定
@@ -285,7 +293,7 @@ function applyDarkTextPage(needGrayPage) {
   $("head").append('<style>.component-audio-player, .component-audio-player-fixed { background-color: #202124; }</style>');
   $("head").append('<style>.component-audio-player-title, .component-audio-player-time, .component-audio-player-fixed-title,.component-audio-player-fixed-time-control-time { color: #e8e8e8 !important; }</style>');
   //黒な再生・停止ボタンの色を反転させる
-  $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before, .component-audio-player-play-stop, .component-audio-player-fixed-button-rewind, .component-audio-player-fixed-button-play-pause, .component-audio-player-fixed-icon, .component-audio-player-fixed-button-playback-rate, .component-audio-player-fixed-close { filter: invert(1); }</style>');
+  $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before, .component-audio-player-play-stop, .component-audio-player-fixed-button-rewind, .component-audio-player-fixed-button-play-pause, .component-audio-player-fixed-icon, .component-audio-player-fixed-button-playback-rate, .component-audio-player-fixed-close { background-color: transparent !important; filter: invert(1); }</style>');
   //触れた時の色を変更
   $("head").append('<style>.component-audio-player:hover { background-color: #383838; }</style>');
 }
