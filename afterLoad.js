@@ -164,7 +164,7 @@ function applyDarkGuidePage(needDarkBackColor) {
   body.find("h3").css("border-bottom", "2px solid #0000ff");
 
   //音声プレイヤーをダークモードに(英語用)
-  $("head").append('<style>.component-audio-player, .component-audio-player-fixed { background-color: #202124; border-top: none; }</style>');
+  $("head").append('<style>.component-audio-player, .component-audio-player-fixed { background-color: #202124; }</style>');
   $("head").append('<style>.component-audio-player-title, .component-audio-player-time, .component-audio-player-fixed-title,.component-audio-player-fixed-time-control-time { color: #e8e8e8 !important; }</style>');
   //黒な再生・停止ボタンの色を反転させる
   $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before, .component-audio-player-play-stop, .component-audio-player-fixed-button-rewind, .component-audio-player-fixed-button-play-pause, .component-audio-player-fixed-icon, .component-audio-player-fixed-button-playback-rate, .component-audio-player-fixed-close { background-color: transparent !important; filter: invert(1); }</style>');
