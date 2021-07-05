@@ -26,7 +26,7 @@ function URLTracker() {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)");
         } else if (path.match(/notices|courses\/\d+\/chapters/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div > a > div");
-        } else if(path.match(/package/)) {
+        } else if (path.match(/package/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > ul:nth-child(2) > li > a");
         } else {
           location.reload();

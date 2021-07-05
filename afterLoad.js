@@ -211,7 +211,7 @@ function applyDarkTextPage(needGrayPage) {
   //global--text-系で文字色を変えていないもので文字色を白にする
   body.find(".global--text-big,.global--text-small,.global--text-strong").css("color", "#e8e8e8");
   //「まとめ」のデザインをダークモード化
-  body.find(".summary-h2").css({"background":"linear-gradient(#000000 60%, #000000 60%, #009bff 95%, #000000 95%, #000000 100%)"});
+  body.find(".summary-h2").css({ "background": "linear-gradient(#000000 60%, #000000 60%, #009bff 95%, #000000 95%, #000000 100%)" });
   $("head").append('<style>.summary-h2:before, .summary-h2:after { background: #000000; }</style>');
 
   //問題用の設定
@@ -245,7 +245,7 @@ function applyDarkTextPage(needGrayPage) {
     body.find(".exercise .section-item .type-descriptive .answers").css("background-color", "#202124");
     body.find("input[type=text], textarea").css("color", "#f6f6f6");
     //先生のコメントの色を調整
-    body.find(".exercise .section-item .type-descriptive .explanation.teacher-comment").css("background-color","#7b7700");
+    body.find(".exercise .section-item .type-descriptive .explanation.teacher-comment").css("background-color", "#7b7700");
   }
 
   /* プログラミングの教材の設定 */
@@ -396,25 +396,25 @@ function applyDarkHomePage() {
   //クラスが難読化されている上他のページとは仕様が異なるためダークモードにする方法がやや特殊です
 
   console.log("Ny0bi_dark:load applyDarkHomePage()");
-  $("body").css({"background-color": "#000", "color":"#e8e8e8"});
-  
+  $("body").css({ "background-color": "#000", "color": "#e8e8e8" });
+
   //上部のバーにダークモードを適用する
   const topBar = $("#root > div > div > div").eq(0);
   topBar.css("background-color", "#222222");
   //各種リンクの文字色を白にする
   const topBarButtons = topBar.find("div > div > div > a");
-  topBarButtons.css("color","#FFFFFF");
+  topBarButtons.css("color", "#FFFFFF");
   //アカウント設定などが選択できる場所にダークモード適用
   const userProfile = topBar.find("div > div > div > div").eq(3);
-  classCSSPatcher(userProfile,"background-color: #202124;");
-  classCSSPatcher(userProfile.find("div:nth-child(1)"),"color: #FFFFFF;");
-  classCSSPatcher(userProfile.find("div:nth-child(2) > a"),"background-color: #383838;","hover");
-  classCSSPatcher(userProfile.find("div:nth-child(3) > a"),"background-color: #383838;","hover");
+  classCSSPatcher(userProfile, "background-color: #202124;");
+  classCSSPatcher(userProfile.find("div:nth-child(1)"), "color: #FFFFFF;");
+  classCSSPatcher(userProfile.find("div:nth-child(2) > a"), "background-color: #383838;", "hover");
+  classCSSPatcher(userProfile.find("div:nth-child(3) > a"), "background-color: #383838;", "hover");
 
   const path = location.pathname;
   let linklistOffset = null;
 
-  if(path.match(/home/)) {
+  if (path.match(/home/)) {
     //中のコンテンツへのElement取得
     const contents = $("#root > div > div > div").eq(3).find("div").eq(0);
     //授業一覧のElement取得
@@ -424,40 +424,40 @@ function applyDarkHomePage() {
     /* ページ固有のElementにダークモード適用 */
     ///一覧系
     //教材のアイコンの色を変更
-    classCSSPatcher(linklistOffset.find("div > i"),"color: #648aff;");
+    classCSSPatcher(linklistOffset.find("div > i"), "color: #648aff;");
     //進捗度のバーや文字色を変更
-    classCSSPatcher(linklistOffset.find("div").eq(2),"background-color: #bfbfbf;");
+    classCSSPatcher(linklistOffset.find("div").eq(2), "background-color: #bfbfbf;");
     //教材の名前の文字色を変更
-    classCSSPatcher(linklistOffset.find("div > div"),"color: #e8e8e8;");
+    classCSSPatcher(linklistOffset.find("div > div"), "color: #e8e8e8;");
     //必修授業・課外授業の選択の部分にダークモード適用
-    courceLinks.find("div > ul").eq(0).css({"background-color": "#202124","border-color":"#2f2f2f"});
-    courceLinks.find("div > ul > li > div > a > div").css("color","rgb(255 255 255 / 80%)");
+    courceLinks.find("div > ul").eq(0).css({ "background-color": "#202124", "border-color": "#2f2f2f" });
+    courceLinks.find("div > ul > li > div > a > div").css("color", "rgb(255 255 255 / 80%)");
     //このページのタイトルの文字色を変更
-    classCSSPatcher(courceLinks.find("div > div > h1"),"color: #e8e8ff;");
+    classCSSPatcher(courceLinks.find("div > div > h1"), "color: #e8e8ff;");
 
     //Q&A系
     const qa = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(3) > div");
     //タイトルの部分にダークモードを適用
     const qaTitle = qa.find("div").eq(0);
-    qaTitle.css("background-color","#222222");
-    qaTitle.find("h2").css("color","#FFFFFF");
+    qaTitle.css("background-color", "#222222");
+    qaTitle.find("h2").css("color", "#FFFFFF");
     //各質問のタイトルの文字色を変更
-    qa.find("div > a > div > div:nth-child(2) > div").css("color","#e8e8e8");
+    qa.find("div > a > div > div:nth-child(2) > div").css("color", "#e8e8e8");
 
     //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
     const userInfo = courceLinks.find("div:nth-child(2) > div > div > div:nth-child(2)").eq(0);
-    classCSSPatcher(userInfo,"background-color: #202124; border-color: #8c8c8c;",false,2);
-    classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color: #202124; color: #e8e8e8;");
-  } else if(path.match(/lessons/)) {
+    classCSSPatcher(userInfo, "background-color: #202124; border-color: #8c8c8c;", false, 2);
+    classCSSPatcher(userInfo.find("div:nth-child(1)"), "background-color: #202124; color: #e8e8e8;");
+  } else if (path.match(/lessons/)) {
     /* 授業一覧のページにダークモード適用 */
 
     //授業の部分のelementを取得し、リンクの部分のelementを設定
     linklistOffset = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > a > div");
 
     //ページタイトルの文字色を変更
-    classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > h1"),"color: #e8e8ff;");
+    classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > h1"), "color: #e8e8ff;");
 
-    if(!(path.match(/search/))) {
+    if (!(path.match(/search/))) {
       //必修授業・課外授業の選択の部分にダークモード適用(授業一覧のページのみ)
       const selectWhenLesson = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > ul").eq(0);
       classCSSPatcher(selectWhenLesson, "background-color: #202124; border-color: #2f2f2f;", false, 2);
@@ -471,85 +471,85 @@ function applyDarkHomePage() {
     } else {
       //検索結果の部分にダークモード適用
       const searchResults = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div");
-      classCSSPatcher(searchResults,"background-color: #202124; border-color: #8c8c8c;",null,2);
-      classCSSPatcher(searchResults.find("div > div:nth-child(3) > span:nth-child(1)"),"color: #FFF;");
+      classCSSPatcher(searchResults, "background-color: #202124; border-color: #8c8c8c;", null, 2);
+      classCSSPatcher(searchResults.find("div > div:nth-child(3) > span:nth-child(1)"), "color: #FFF;");
     }
     //検索系のところにダークモード適用
     const rightContents = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div");
     //検索窓をダークにする
-    classCSSPatcher(rightContents.find("input"),"color: #FFFFFF; background-color: #222222; border-color: #404040;");
+    classCSSPatcher(rightContents.find("input"), "color: #FFFFFF; background-color: #222222; border-color: #404040;");
     //タグのボタンをダークにする
-    classCSSPatcher(rightContents.find("div > ul > li"),"background-color: #202124;");
+    classCSSPatcher(rightContents.find("div > ul > li"), "background-color: #202124;");
     //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
     const userInfo = rightContents.find("div:nth-child(2)").eq(0);
-    classCSSPatcher(userInfo,"background-color: #202124; border-color: #8c8c8c;",false,2);
-    classCSSPatcher(userInfo.find("div:nth-child(1)"),"background-color: #202124; color: #e8e8e8;");
-  } else if(path.match(/questions/)) {
+    classCSSPatcher(userInfo, "background-color: #202124; border-color: #8c8c8c;", false, 2);
+    classCSSPatcher(userInfo.find("div:nth-child(1)"), "background-color: #202124; color: #e8e8e8;");
+  } else if (path.match(/questions/)) {
     if (path.match(/questions\/\d+/)) {
       /* スレッドのページにダークモード適用 */
       const topDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(1)");
       //タイトルの文字色を変更
-      topDiv.find("h1").css("color","#e8e8ff");
+      topDiv.find("h1").css("color", "#e8e8ff");
       //ガイドを見るボタンにダークモード適用
-      topDiv.find("div > button").css("background-color","#2b2c2f;");
+      topDiv.find("div > button").css("background-color", "#2b2c2f;");
       //表示する投稿を変更する部分の、文字色を変更
-      topDiv.find("ul > li > a").css("color","#FFFFFF");
+      topDiv.find("ul > li > a").css("color", "#FFFFFF");
 
       //コメント数やタグなどが書かれている部分にダークモード適用
       const postInfo = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)");
-      postInfo.css({"background-color": "#202124","border-color":"#404040"});
-      postInfo.find("div > div > ul > li").css("background-color","#ffffff0d");
+      postInfo.css({ "background-color": "#202124", "border-color": "#404040" });
+      postInfo.find("div > div > ul > li").css("background-color", "#ffffff0d");
 
       //スレッドの中身にダークモード適用
       const threads = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:not(:first-child)");
       //質問者の名前と登校時刻の部分にダークモード適用
-      classCSSPatcher(threads.find("div:nth-child(2) > div").eq(0),"color: rgb(255 255 255 / 83%);");
+      classCSSPatcher(threads.find("div:nth-child(2) > div").eq(0), "color: rgb(255 255 255 / 83%);");
       //質問したい教材の部分にダークモード適用(ある場合のみ)
-      if(threads.eq(0).find("p").length) {
-        threads.eq(0).css("background-color","#202124");
-        threads.eq(0).find("p").css("color","#bdbdbd");
-        threads.eq(0).find("div").css("border-color","rgb(255 255 255 / 10%)");
+      if (threads.eq(0).find("p").length) {
+        threads.eq(0).css("background-color", "#202124");
+        threads.eq(0).find("p").css("color", "#bdbdbd");
+        threads.eq(0).find("div").css("border-color", "rgb(255 255 255 / 10%)");
       }
 
       //各コメントにダークモード適用
-      for(let i = 0; i <= threads.length; i++) {
+      for (let i = 0; i <= threads.length; i++) {
         let threed = threads.eq(i);
         //「回答」の部分だった場合はそのborder等にダークモード適用
-        if(!(threed.css("border-style") == "none")) {
-          threed.css("border-color","#252525");
-          threed.find("span").css({"background-color":"#000000","color":"#FFFFFF"});
+        if (!(threed.css("border-style") == "none")) {
+          threed.css("border-color", "#252525");
+          threed.find("span").css({ "background-color": "#000000", "color": "#FFFFFF" });
         } else {
           //質問者の色を設定(色で判定)
           let threedBody = threed.find("div:nth-child(2)").eq(0);
-          if(threedBody.css("background-color") == "rgb(226, 238, 255)") {
+          if (threedBody.css("background-color") == "rgb(226, 238, 255)") {
             //質問者の投稿の色
-            classCSSPatcher(threedBody,"background-color: #607d8b; color:#FFFFFF;");
-          } else if(threedBody.css("background-color") == "rgb(255, 255, 255)") {
+            classCSSPatcher(threedBody, "background-color: #607d8b; color:#FFFFFF;");
+          } else if (threedBody.css("background-color") == "rgb(255, 255, 255)") {
             //他の人の投稿の色
-            classCSSPatcher(threedBody,"background-color: #01579b; color:#FFFFFF;");
-          } else if(threedBody.css("background-color") == "rgb(255, 247, 149)" || threedBody.css("background-color") == "rgb(255, 242, 78)")  {
+            classCSSPatcher(threedBody, "background-color: #01579b; color:#FFFFFF;");
+          } else if (threedBody.css("background-color") == "rgb(255, 247, 149)" || threedBody.css("background-color") == "rgb(255, 242, 78)") {
             //運営と先生の投稿の色
-            classCSSPatcher(threedBody,"background-color: #1b5e20; color:#FFFFFF;");
+            classCSSPatcher(threedBody, "background-color: #1b5e20; color:#FFFFFF;");
           }
         }
       }
 
       //返信を送る部分にダークモード適用
       const replayArea = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(3)");
-      classCSSPatcher(replayArea,"background-color: #202124;");
-      classCSSPatcher(replayArea.find("textarea"),"background-color: #202124; color: #e8e8e8;");
-      classCSSPatcher(replayArea.find("div > div:nth-child(1) > button"),"background-color: #2b2c2f; border-color: #424242;");
-    } else if(path.match(/new/)) {
+      classCSSPatcher(replayArea, "background-color: #202124;");
+      classCSSPatcher(replayArea.find("textarea"), "background-color: #202124; color: #e8e8e8;");
+      classCSSPatcher(replayArea.find("div > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;");
+    } else if (path.match(/new/)) {
       /* フォーラムに投稿を行うページにダークモード適用 */
 
       //ページタイトルにダークモード適用
-      classCSSPatcher($("form > div > h1"),"color: #e8e8ff;");
+      classCSSPatcher($("form > div > h1"), "color: #e8e8ff;");
       //コメントの内容を入力する部分ににダークモード適用
-      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1)"),"background-color: #202124; color: #FFFFFF; border-color: #424242;",null,2);
-      classCSSPatcher($("textarea"),"background-color: #202124; color: #e8e8e8;");
-      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(2)"),"background-color: #202124; color: #FFFFFF; border-color: #424242;",null,2);
+      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1)"), "background-color: #202124; color: #FFFFFF; border-color: #424242;", null, 2);
+      classCSSPatcher($("textarea"), "background-color: #202124; color: #e8e8e8;");
+      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(2)"), "background-color: #202124; color: #FFFFFF; border-color: #424242;", null, 2);
       //画像をアップロードボタンにダークモード適用
-      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > button"),"background-color: #2b2c2f; border-color: #424242;");
+      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;");
     } else {
       /* スレッド一覧のページで、タイトル〜表示する投稿を変更する部分にダークモード適用 */
 
@@ -599,7 +599,7 @@ function applyDarkHomePage() {
       }
     }
 
-    if(!(path.match(/new/))) {
+    if (!(path.match(/new/))) {
       /* 右側の部分にダークモード適用(フォーラム投稿ページ以外) */
       //検索窓の色を変更
       classCSSPatcher($("form > div > input"), "color: #FFFFFF; background-color: #222222; border-color: #404040;");
@@ -617,43 +617,43 @@ function applyDarkHomePage() {
       //各タグのボタンにダークモード適用
       classCSSPatcher(findbyTagDiv.find("div > div > div > div > a"), "background-color: #2b2c2f; border-color: #6b6b6b;");
     }
-  } else if(path.match(/setting/)) {
+  } else if (path.match(/setting/)) {
     //ページタイトルの文字色を変更
-    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1").css("color","#e8e8ff");
+    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1").css("color", "#e8e8ff");
 
     //中央部のメインの設定の色を変更
     const mainContents = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)");
-    mainContents.css({"background-color":"#222222","color":"#FFFFFF"});
+    mainContents.css({ "background-color": "#222222", "color": "#FFFFFF" });
     //設定一覧の部分の文字色を変更
-    mainContents.find("ul > li > a").css("color","#FFFFFF")
+    mainContents.find("ul > li > a").css("color", "#FFFFFF")
     //所属先の部分の色を変更
-    mainContents.find("div > div > ul > li").css({"background-color":"#b8fdac","color":"#000000"});
+    mainContents.find("div > div > ul > li").css({ "background-color": "#b8fdac", "color": "#000000" });
     //右側のボタンの色を変更
-    classCSSPatcher(mainContents.find("div > div > div > div > a"),"background-color: #4f73e3; color: #FFF; border: 0px");
-    classCSSPatcher(mainContents.find("div > div > div > div > a"),"color: #FFF;","hover");
-  } else if(path.match(/notices|courses\/\d+\/chapters/)) {
+    classCSSPatcher(mainContents.find("div > div > div > div > a"), "background-color: #4f73e3; color: #FFF; border: 0px");
+    classCSSPatcher(mainContents.find("div > div > div > div > a"), "color: #FFF;", "hover");
+  } else if (path.match(/notices|courses\/\d+\/chapters/)) {
     //ページタイトルの文字色を変更
-    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color","#e8e8ff");
+    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color", "#e8e8ff");
     //各リンクの部分にダークモード適用
     linklistOffset = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div > a > div");
-  } else if(path.match(/packages/)) {
+  } else if (path.match(/packages/)) {
     //ページタイトルの文字色を変更
-    classCSSPatcher($("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1"),"color: #e8e8ff;")
+    classCSSPatcher($("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1"), "color: #e8e8ff;")
 
     //左側のジャンル一覧の部分にダークモード適用
     const genres = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > ul:nth-child(2) > li > a");
-    classCSSPatcher(genres,"color: #e8e8e8;");
-    classCSSPatcher(genres,"background-color: #4f73e3; color: #e8e8e8;","hover");
+    classCSSPatcher(genres, "color: #e8e8e8;");
+    classCSSPatcher(genres, "background-color: #4f73e3; color: #e8e8e8;", "hover");
 
     //右側のコース一覧の部分にダークモード適用
     const cources = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:not(:nth-child(2))");
-    classCSSPatcher(cources,"background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
-    classCSSPatcher(cources.children("div"),"background-color: #383838;","hover");
+    classCSSPatcher(cources, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+    classCSSPatcher(cources.children("div"), "background-color: #383838;", "hover");
     //折り畳みの中のコースの部分の色の変更
-    classCSSPatcher(cources.find("ul  > a > li > div"),"background-color: #383838;","hover");
-    classCSSPatcher(cources.find("ul  > a > li"),"border-color: #2f2f2f;");
-    classCSSPatcher(cources.find("ul  > a > li > div > h3"),"color: #FFFFFF;");
-    classCSSPatcher(cources.find("ul  > a > li > div > div"),"background-color: #bfbfbf;");
+    classCSSPatcher(cources.find("ul  > a > li > div"), "background-color: #383838;", "hover");
+    classCSSPatcher(cources.find("ul  > a > li"), "border-color: #2f2f2f;");
+    classCSSPatcher(cources.find("ul  > a > li > div > h3"), "color: #FFFFFF;");
+    classCSSPatcher(cources.find("ul  > a > li > div > div"), "background-color: #bfbfbf;");
 
     //コース選択のダイアログの文字色を修正
     $("head").append('<style> body.ReactModal__Body--open { color: #000000 !important; }  </style>')
@@ -689,10 +689,10 @@ function applyDarkProfileSettingPage() {
 
   //中身の部分をダークモードにする
   $(".u-card").css({ "background-color": "#202124", "color": "#FFF", "border": "none" });
-  $(".u-tabs>.u-tabs-item>a").css("color","#e8e8e8");
-  $(".typo-caption, .u-form-input-captions .u-form-input-caption, .u-form .u-form-caption-wrapper>p").css("color","#e8e8e8");
-  $("input[type='text'], textarea, .u-form-select, .u-form-input").css({"color":"#FFFFFF","background-color":"#222222","border-color":"#404040"});
-  $(".bg-warning").css("background-color","#a21c00");
+  $(".u-tabs>.u-tabs-item>a").css("color", "#e8e8e8");
+  $(".typo-caption, .u-form-input-captions .u-form-input-caption, .u-form .u-form-caption-wrapper>p").css("color", "#e8e8e8");
+  $("input[type='text'], textarea, .u-form-select, .u-form-input").css({ "color": "#FFFFFF", "background-color": "#222222", "border-color": "#404040" });
+  $(".bg-warning").css("background-color", "#a21c00");
 }
 
 /**
@@ -703,13 +703,13 @@ function applyDarkProfileSettingPage() {
  * @param {string} pseudoClass 疑似クラス(必要な場合のみ, ":"は不要)
  * @param {number} classNumber 何番目のクラスに適用するかの値(手動指定する場合のみ、デフォルトは最後尾(最優先のクラス))
  */
-function classCSSPatcher(element,property,pseudoClass,classNumber) {
+function classCSSPatcher(element, property, pseudoClass, classNumber) {
   //所属しているクラス一覧を取得し、クラス名の一文字目に.を付け、配列化
   const elementClassArrary = ("." + element.attr("class").split(' ').join(' .')).split(' ');
 
   //クラスの番号を決定する
   let className = null;
-  if(classNumber) {
+  if (classNumber) {
     className = elementClassArrary[classNumber];
   } else {
     //指定されていない場合は最後尾(最優先)のクラスに設定する
@@ -717,7 +717,7 @@ function classCSSPatcher(element,property,pseudoClass,classNumber) {
   }
 
   //headにstyleを追加
-  if(pseudoClass) {
+  if (pseudoClass) {
     //疑似クラスが必要な場合
     $("head").append("<style> " + className + ":" + pseudoClass + " { " + property + " }</style>");
   } else {
