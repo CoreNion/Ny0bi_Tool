@@ -1,5 +1,4 @@
 'use strict';
-URLTracker();
 
 //ページがロードされた後に実行するもの
 $(window).on("load", function () {
@@ -46,6 +45,7 @@ function applyDarkMode() {
     applyDarkProfileSettingPage();
   } else if (path.match(/home|lessons|questions|notices|setting|courses\/\d+\/chapters|packages/)) {
     applyDarkHomePage();
+    URLTracker();
   }
 
   chrome.storage.local.set({ 'nowPage': path });
