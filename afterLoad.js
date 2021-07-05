@@ -44,7 +44,7 @@ function applyDarkMode() {
     applyDarkTestPage();
   } else if (path.match(/setting\/profile/)) {
     applyDarkProfileSettingPage();
-  } else if (path.match(/home|lessons|questions|notices|setting|help|courses\/\d+\/chapters|packages/)) {
+  } else if (path.match(/home|lessons|questions|notices|setting|courses\/\d+\/chapters|packages/)) {
     applyDarkHomePage();
   }
 
