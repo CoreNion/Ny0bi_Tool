@@ -430,8 +430,9 @@ function applyDarkHomePage() {
     //教材の名前の文字色を変更
     classCSSPatcher(linklistOffset.find("div > div"), "color: #e8e8e8;");
     //必修授業・課外授業の選択の部分にダークモード適用
-    courceLinks.find("div > ul").eq(0).css({ "background-color": "#202124", "border-color": "#2f2f2f" });
-    courceLinks.find("div > ul > li > div > a > div").css("color", "rgb(255 255 255 / 80%)");
+    classCSSPatcher(courceLinks.find("div > ul").eq(0),"background-color: #202124; border-color: #2f2f2f;", null, 2);
+    classCSSPatcher(courceLinks.find("div > ul > li > div > a > div").eq(1), "color: rgb(255 255 255 / 80%);");
+    classCSSPatcher(courceLinks.find("div > ul > li > div > a > div").eq(0), "color: rgb(255 255 255 / 80%);");
     //このページのタイトルの文字色を変更
     classCSSPatcher(courceLinks.find("div > div > h1"), "color: #e8e8ff;");
 
@@ -439,10 +440,10 @@ function applyDarkHomePage() {
     const qa = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(3) > div");
     //タイトルの部分にダークモードを適用
     const qaTitle = qa.find("div").eq(0);
-    qaTitle.css("background-color", "#222222");
-    qaTitle.find("h2").css("color", "#FFFFFF");
+    classCSSPatcher(qaTitle, "background-color: #222222;", null, 2);
+    classCSSPatcher(qaTitle.find("h2"), "color: #FFFFFF;");
     //各質問のタイトルの文字色を変更
-    qa.find("div > a > div > div:nth-child(2) > div").css("color", "#e8e8e8");
+    classCSSPatcher(qa.find("div > a > div > div:nth-child(2) > div"), "color: #e8e8e8;");
 
     //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
     const userInfo = courceLinks.find("div:nth-child(2) > div > div > div:nth-child(2)").eq(0);
