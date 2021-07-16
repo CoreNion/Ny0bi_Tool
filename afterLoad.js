@@ -632,8 +632,8 @@ function applyDarkHomePage() {
     //所属先の部分の色を変更
     mainContents.find("div > div > ul > li").css({ "background-color": "#b8fdac", "color": "#000000" });
     //右側のボタンの色を変更
-    classCSSPatcher(mainContents.find("div > div > div > div > a"), "background-color: #4f73e3; color: #FFF; border: 0px");
-    classCSSPatcher(mainContents.find("div > div > div > div > a"), "color: #FFF;", "hover");
+    classCSSPatcher(mainContents.find("div > div > div > div > a > button"), "background-color: #4f73e3; color: #FFF; border: 0px");
+    classCSSPatcher(mainContents.find("div > div > div > div > a > button"), "color: #FFF;", "hover");
   } else if (path.match(/notices|courses\/\d+\/chapters/)) {
     //ページタイトルの文字色を変更
     $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color", "#e8e8ff");
