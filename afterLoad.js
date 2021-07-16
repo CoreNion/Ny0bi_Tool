@@ -241,6 +241,8 @@ function applyDarkTextPage(needGrayPage) {
     //問題の解説の文字色の改善
     $("head").append('<style>body.exercises .em3 { color: #A1B9FF !important; }</style>');
     $("head").append('<style>body.exercises .em2 { color: #44DB6C !important;; }</style>');
+    //文字数カウント(公式)の背景色を変更
+    $("head").append('<style>.exercise .section-item .type-descriptive.answer-area[data-status=valid][data-focus=true] .counter { background-color: #000000; }</style>')
     //記述式の問題での、inputの色を設定
     body.find(".exercise .section-item .type-descriptive .answers").css("background-color", "#202124");
     body.find("input[type=text], textarea").css("color", "#f6f6f6");
