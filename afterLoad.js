@@ -42,10 +42,22 @@ function applyDarkMode() {
   } else if (path.match(/short_test_sessions/)) {
     applyDarkTestPage();
   } else if (path.match(/setting\/profile/)) {
-    applyDarkProfileSettingPage();
+    //applyDarkProfileSettingPage();
+    console.log("N予備校側のアップデートのため、ホームへのダークモードは無効化しています...\n(https://github.com/CoreNion/Ny0bi_Tool/issues/3)");
   } else if (path.match(/home|lessons|questions|notices|setting|courses\/\d+\/chapters|packages/)) {
-    applyDarkHomePage();
-    URLTracker();
+    /* https://github.com/CoreNion/Ny0bi_Tool/issues/3 */
+    chrome.storage.local.get("announcedHomeDark", function (data) {
+      if (!data.announcedHomeDark) {
+        const confirmClicked = confirm("Ny0bi Toolからのお知らせです。\n現在、ホーム画面がアップデートされたため、ホーム画面へのダークモードを一時的に無効化しています。ご不便をおかけしますが、ご了承ください。\n「OK」をクリックすると詳細情報のページに移動します。");
+        if(confirmClicked) {
+          window.open('https://github.com/CoreNion/Ny0bi_Tool/issues/3', '_blank');
+        }
+        chrome.storage.local.set({ 'announcedHomeDark': true });
+      }
+    });
+    console.log("N予備校側のアップデートのため、ホームへのダークモードは無効化しています...\n(https://github.com/CoreNion/Ny0bi_Tool/issues/3)");
+    //applyDarkHomePage();
+    //URLTracker();
   }
 
   chrome.storage.local.set({ 'nowPage': path });
@@ -393,6 +405,8 @@ function applyDarkTestPage() {
 
 /**
  * ホーム系統のページ(授業一覧やフォーラムなども含む)にダークモードを適用する関数
+ * 
+ * 新ホーム非対応(https://github.com/CoreNion/Ny0bi_Tool/issues/3)
  */
 function applyDarkHomePage() {
   //クラスが難読化されている上他のページとは仕様が異なるためダークモードにする方法がやや特殊です
