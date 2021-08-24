@@ -6,23 +6,22 @@
 
 | 現在閲覧しているBranch | Branch        | 備考                                  | 
 | ---------------------- | ------------ | -------------------------------------- | 
-|           ✅          | main         | ベータ版、安定板のブランチ               | 
-|                        | ~~develop~~  | ~~新機能の開発などが行われるブランチ~~   | 
+|           ✅           | main         | ベータ版、安定板のブランチ               | 
+|                        | WebStore      | Chrome Web Store版のソースコード       | 
+|                        | develop  | 新機能の開発などが行われるブランチ   | 
 
 N予備校をダークモードにする拡張機能です！ ※このツールは非公式です。
 
 **Issue・Pull Requestsの提出は大歓迎です！！**
 
-# ダークモードに対応しているページ(v1.0)
-v1.0で、ホーム系統のページもダークモードになりました！！
+# ダークモードに対応しているページ(v1.0.2)
+
 - 生放送
 - 教材
 - 習熟度テスト
-- ホーム
-  - 授業一覧
-  - フォーラム
-  - 通知
-  - 設定
+- ~~ホーム~~
+
+**[現在、ホームには対応していません](https://github.com/CoreNion/Ny0bi_Tool/issues/3)**
 
 # [インストール (Chrome Web Store)](https://chrome.google.com/webstore/detail/ny0bi-tool/lkmfjlmabmkedlocaclfgbemmdofjfjg)
 **v1.0より、ついにChrome Web Storeでの配信がスタートしました！**
