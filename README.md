@@ -6,9 +6,9 @@
 
 | 現在閲覧しているBranch | Branch        | 備考                                  | 
 | ---------------------- | ------------ | -------------------------------------- | 
-|           ✅           | main         | ベータ版、安定板のブランチ               | 
+|                        | main         | ベータ版、安定板のブランチ               | 
 |                        | WebStore      | Chrome Web Store版のソースコード       | 
-|                        | develop  | 新機能の開発などが行われるブランチ   | 
+|           ✅          | develop  | 新機能の開発などが行われるブランチ   | 
 
 N予備校をダークモードにする拡張機能です！ ※このツールは非公式です。
 
@@ -22,6 +22,9 @@ N予備校をダークモードにする拡張機能です！ ※このツール
 - ~~ホーム~~
 
 **[現在、ホームには対応していません](https://github.com/CoreNion/Ny0bi_Tool/issues/3)**
+
+# 現在開発中の機能
+- 新ホームへの対応
 
 # [インストール (Chrome Web Store)](https://chrome.google.com/webstore/detail/ny0bi-tool/lkmfjlmabmkedlocaclfgbemmdofjfjg)
 **v1.0より、ついにChrome Web Storeでの配信がスタートしました！**
