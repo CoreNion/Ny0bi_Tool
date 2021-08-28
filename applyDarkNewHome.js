@@ -1,10 +1,12 @@
 function applyDarkNewHomeCentor() {
   $("body").css({ "background-color": "#000", "color": "#e8e8e8" });
   const path = location.pathname;
-  if(path.match(/home/)) {
+  if (path.match(/home/)) {
     applyDarkNewHomePage();
   } else if (path.match(/questions/)) {
     applyDarkForumPage();
+  } else if (path.match(/lessons/)) {
+    applyDarkLessonListPage();
   }
 }
 
@@ -149,4 +151,46 @@ function applyDarkForumPage() {
     //各タグのボタンにダークモード適用
     classCSSPatcher(findbyTagDiv.find("div > div > div > div > a"), "background-color: #2b2c2f; border-color: #6b6b6b;");
   }
+}
+
+function applyDarkLessonListPage() {
+  console.log("Ny0bi_Tool:load applyDarkLessonListPage()");
+  const path = location.pathname;
+
+  //各授業のリンクの部分にダークモード適用
+  const lesson = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > a > div");
+  classCSSPatcher(lesson, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+  //触れた時の背景色を変更
+  classCSSPatcher(lesson, "background-color: #383838", "hover");
+
+  //ページタイトルの文字色を変更
+  classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > h1"), "color: #e8e8ff;");
+
+  if (!(path.match(/search/))) {
+    //必修授業・課外授業の選択の部分にダークモード適用(授業一覧のページのみ)
+    const selectWhenLesson = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > ul").eq(0);
+    classCSSPatcher(selectWhenLesson, "background-color: #202124; border-color: #2f2f2f;", false, 2);
+    classCSSPatcher(selectWhenLesson.find("a"), "color: #ffffffcc;", "hover");
+    classCSSPatcher(selectWhenLesson.find("a"), "color: #ffffffcc;", "visited");
+    //もっと見るの部分にダークモード適用(授業一覧のページのみ)
+    const seeMore = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div");
+    classCSSPatcher(seeMore, "background-color: #202124;", false, 2);
+    const seeMoreButton = seeMore.find("button");
+    classCSSPatcher(seeMoreButton, "background-color: #505050; border-color: #cad7ff; color: #cad7ff;");
+  } else {
+    //検索結果の部分にダークモード適用
+    const searchResults = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div");
+    classCSSPatcher(searchResults, "background-color: #202124; border-color: #8c8c8c;", null, 2);
+    classCSSPatcher(searchResults.find("div > div:nth-child(3) > span:nth-child(1)"), "color: #FFF;");
+  }
+  //検索系のところにダークモード適用
+  const rightContents = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div");
+  //検索窓をダークにする
+  classCSSPatcher(rightContents.find("input"), "color: #FFFFFF; background-color: #222222; border-color: #404040;");
+  //タグのボタンをダークにする
+  classCSSPatcher(rightContents.find("div > ul > li"), "background-color: #202124;");
+  //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
+  const userInfo = rightContents.find("div:nth-child(2)").eq(0);
+  classCSSPatcher(userInfo, "background-color: #202124; border-color: #8c8c8c;", false, 2);
+  classCSSPatcher(userInfo.find("div:nth-child(1)"), "background-color: #202124; color: #e8e8e8;");
 }
