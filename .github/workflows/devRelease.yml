@@ -24,7 +24,7 @@ jobs:
             Build=$(git rev-list --count HEAD)
             NewTagName=Canary_$Build
             echo "NewTagName=${NewTagName}" >> $GITHUB_ENV
-            echo "Version=${Version}" >> $GITHUB_ENV
+            echo "Build=${Build}" >> $GITHUB_ENV
 
             git tag $NewTagName
 
