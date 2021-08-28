@@ -7,6 +7,8 @@ function applyDarkNewHomeCentor() {
     applyDarkForumPage();
   } else if (path.match(/lessons/)) {
     applyDarkLessonListPage();
+  } else if (path.match(/notices/)) {
+    applyDarkNoticesPage();    
   }
 }
 
@@ -193,4 +195,17 @@ function applyDarkLessonListPage() {
   const userInfo = rightContents.find("div:nth-child(2)").eq(0);
   classCSSPatcher(userInfo, "background-color: #202124; border-color: #8c8c8c;", false, 2);
   classCSSPatcher(userInfo.find("div:nth-child(1)"), "background-color: #202124; color: #e8e8e8;");
+}
+
+function applyDarkNoticesPage() {
+  console.log("Ny0bi_Tool:load applyDarkNoticePage()");
+
+  //ページタイトルの文字色を変更
+  $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color", "#e8e8ff");
+
+  //各通知のリンクの部分にダークモード適用
+  const notice = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div > a > div");
+  classCSSPatcher(notice, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+  //触れた時の背景色を変更
+  classCSSPatcher(notice, "background-color: #383838", "hover");
 }
