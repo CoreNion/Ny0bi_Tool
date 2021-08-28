@@ -3,17 +3,35 @@ function applyDarkNewHomeCentor() {
   const path = location.pathname;
   if (path.match(/home/)) {
     applyDarkNewHomePage();
+  } else if (path.match(/my_cource/)) {
+    applyDarkMyCourcePage();
   } else if (path.match(/questions/)) {
     applyDarkForumPage();
   } else if (path.match(/lessons/)) {
     applyDarkLessonListPage();
   } else if (path.match(/notices/)) {
-    applyDarkNoticesPage();    
+    applyDarkNoticesPage();
   }
 }
 
 function applyDarkNewHomePage() {
   console.log("Ny0bi_Tool:load applyDarkNewHomePage()");
+}
+
+function applyDarkMyCourcePage() {
+  console.log("Ny0bi_Tool:load applyDarkMyCourcePage()");
+
+  //コースリストを黒くする
+  const courceLink = $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a > div");
+  classCSSPatcher(courceLink, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+  //触れた時の背景色を変更
+  classCSSPatcher(courceLink, "background-color: #383838", "hover");
+  //アイコンの色を変更
+  classCSSPatcher(courceLink.find("div > i"), "color: #648aff;");
+  //進捗度のバーや文字色を変更
+  classCSSPatcher(courceLink.find("div").eq(2), "background-color: #bfbfbf;");
+  //名前の文字色を変更
+  classCSSPatcher(courceLink.find("div > div"), "color: #e8e8e8;");
 }
 
 function applyDarkForumPage() {
