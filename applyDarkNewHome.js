@@ -3,7 +3,7 @@ function applyDarkNewHomeCentor() {
   const path = location.pathname;
   if (path.match(/home/)) {
     applyDarkNewHomePage();
-  } else if (path.match(/my_cource/)) {
+  } else if (path.match(/my_course/)) {
     applyDarkMyCourcePage();
   } else if (path.match(/questions/)) {
     applyDarkForumPage();
