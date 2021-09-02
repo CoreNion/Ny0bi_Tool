@@ -45,6 +45,7 @@ function applyDarkMode() {
     //新ホーム対応作業はapplyDarkNewHome.js内で行う
     //ホーム画面へのダークモード適用のコードは長いので、作業が終わってもこのjsとは分離させる予定
     applyDarkNewHomeCentor();
+    URLTracker();
   }
 
   chrome.storage.local.set({ 'nowPage': path });

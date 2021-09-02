@@ -4,14 +4,15 @@
  * ホーム系のページにおいて、URLの変更を検知し、検知後にapplyDarkHomePageを実行する関数
  */
 function URLTracker() {
-  const pageNavigationBar = $("#root > div > div:nth-child(2) > div:nth-child(1) > nav > ol")[0];
+  const HTMLbody = $("body")[0];
 
+  //bodyの中身に変化があったときに実行
   const observer = new MutationObserver(records => {
     chrome.storage.local.get("nowPage", function (data) {
       const path = location.pathname;
-      //URLがかわっった時に実行するもの
+      //URLが変わった時に実行するもの
       if (!(data.nowPage == path)) {
-        //クラスにCSSを適用する時に必要なelementを探して、作られた時にapplyDarkHomePage()を実行
+        //クラスにCSSを適用する時に必要なelementを探して、作られた時にapplyDarkNewHomeCentor()を実行
         if (path.match(/questions\/new/)) {
           Home_needElementSearcher("form > div > div:nth-child(2) > div:nth-child(1)");
         } else if (path.match(/questions\/\d+/)) {
@@ -35,12 +36,11 @@ function URLTracker() {
       }
     });
   });
-  if (pageNavigationBar) {
-    //ページ名が書かれている部分の変化の監視を開始
-    observer.observe(pageNavigationBar, {
-      childList: true
-    });
-  }
+
+  //bodyの変化の監視を開始
+  observer.observe(HTMLbody, {
+    childList: true
+  });
 }
 
 /**
@@ -53,7 +53,7 @@ function Home_needElementSearcher(obj) {
   interval = setInterval(function () {
     if ($(obj).length) {
       try {
-        applyDarkHomePage();
+        applyDarkNewHomeCentor();
       } catch { err = true; }
       if (!err) {
         clearInterval(interval);
