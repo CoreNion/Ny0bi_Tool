@@ -12,6 +12,8 @@ function applyDarkNewHomeCentor() {
   } else if (path.match(/notices/)) {
     applyDarkNoticesPage();
   }
+
+  applyDarkTopBar();
 }
 
 function applyDarkNewHomePage() {

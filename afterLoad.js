@@ -671,7 +671,7 @@ function applyDarkHomePage() {
     classCSSPatcher(linklistOffset, "background-color: #383838", "hover");
   }
 
-  homePageTopBarTracker(topBar);
+  applyDarkTopBar(topBar);
 }
 /**
  * プロフィール設定のページをダークモードにする関数(profile系のページはsettingと仕様が異なるため別関数化)

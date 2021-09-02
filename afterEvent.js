@@ -68,22 +68,34 @@ function Home_needElementSearcher(obj) {
 }
 
 /**
- * ホーム系のページにて、スクロールなどで上部のバーが変化した時でもダークモードを維持するための関数
- * @param {JQuery<HTMLElement>} topBar 上部のバーのjQuery HTMLElement
+ * 上部のバーにダークモードを適用する関数
  */
-function homePageTopBarTracker(topBar) {
-  //jQuery ElementをJavaScript標準の形のElementに変換(MutationObserverはjQueryの機能ではないため)
-  const topBarJS = topBar[0];
+function applyDarkTopBar() {
+  const topBar = $("#root > div > div > div").eq(0);
 
-  //上部のバー変化した時に実行するコード
-  const observer = new MutationObserver(records => {
+  //ダークモード適用
+  const apply = () => {
     topBar.css("background-color", "#222222");
     //各種リンクの文字色を白にする
     const topBarButtons = topBar.find("div > div > div > a");
     topBarButtons.css("color", "#FFFFFF");
+    //アカウント設定などが選択できる場所にダークモード適用
+    const userProfile = topBar.find("div > div > div > div").eq(3);
+    classCSSPatcher(userProfile, "background-color: #202124;");
+    classCSSPatcher(userProfile.find("div:nth-child(1)"), "color: #FFFFFF;");
+    classCSSPatcher(userProfile.find("div:nth-child(2) > a"), "background-color: #383838;", "hover");
+    classCSSPatcher(userProfile.find("div:nth-child(3) > a"), "background-color: #383838;", "hover");
+  }
+  //初回実行
+  apply();
+
+  //バーが変化した時に実行するコード
+  const observer = new MutationObserver(records => {
+    //改めてダークモード適用
+    apply();
   });
-  //中身の変化の監視を開始
-  observer.observe(topBarJS, {
+  //バーの中身の変化の監視を開始
+  observer.observe(topBar[0], {
     attributes: true,
     attributeFilter: ['class']
   });
