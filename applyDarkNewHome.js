@@ -23,17 +23,29 @@ function applyDarkNewHomePage() {
 function applyDarkMyCourcePage() {
   console.log("Ny0bi_Tool:load applyDarkMyCourcePage()");
 
+  //ページタイトルと概要を黒くする
+  const pageInfo = $("#root > div > div > div > div:nth-child(1) > div:nth-child(1)");
+  pageInfo.find("h1").css("color", "#e8e8ff");
+  pageInfo.find("a,div").css("color", "#e8e8e8");
+
   //コースリストを黒くする
   const courceLink = $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a > div");
-  classCSSPatcher(courceLink, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+  classCSSPatcher(courceLink, "background-color: #202124 !important; color: #FFFFFF !important; border-color: #2f2f2f !important;", null, 6);
   //触れた時の背景色を変更
-  classCSSPatcher(courceLink, "background-color: #383838", "hover");
+  classCSSPatcher(courceLink, "background-color: #383838 !important;", "hover", 6);
   //アイコンの色を変更
   classCSSPatcher(courceLink.find("div > i"), "color: #648aff;");
   //進捗度のバーや文字色を変更
   classCSSPatcher(courceLink.find("div").eq(2), "background-color: #bfbfbf;");
   //名前の文字色を変更
   classCSSPatcher(courceLink.find("div > div"), "color: #e8e8e8;");
+
+  //最初の「コースを選択してください」の部分を黒くする
+  const rightElement = $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)");
+  rightElement.css("background-color", "#202124");
+  rightElement.find("div").css("background-color", "#202124");
+
+
 }
 
 function applyDarkForumPage() {
