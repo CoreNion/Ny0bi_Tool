@@ -75,10 +75,11 @@ function applyDarkTopBar() {
 
   //ダークモード適用
   const apply = () => {
-    topBar.css("background-color", "#222222");
+    classCSSPatcher(topBar, "background-color: #222222;");
     //各種リンクの文字色を白にする
     const topBarButtons = topBar.find("div > div > div > a");
     topBarButtons.css("color", "#FFFFFF");
+    classCSSPatcher(topBarButtons,"color: #FFFFFF");
     //アカウント設定などが選択できる場所にダークモード適用
     const userProfile = topBar.find("div > div > div > div").eq(3);
     classCSSPatcher(userProfile, "background-color: #202124;");
