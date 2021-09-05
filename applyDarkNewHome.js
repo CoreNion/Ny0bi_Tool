@@ -45,7 +45,31 @@ function applyDarkMyCourcePage() {
   rightElement.css("background-color", "#202124");
   rightElement.find("div").css("background-color", "#202124");
 
-
+  //コース選択後に出てくる概要を黒くする
+  //コースが選択された後にしか出ないので、発火後に要素を探す方式を取る
+  $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a").on("click", () => {
+    let interval = null;
+    interval = setInterval(function () {
+      const path = "#root > div > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div > div > ";
+      if ($(path + "div:nth-child(1) > div:nth-child(2) > div:nth-child(2)").length) {
+        //コース概要部の背景色適用
+        classCSSPatcher($(path + "div:nth-child(1)"), "background-color: #202124;");
+        //タイトルの左にある線の色を変更
+        classCSSPatcher($(path + "div:nth-child(1) > div:nth-child(1) > div:nth-child(1)"), "border-left-color: #648aff");
+        //折り畳みの部分の色を変更(存在する場合のみ)
+        if ($(path + "div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2)").length) {
+          $("head").append('<style>' + path + 'div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) { background: #202124 !important; box-shadow: #202124 0px -16px 16px !important; } </style>')
+        }
+        //「このコースに含まれる章」部にダークモード適用
+        classCSSPatcher($(path + "div:nth-child(2)"), "background-color: #202124; color: #e8e8e8; border-bottom-color: #404040;");
+        classCSSPatcher($(path + "div:nth-child(3)"), "border-color: #404040;");
+        clearInterval(interval);
+      }
+    }, 50);
+    setTimeout(function () {
+      clearInterval(interval);
+    }, 5000);
+  })
 }
 
 function applyDarkForumPage() {
