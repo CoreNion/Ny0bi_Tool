@@ -56,10 +56,9 @@ function applyDarkMyCourcePage() {
         classCSSPatcher($(path + "div:nth-child(1)"), "background-color: #202124;");
         //タイトルの左にある線の色を変更
         classCSSPatcher($(path + "div:nth-child(1) > div:nth-child(1) > div:nth-child(1)"), "border-left-color: #648aff");
-        //折り畳みの部分の色を変更(存在する場合のみ)
-        if ($(path + "div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2)").length) {
-          $("head").append('<style>' + path + 'div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) { background: #202124 !important; box-shadow: #202124 0px -16px 16px !important; } </style>')
-        }
+        //折り畳みの部分の色を変更
+        $("head").append('<style>' + path + 'div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) { background: #353535 !important; box-shadow: none; } </style>');
+        $("head").append('<style>' + path + 'div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) { background: #353535 !important; box-shadow: none; } </style>')
         //「このコースに含まれる章」部にダークモード適用
         classCSSPatcher($(path + "div:nth-child(2)"), "background-color: #202124; color: #e8e8e8; border-bottom-color: #404040;");
         classCSSPatcher($(path + "div:nth-child(3)"), "border-color: #404040;");
