@@ -41,7 +41,7 @@ function applyDarkMode() {
     applyDarkGuidePage(true);
   } else if (path.match(/short_test_sessions/)) {
     applyDarkTestPage();
-  } else if (path.match(/home|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile/)) {
+  } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile/)) {
     //新ホーム対応作業はapplyDarkNewHome.js内で行う
     //ホーム画面へのダークモード適用のコードは長いので、作業が終わってもこのjsとは分離させる予定
     applyDarkNewHomeCentor();

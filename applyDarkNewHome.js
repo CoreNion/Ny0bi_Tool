@@ -3,6 +3,8 @@ function applyDarkNewHomeCentor() {
   const path = location.pathname;
   if (path.match(/home/)) {
     applyDarkNewHomePage();
+  } else if (path.match(/genres/)) {
+    applyDarkGenrePage();
   } else if (path.match(/my_course/)) {
     applyDarkMyCourcePage();
   } else if (path.match(/questions/)) {
@@ -62,6 +64,29 @@ function applyDarkNewHomePage() {
   setTimeout(function () {
     clearInterval(interval);
   }, 5000);
+}
+
+function applyDarkGenrePage() {
+  console.log("Ny0bi_Tool:load applyDarkGenrePage()");
+
+  //左のコース一覧の部分にダークモード適用
+  const courseListPath = "#root > div > div:nth-child(2) > div > div:nth-child(1) > div";
+  //背景色
+  classCSSPatcher($(courseListPath), "background-color: #1d1d1d; color: #e8e8e8;", null, 2);
+  //「コースを探す」の文字色
+  classCSSPatcher($(courseListPath + " > div:nth-child(2)"), "color: #dadada;");
+  //必修授業/課外授業表記とコース名の文字色
+  classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(1) > h2"), "color: #e8e8e8;");
+  classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > a > h3"), "color: #e8e8e8;");
+
+  //科目の部分にダークモード適用
+  const subjectPath = "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(1)";
+  //科目タイトルの文字色を変更
+  classCSSPatcher($(subjectPath + " > div > h1"), "color: #FFFFFF;");
+  //各コースへのリンクの背景色を変更
+  classCSSPatcher($(subjectPath + " > div:nth-child(2) > div:nth-child(1) > a > div"),"background-color: #202124;",null,2);
+  //リンクの文字色を変更
+  classCSSPatcher($(subjectPath + " > div:nth-child(2) > div:nth-child(1) > a > div > div:nth-child(2)"),"color: #FFFFFF;");
 }
 
 function applyDarkMyCourcePage() {
