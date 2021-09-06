@@ -22,7 +22,9 @@ function URLTracker() {
         } else if (path.match(/lessons/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > a");
         } else if (path.match(/home/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > div > div > div > a > div");
+          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > a > div > div:nth-child(2) > div:nth-child(3) > div > div");
+        } else if (path.match(/genres/)) {
+          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > h1")
         } else if (path.match(/setting/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)");
         } else if (path.match(/notices|courses\/\d+\/chapters/)) {
