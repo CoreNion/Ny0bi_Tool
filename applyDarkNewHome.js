@@ -18,6 +18,16 @@ function applyDarkNewHomeCentor() {
 
 function applyDarkNewHomePage() {
   console.log("Ny0bi_Tool:load applyDarkNewHomePage()");
+  
+  //左のコース一覧の部分にダークモード適用
+  const courseListPath = "#root > div > div:nth-child(2) > div > div:nth-child(1) > div";
+  //背景色
+  classCSSPatcher($(courseListPath), "background-color: #1d1d1d; color: #e8e8e8;",null,2);
+  //「コースを探す」の文字色
+  classCSSPatcher($(courseListPath + " > div:nth-child(2)"), "color: #dadada;");
+  //必修授業/課外授業表記とコース名の文字色
+  classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(1) > h2"), "color: #e8e8e8;");
+  classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > a > h3"), "color: #e8e8e8;");
 }
 
 function applyDarkMyCourcePage() {
