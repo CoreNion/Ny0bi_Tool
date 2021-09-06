@@ -13,6 +13,8 @@ function applyDarkNewHomeCentor() {
     applyDarkLessonListPage();
   } else if (path.match(/notices/)) {
     applyDarkNoticesPage();
+  } else if (path.match(/setting/)) {
+    applyDarkSettingPage();
   }
 
   applyDarkTopBar();
@@ -84,9 +86,9 @@ function applyDarkGenrePage() {
   //科目タイトルの文字色を変更
   classCSSPatcher($(subjectPath + " > div > h1"), "color: #FFFFFF;");
   //各コースへのリンクの背景色を変更
-  classCSSPatcher($(subjectPath + " > div:nth-child(2) > div:nth-child(1) > a > div"),"background-color: #202124;",null,2);
+  classCSSPatcher($(subjectPath + " > div:nth-child(2) > div:nth-child(1) > a > div"), "background-color: #202124;", null, 2);
   //リンクの文字色を変更
-  classCSSPatcher($(subjectPath + " > div:nth-child(2) > div:nth-child(1) > a > div > div:nth-child(2)"),"color: #FFFFFF;");
+  classCSSPatcher($(subjectPath + " > div:nth-child(2) > div:nth-child(1) > a > div > div:nth-child(2)"), "color: #FFFFFF;");
 }
 
 function applyDarkMyCourcePage() {
@@ -332,4 +334,21 @@ function applyDarkNoticesPage() {
   classCSSPatcher(notice, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
   //触れた時の背景色を変更
   classCSSPatcher(notice, "background-color: #383838", "hover");
+}
+
+function applyDarkSettingPage() {
+  console.log("Ny0bi_Tool:load applyDarkSettingPage()");
+
+  //ページタイトルの文字色を変更
+  $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1").css("color", "#e8e8ff");
+  //中央部のメインの設定の色を変更
+  const mainContents = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)");
+  mainContents.css({ "background-color": "#222222", "color": "#FFFFFF" });
+  //設定一覧の部分の文字色を変更
+  mainContents.find("ul > li > a").css("color", "#FFFFFF")
+  //所属先の部分の色を変更
+  mainContents.find("div > div > ul > li").css({ "background-color": "#b8fdac", "color": "#000000" });
+  //右側のボタンの色を変更
+  classCSSPatcher(mainContents.find("div > div > div > div > a > button"), "background-color: #4f73e3; color: #FFF; border: 0px");
+  classCSSPatcher(mainContents.find("div > div > div > div > a > button"), "color: #FFF;", "hover");
 }
