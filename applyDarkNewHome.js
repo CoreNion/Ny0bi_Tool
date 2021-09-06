@@ -18,11 +18,11 @@ function applyDarkNewHomeCentor() {
 
 function applyDarkNewHomePage() {
   console.log("Ny0bi_Tool:load applyDarkNewHomePage()");
-  
+
   //左のコース一覧の部分にダークモード適用
   const courseListPath = "#root > div > div:nth-child(2) > div > div:nth-child(1) > div";
   //背景色
-  classCSSPatcher($(courseListPath), "background-color: #1d1d1d; color: #e8e8e8;",null,2);
+  classCSSPatcher($(courseListPath), "background-color: #1d1d1d; color: #e8e8e8;", null, 2);
   //「コースを探す」の文字色
   classCSSPatcher($(courseListPath + " > div:nth-child(2)"), "color: #dadada;");
   //必修授業/課外授業表記とコース名の文字色
@@ -30,28 +30,38 @@ function applyDarkNewHomePage() {
   classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > a > h3"), "color: #e8e8e8;");
 
   //右側の各h1タイトルにダークモード適用
-  classCSSPatcher($("#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(1) > h1"),"color: #FFFFFF;");
+  classCSSPatcher($("#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(1) > h1"), "color: #FFFFFF;");
 
   //各コース/途中再開の部分にダークモード適用
   const coursechapterLinkPath = "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div > a > div";
   //コース名
-  classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(1) > div:nth-child(4) > div"),"background-color: #202124cc; color: #e8e8e8;");
+  classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(1) > div:nth-child(4) > div"), "background-color: #202124cc; color: #e8e8e8;");
   //教材名や最終閲覧日時などが書かれている部分の背景色
-  classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2)"),"background-color: #202124;");
+  classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2)"), "background-color: #202124;");
   //教材名の文字色
-  classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(1)"),"color: #FFFFFF;");
+  classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(1)"), "color: #FFFFFF;");
   //コース名の文字色
-  classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(2)"),"color: #e0e0e0;");
+  classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(2)"), "color: #e0e0e0;");
 
   //フォーラムの各投稿の部分にダークモード適用
-  const forumLinkDivPath =  "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(9) > div";
-  //背景色
-  classCSSPatcher($(forumLinkDivPath),"background-color: #202124;");
-  //投稿の文字色
-  classCSSPatcher($(forumLinkDivPath + " > a"),"color: #e8e8e8");
-  classCSSPatcher($(forumLinkDivPath + " > a"),"color: #e8e8e8", "hover");
-  //投稿日時の文字色
-  classCSSPatcher($(forumLinkDivPath + " > a > div:nth-child(2) > div"),"color: #CFCFCF;");
+  //フォーラムの投稿はページロード後に出るので出現次第適用
+  let interval = null;
+  interval = setInterval(function () {
+    const forumLinkDivPath = "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(9) > div";
+    if ($(forumLinkDivPath).length) {
+      //背景色
+      classCSSPatcher($(forumLinkDivPath), "background-color: #202124;");
+      //投稿の文字色
+      classCSSPatcher($(forumLinkDivPath + " > a"), "color: #e8e8e8");
+      classCSSPatcher($(forumLinkDivPath + " > a"), "color: #e8e8e8", "hover");
+      //投稿日時の文字色
+      classCSSPatcher($(forumLinkDivPath + " > a > div:nth-child(2) > div"), "color: #CFCFCF;");
+      clearInterval(interval);
+    }
+  }, 50);
+  setTimeout(function () {
+    clearInterval(interval);
+  }, 5000);
 }
 
 function applyDarkMyCourcePage() {
