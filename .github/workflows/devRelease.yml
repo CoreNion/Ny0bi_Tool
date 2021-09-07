@@ -41,6 +41,9 @@ jobs:
       - name: バージョンをコミット番号に変更
         run: |
           Build=${{ env.Build }}
+          sed -i -e 's/releases\/latest/releases/' toolbarPopup/popup.js
+          sed -i -e 's/json\["tag_name"\]/json\[0\]\["tag_name"\]/' toolbarPopup/popup.js
+          sed -i -e 's/json\["html_url"\]/json\[0\]\["html_url"\]/' toolbarPopup/popup.js
           sed -i -e 's/chrome.runtime.getManifest().version.split(".")/'${Build}'/' toolbarPopup/popup.js
           sed -i -e 's/chrome.runtime.getManifest().version/"Canary Build '${Build}'"/' toolbarPopup/popup.js
       
