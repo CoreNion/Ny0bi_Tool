@@ -363,15 +363,16 @@ function applyDarkSettingPage() {
   console.log("Ny0bi_Tool:load applyDarkSettingPage()");
 
   //ページタイトルの文字色を変更
-  $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1").css("color", "#e8e8ff");
+  classCSSPatcher($("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1"),"color: #e8e8ff;");
+
   //中央部のメインの設定の色を変更
-  const mainContents = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)");
-  mainContents.css({ "background-color": "#222222", "color": "#FFFFFF" });
+  const contentPath = "#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)";
+  classCSSPatcher($(contentPath), "background-color: #222222; color: #FFFFFF;",null,2);
   //設定一覧の部分の文字色を変更
-  mainContents.find("ul > li > a").css("color", "#FFFFFF")
+  classCSSPatcher($(contentPath + " > ul:nth-child(1) > li > a"), "color: #FFFFFF !important;");
   //所属先の部分の色を変更
-  mainContents.find("div > div > ul > li").css({ "background-color": "#b8fdac", "color": "#000000" });
+  classCSSPatcher($(contentPath + " > div:nth-child(3) > div:nth-child(2) > div > ul > li:nth-child(2)"), "background-color: #b8fdac; color: #000000;");
   //右側のボタンの色を変更
-  classCSSPatcher(mainContents.find("div > div > div > div > a > button"), "background-color: #4f73e3; color: #FFF; border: 0px");
-  classCSSPatcher(mainContents.find("div > div > div > div > a > button"), "color: #FFF;", "hover");
+  classCSSPatcher($(contentPath + " > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > a > button"),"background-color: #4f73e3; color: #FFF; border: 0px");
+  classCSSPatcher($(contentPath + " > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > a > button"), "color: #FFF;", "hover");
 }
