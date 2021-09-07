@@ -33,6 +33,8 @@ function URLTracker() {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > ul:nth-child(2) > li > a");
         } else if (path.match(/my_course/)) {
           Home_needElementSearcher("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a > div");
+        } else if (path.match(/courses/)) {
+          Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a:nth-child(1)");
         } else {
           location.reload();
         }

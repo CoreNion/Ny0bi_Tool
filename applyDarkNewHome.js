@@ -7,6 +7,8 @@ function applyDarkNewHomeCentor() {
     applyDarkGenrePage();
   } else if (path.match(/my_course/)) {
     applyDarkMyCourcePage();
+  } else if (path.match(/courses/)) {
+    applyDarkCourcePage();
   } else if (path.match(/questions/)) {
     applyDarkForumPage();
   } else if (path.match(/lessons/)) {
@@ -140,6 +142,27 @@ function applyDarkMyCourcePage() {
       clearInterval(interval);
     }, 5000);
   })
+}
+
+function applyDarkCourcePage() {
+  console.log("Ny0bi_Tool:load applyDarkCourcePage()");
+
+  //ページタイトルの文字色を変更
+  $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color", "#e8e8ff");
+
+  //コース概要の部分にダークモード適用
+  const courseDivPath = "#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2)";
+  classCSSPatcher($(courseDivPath), "background-color: #000000; border: solid #7d7d7d !important;", null, 2);
+  //受講のオンオフの部分の効果の色を変更
+  classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)"), "background: #202124; box-shadow: #202124 0px -12px 12px;");
+  //受講を止めるボタンがない場合への対応
+  if ($(courseDivPath + " > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div > div > button").length) {
+    classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div > div > button"), "background-color: #2f0000; border-color: #7d7d7d;");
+  }
+
+  //章のリンクの部分にダークモード適用
+  classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a > div"), "background-color: #000000; border-width: 0px 0px 1px 1px; color: #e8e8e8;");
+  classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a > div"), "background-color: #383838;", "hover");
 }
 
 function applyDarkForumPage() {
