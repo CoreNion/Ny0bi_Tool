@@ -26,9 +26,10 @@
       "all_frames": true,
       "js": [
         "library/jquery-3.5.1.min.js",
-        "afterEvent.js",
-        "applyDarkNewHome.js",
-        "afterLoad.js"
+        "applyDarkPage/Utilities.js",
+        "applyDarkPage/Content.js",
+        "applyDarkPage/Home.js",
+        "content.js"
       ]
     }
   ],

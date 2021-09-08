@@ -1,63 +1,10 @@
 'use strict';
 
-//ページがロードされた後に実行するもの
-$(window).on("load", function () {
-  //localのsetDarkMode値を取得
-  chrome.storage.local.get("setDarkMode", function (data) {
-    //初回起動などで設定したことが無いなどの理由でundefinedな場合は有効化
-    if (data.setDarkMode == undefined) {
-      chrome.storage.local.set({ 'setDarkMode': true });
-      applyDarkMode();
-    } else if (data.setDarkMode) {
-      applyDarkMode();
-    }
-  });
-});
-
-/**
- * N予備校のページをダークモードにする関数
- */
-function applyDarkMode() {
-  //URlのパスを取得
-  const path = location.pathname;
-
-  if (path.match(/guides\/\d+\/content/)) {
-    applyDarkTextPage(false);
-  } else if (path.match(/guides|evaluation_tests|essay_tests|evaluation_reports|essay_reports/)) {
-    applyDarkGuidePage(false);
-  } else if (path.match(/references/)) {
-    applyDarkGuidePage(true);
-  } else if (path.match(/movies/)) {
-    applyMovieDarkPage();
-  } else if (path.match(/links/)) {
-    applyDarkGuidePage(false);
-  } else if (path.match(/chapters\/\d+/)) {
-    applyDarkChapterPage();
-  } else if (path.match(/lessons\/\d+/)) {
-    applyDarkLessonPage();
-  } else if (path.match(/short_tests/)) {
-    applyDarkChapterPage();
-  } else if (path.match(/short_test_sets/)) {
-    applyDarkGuidePage(true);
-  } else if (path.match(/short_test_sessions/)) {
-    applyDarkTestPage();
-  } else if (path.match(/setting\/profile/)) {
-    applyDarkProfileSettingPage();
-  } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile|courses/)) {
-    //新ホーム対応作業はapplyDarkNewHome.js内で行う
-    //ホーム画面へのダークモード適用のコードは長いので、作業が終わってもこのjsとは分離させる予定
-    applyDarkNewHomeCentor();
-    URLTracker();
-  }
-
-  chrome.storage.local.set({ 'nowPage': path });
-}
-
 /**
  * 教材のページとテスト開始前のページにダークモードを適用する関数
  */
 function applyDarkChapterPage() {
-  console.log("Ny0bi_dark:load applyDarkChapterPage()");
+  console.log("Ny0bi_Tool:load applyDarkChapterPage()");
 
   const body = $("body");
   body.css({ "background-color": "#000000", "color": "#e8e8e8" });
@@ -99,7 +46,7 @@ function applyDarkChapterPage() {
  * 授業のページにダークモードを適用する関数
  */
 function applyDarkLessonPage() {
-  console.log("Ny0bi_dark:load applyDarkLessonPage()");
+  console.log("Ny0bi_Tool:load applyDarkLessonPage()");
 
   const body = $("body");
   body.css({ "background-color": "#000000", "color": "#e8e8e8" });
@@ -136,7 +83,7 @@ function applyDarkLessonPage() {
  * @param {boolean} needDarkBackColor BackgroundColorをグレーにするか
  */
 function applyDarkGuidePage(needDarkBackColor) {
-  console.log("Ny0bi_dark:load applyDarkGuidePage()");
+  console.log("Ny0bi_Tool:load applyDarkGuidePage()");
   const body = $("body");
 
   //applyDarkTextPageで処理できるものならそちらの関数を利用
@@ -190,7 +137,7 @@ function applyDarkGuidePage(needDarkBackColor) {
  * @param {boolean} needGrayPage 背景がグレーなダークモードが必要か(授業のページ用)
  */
 function applyDarkTextPage(needGrayPage) {
-  console.log("Ny0bi_dark:load applyDarkTextPage()");
+  console.log("Ny0bi_Tool:load applyDarkTextPage()");
   const body = $("body");
   let back_color = null;
 
@@ -330,13 +277,13 @@ function applyMovieDarkPage() {
  * テストのページにダークモードを適用する
  */
 function applyDarkTestPage() {
-  console.log("Ny0bi_dark:load applyDarkTestPage()");
+  console.log("Ny0bi_Tool:load applyDarkTestPage()");
   $("body").css({ "background-color": "#000", "color": "#e8e8e8" });
   const path = location.pathname;
 
   //習熟度テストの結果のページの埋め込み用
   if (path.match(/contents/)) {
-    console.log("Ny0bi_dark:Detection of embedded proficiency test results.");
+    console.log("Ny0bi_Tool:Detection of embedded proficiency test results.");
     $(".p-short-test-review").css("background-color", "#222222");
     //総評の背景の色を変更
     $(".review").css("background-color", "rgb(255 236 0 / 30%)");
@@ -397,7 +344,7 @@ function applyDarkTestPage() {
  * プロフィール設定のページをダークモードにする関数(profile系のページはsettingと仕様が異なるため別関数化)
  */
 function applyDarkProfileSettingPage() {
-  console.log("Ny0bi_dark:load applyDarkProfileSettingPage()");
+  console.log("Ny0bi_Tool:load applyDarkProfileSettingPage()");
   const body = $("body").css({ "background-color": "#000000", "color": "#e8e8e8" });
 
   //上部のバーにダークモード適用
