@@ -19,7 +19,18 @@ N予備校をダークモードにする拡張機能です！ ※このツール
 - 生放送
 - 教材
 - 習熟度テスト
-- ホーム
+- ホーム **(v1.1.0より新ホーム対応)**
+  - ジャンル
+  - コース詳細
+  - マイコース
+  - フォーラム
+  - 授業
+  - 通知
+  - 設定
+
+# 現在開発中の機能
+- Node.js + webextension-toolboxでの管理に移行
+  - これにより拡張性が上がる他、他ブラウザへの移植も大変容易になる(はず)
 
 # [インストール (Chrome Web Store)](https://chrome.google.com/webstore/detail/ny0bi-tool/lkmfjlmabmkedlocaclfgbemmdofjfjg)
 **v1.0より、ついにChrome Web Storeでの配信がスタートしました！**
