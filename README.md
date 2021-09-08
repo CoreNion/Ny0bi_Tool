@@ -14,17 +14,12 @@ N予備校をダークモードにする拡張機能です！ ※このツール
 
 **Issue・Pull Requestsの提出は大歓迎です！！**
 
-# ダークモードに対応しているページ(v1.0.2)
+# ダークモードに対応しているページ(v1.1.0)
 
 - 生放送
 - 教材
 - 習熟度テスト
-- ~~ホーム~~
-
-**[現在、ホームには対応していません](https://github.com/CoreNion/Ny0bi_Tool/issues/3)**
-
-# 現在開発中の機能
-- 新ホームへの対応
+- ホーム
 
 # [インストール (Chrome Web Store)](https://chrome.google.com/webstore/detail/ny0bi-tool/lkmfjlmabmkedlocaclfgbemmdofjfjg)
 **v1.0より、ついにChrome Web Storeでの配信がスタートしました！**
