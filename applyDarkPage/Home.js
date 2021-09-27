@@ -123,7 +123,7 @@ function applyDarkMyCourcePage() {
 
   //コース選択後に出てくる概要を黒くする
   //コースが選択された後にしか出ないので、発火後に要素を探す方式を取る
-  $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a").on("click", () => {
+  const applyDarkOverview = () => $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a").on("click", () => {
     let interval = null;
     interval = setInterval(function () {
       const path = "#root > div > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div > div > ";
@@ -144,7 +144,22 @@ function applyDarkMyCourcePage() {
     setTimeout(function () {
       clearInterval(interval);
     }, 5000);
-  })
+  });
+  applyDarkOverview();
+  
+  //課外授業選択後に概要へのダークモード適用イベントがリセットされるのでその対策
+  $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > ul").on("click", () => { 
+    let interval = null;
+    interval = setInterval(() => {
+      if($("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a").length) {
+        applyDarkOverview();
+        clearInterval(interval);
+      }
+    }, 50);
+    setTimeout(function () {
+      clearInterval(interval);
+    }, 5000);
+  });
 }
 
 function applyDarkCourcePage() {
