@@ -96,6 +96,9 @@ function applyDarkGenrePage() {
 function applyDarkMyCourcePage() {
   console.log("Ny0bi_Tool:load applyDarkMyCourcePage()");
 
+  //コースが選択されているままリロードされるとダークモードが壊れるので、選択していないページに移動
+  if (location.search) location.replace("https://www.nnn.ed.nico/my_course");
+
   //ページタイトルと概要を黒くする
   const pageInfo = $("#root > div > div > div > div:nth-child(1) > div:nth-child(1)");
   pageInfo.find("h1").css("color", "#e8e8ff");
@@ -146,12 +149,12 @@ function applyDarkMyCourcePage() {
     }, 5000);
   });
   applyDarkOverview();
-  
+
   //課外授業選択後に概要へのダークモード適用イベントがリセットされるのでその対策
-  $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > ul").on("click", () => { 
+  $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > ul").on("click", () => {
     let interval = null;
     interval = setInterval(() => {
-      if($("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a").length) {
+      if ($("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a").length) {
         applyDarkOverview();
         clearInterval(interval);
       }
