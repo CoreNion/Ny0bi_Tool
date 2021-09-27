@@ -102,6 +102,9 @@ function applyDarkMyCourcePage() {
   pageInfo.find("a,div").css("color", "#e8e8e8");
 
   //コースリストを黒くする
+  //リストの背景色
+  classCSSPatcher($("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div"), "background-color: #000000;");
+  //リンク
   const courceLink = $("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a > div");
   classCSSPatcher(courceLink, "background-color: #202124 !important; color: #FFFFFF !important; border-color: #2f2f2f !important;", null, 6);
   //触れた時の背景色を変更
