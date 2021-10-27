@@ -32,14 +32,14 @@ function applyDarkNewHomePage() {
   //「コースを探す」の文字色
   classCSSPatcher($(courseListPath + " > div:nth-child(2)"), "color: #dadada;");
   //必修授業/課外授業表記とコース名の文字色
-  classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(1) > h2"), "color: #e8e8e8;");
+  classCSSPatcher($(courseListPath + " > div:nth-child(3) > button > h2"), "color: #e8e8e8;");
   classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h3"), "color: #e8e8e8;");
 
   //右側の各h1タイトルにダークモード適用
   classCSSPatcher($("#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(1) > h1"), "color: #FFFFFF;");
 
   //各コース/途中再開の部分にダークモード適用
-  const coursechapterLinkPath = "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > div > a > div";
+  const coursechapterLinkPath = "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > a > div";
   //コース名
   classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(1) > div:nth-child(4) > div"), "background-color: #202124cc; color: #e8e8e8;");
   //教材名や最終閲覧日時などが書かれている部分の背景色
@@ -80,7 +80,7 @@ function applyDarkGenrePage() {
   //「コースを探す」の文字色
   classCSSPatcher($(courseListPath + " > div:nth-child(2)"), "color: #dadada;");
   //必修授業/課外授業表記とコース名の文字色
-  classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(1) > h2"), "color: #e8e8e8;");
+  classCSSPatcher($(courseListPath + " > div:nth-child(3) > button >  h2"), "color: #e8e8e8;");
   classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h3"), "color: #e8e8e8;");
 
   //科目の部分にダークモード適用
