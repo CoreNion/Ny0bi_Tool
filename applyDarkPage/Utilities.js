@@ -22,7 +22,7 @@ function URLTracker() {
         } else if (path.match(/lessons/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > a");
         } else if (path.match(/home/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > a > div > div:nth-child(2) > div:nth-child(3) > div > div");
+          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div > a > div > div:nth-child(2) > div:nth-child(3) > div > div");
         } else if (path.match(/genres/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > h1")
         } else if (path.match(/setting/)) {
@@ -32,7 +32,7 @@ function URLTracker() {
         } else if (path.match(/package/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > ul:nth-child(2) > li > a");
         } else if (path.match(/my_course/)) {
-          Home_needElementSearcher("#root > div > div > div > div:nth-child(1) > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > a > div");
+          Home_needElementSearcher("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > button");
         } else if (path.match(/courses/)) {
           Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a:nth-child(1)");
         } else {
