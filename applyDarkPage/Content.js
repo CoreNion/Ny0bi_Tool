@@ -250,6 +250,8 @@ function applyDarkTextPage(needGrayPage) {
   $("head").append('<style>.component-audio-player-icon, .component-audio-player-play-pause:before, .component-audio-player-play-stop, .component-audio-player-fixed-button-rewind, .component-audio-player-fixed-button-play-pause, .component-audio-player-fixed-icon, .component-audio-player-fixed-button-playback-rate, .component-audio-player-fixed-close { background-color: transparent !important; filter: invert(1); }</style>');
   //触れた時の色を変更
   $("head").append('<style>.component-audio-player:hover { background-color: #383838; }</style>');
+  //灰色な背景色の部分の色を変更
+  body.find("div.global--wrapper .global--text-highlight_gray").css("background-color", "#505050");
 }
 
 /**
