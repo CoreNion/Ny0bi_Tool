@@ -1,14 +1,15 @@
-'use strict';
+import $ from "jquery"
+import { classCSSPatcher } from "./content";
 
 /**
  * ホーム系のページにおいて、URLの変更を検知し、検知後にapplyDarkHomePageを実行する関数
  */
-function URLTracker() {
+export function URLTracker() {
   const HTMLbody = $("body")[0];
 
   //bodyの中身に変化があったときに実行
   const observer = new MutationObserver(records => {
-    chrome.storage.local.get("nowPage", function (data) {
+    chrome.storage.local.get("nowPage", function (data: any) {
       const path = location.pathname;
       //URLが変わった時に実行するもの
       if (!(data.nowPage == path)) {
@@ -52,13 +53,14 @@ function URLTracker() {
 /**
  *  [Home系ページ用] 入力されたパスにelementが作られた時に、applyDarkHomePage()を実行する関数 
  */
-function Home_needElementSearcher(obj) {
-  let interval = null;
+ export function Home_needElementSearcher(obj: any) {
+  let interval: any = null;
   let err = false;
   //100ms毎に存在するか確認、存在するか10秒待っても出なかったら停止
   interval = setInterval(function () {
     if ($(obj).length) {
       try {
+        // @ts-expect-error ts-migrate(2304) FIXME: Cannot find name 'applyDarkNewHomeCentor'.
         applyDarkNewHomeCentor();
       } catch { err = true; }
       if (!err) {
@@ -74,22 +76,23 @@ function Home_needElementSearcher(obj) {
 /**
  * 上部のバーにダークモードを適用する関数
  */
-function applyDarkTopBar() {
+ export function applyDarkTopBar() {
   const topBar = $("#root > div > div > div").eq(0);
 
   //ダークモード適用
   const apply = () => {
-    classCSSPatcher(topBar, "background-color: #222222;");
+    
+    classCSSPatcher(topBar, "background-color: #222222;",false,false);
     //各種リンクの文字色を白にする
     const topBarButtons = topBar.find("div > div > div > a");
     topBarButtons.css("color", "#FFFFFF");
-    classCSSPatcher(topBarButtons,"color: #FFFFFF");
+    classCSSPatcher(topBarButtons,"color: #FFFFFF",false,false);
     //アカウント設定などが選択できる場所にダークモード適用
     const userProfile = topBar.find("div > div > div > div").eq(3);
-    classCSSPatcher(userProfile, "background-color: #202124;");
-    classCSSPatcher(userProfile.find("div:nth-child(1)"), "color: #FFFFFF;");
-    classCSSPatcher(userProfile.find("div:nth-child(2) > a"), "background-color: #383838;", "hover");
-    classCSSPatcher(userProfile.find("div:nth-child(3) > a"), "background-color: #383838;", "hover");
+    classCSSPatcher(userProfile, "background-color: #202124;",false,false);
+    classCSSPatcher(userProfile.find("div:nth-child(1)"), "color: #FFFFFF;",false,false); 
+    classCSSPatcher(userProfile.find("div:nth-child(2) > a"), "background-color: #383838;", "hover",false);
+    classCSSPatcher(userProfile.find("div:nth-child(3) > a"), "background-color: #383838;", "hover",false);
   }
   //初回実行
   apply();

@@ -1,9 +1,9 @@
-'use strict';
+import $ from "jquery"
 
 /**
  * 教材のページとテスト開始前のページにダークモードを適用する関数
  */
-function applyDarkChapterPage() {
+export function applyDarkChapterPage() {
   console.log("Ny0bi_Tool:load applyDarkChapterPage()");
 
   const body = $("body");
@@ -45,7 +45,7 @@ function applyDarkChapterPage() {
 /**
  * 授業のページにダークモードを適用する関数
  */
-function applyDarkLessonPage() {
+export function applyDarkLessonPage() {
   console.log("Ny0bi_Tool:load applyDarkLessonPage()");
 
   const body = $("body");
@@ -82,7 +82,7 @@ function applyDarkLessonPage() {
  * テキストや問題などにダークモードを適用する関数
  * @param {boolean} needDarkBackColor BackgroundColorをグレーにするか
  */
-function applyDarkGuidePage(needDarkBackColor) {
+export function applyDarkGuidePage(needDarkBackColor: any) {
   console.log("Ny0bi_Tool:load applyDarkGuidePage()");
   const body = $("body");
 
@@ -136,7 +136,7 @@ function applyDarkGuidePage(needDarkBackColor) {
  * テキストや問題などにダークモードを適用する関数
  * @param {boolean} needGrayPage 背景がグレーなダークモードが必要か(授業のページ用)
  */
-function applyDarkTextPage(needGrayPage) {
+export function applyDarkTextPage(needGrayPage: any) {
   console.log("Ny0bi_Tool:load applyDarkTextPage()");
   const body = $("body");
   let back_color = null;
@@ -257,7 +257,7 @@ function applyDarkTextPage(needGrayPage) {
 /**
  * 教材の動画のページにダークモードを設定する
  */
-function applyMovieDarkPage() {
+export function applyMovieDarkPage() {
   //動画のページはGuideにあるテキストと構成が同じだが、何故かクラスが難読化されているので区切りを利用して検索する
   const body = $("body");
 
@@ -278,7 +278,7 @@ function applyMovieDarkPage() {
 /**
  * テストのページにダークモードを適用する
  */
-function applyDarkTestPage() {
+export function applyDarkTestPage() {
   console.log("Ny0bi_Tool:load applyDarkTestPage()");
   $("body").css({ "background-color": "#000", "color": "#e8e8e8" });
   const path = location.pathname;
@@ -315,6 +315,7 @@ function applyDarkTestPage() {
     }
 
     //習熟度テストの名前の部分を黒くする
+    // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 2.
     classCSSPatcher(centorContents.find("div > div"), "background-color: #202124; border-bottom: 1px solid rgb(255 255 255 / 30%);");
 
     //上のバーにダークモードを適用
@@ -329,9 +330,12 @@ function applyDarkTestPage() {
     //下のバーにダークモードを適用
     if (inResultPage) {
       //背景にダークモードを適用
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 2.
       classCSSPatcher(bottomBar, "background-color: #222222;");
       //ボタンを黒くする
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 2.
       classCSSPatcher(bottomBar.find("button"), "background-color: #505050; color:#95c0ff;");
+      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 2.
       classCSSPatcher(bottomBar.find("a"), "background-color: #505050; color: #95c0ff;");
     } else {
       //下のバーを黒くする
@@ -345,7 +349,7 @@ function applyDarkTestPage() {
 /**
  * プロフィール設定のページをダークモードにする関数(profile系のページはsettingと仕様が異なるため別関数化)
  */
-function applyDarkProfileSettingPage() {
+export function applyDarkProfileSettingPage() {
   console.log("Ny0bi_Tool:load applyDarkProfileSettingPage()");
   const body = $("body").css({ "background-color": "#000000", "color": "#e8e8e8" });
 
@@ -377,7 +381,7 @@ function applyDarkProfileSettingPage() {
  * @param {string} pseudoClass 疑似クラス(必要な場合のみ, ":"は不要)
  * @param {number} classNumber 何番目のクラスに適用するかの値(手動指定する場合のみ、デフォルトは最後尾(最優先のクラス))
  */
-function classCSSPatcher(element, property, pseudoClass, classNumber) {
+export function classCSSPatcher(element: any, property: any, pseudoClass: any, classNumber: any) {
   //所属しているクラス一覧を取得し、クラス名の一文字目に.を付け、配列化
   const elementClassArrary = ("." + element.attr("class").split(' ').join(' .')).split(' ');
 

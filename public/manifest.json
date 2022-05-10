@@ -1,6 +1,6 @@
 {
   "name": "Ny0bi Tool",
-  "version": "1.1.3",
+  "version": "2.0.0",
   "manifest_version": 3,
   "description": "N予備校をダークモードにするChrome拡張機能。",
   "icons": {
@@ -15,7 +15,7 @@
       "128": "icons/icon128.png"
     },
     "default_title": "Ny0bi Toolの設定",
-    "default_popup": "toolbarPopup/popup.html"
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {
@@ -25,10 +25,6 @@
       ],
       "all_frames": true,
       "js": [
-        "library/jquery-3.5.1.min.js",
-        "applyDarkPage/Utilities.js",
-        "applyDarkPage/Content.js",
-        "applyDarkPage/Home.js",
         "content.js"
       ]
     }

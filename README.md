@@ -43,3 +43,5 @@ Ny0bi Toolは、**Apache License Version 2.0**の下で利用してください�
 
 - CSS Checkbox Library 1.5.2
   - CSS Checkbox LibraryはMIT Licenseです。[リポジトリ](https://github.com/hunzaboy/CSS-Checkbox-Library)
+
+This project was bootstrapped with [Chrome Extension CLI](https://github.com/dutiyesh/chrome-extension-cli)

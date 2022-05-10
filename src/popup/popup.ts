@@ -1,7 +1,20 @@
-//DOMがロードされた後に実行するもの
+'use strict';
+import './popup.css';
+import 'css-checkbox-library';
+import $ from "jquery";
+import { render as gbRender } from 'github-buttons'
+
+const gbDefaultOption = { "data-size": "large", "data-color-scheme": "no-preference: dark; light: dark; dark: dark;" };
+// GitHub Buttonsのアイコンを設定
+gbRender(Object.assign(gbDefaultOption, { "href": "https://github.com/CoreNion/Ny0bi_Tool", "data-text": "Repository" }),
+  (el) => $("#repoLink").append($(el)));
+gbRender(Object.assign(gbDefaultOption, { "href": "https://github.com/CoreNion/Ny0bi_Tool/issues/", "data-text": "Issues", "data-icon": "octicon-issue-opened" }),
+  (el) => $("#issuesLink").append($(el)));
+
+
 $(function () {
   //ストレージから各種情報を取得
-  chrome.storage.local.get(["setDarkMode"], function (data) {
+  chrome.storage.local.get(["setDarkMode"], function (data: any) {
     //拡張機能が有効かどうか確認し、チェックボックスに反映
     if (data.setDarkMode) {
       $("input[name=darkmodeSwitcher]").prop("checked", true);

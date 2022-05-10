@@ -1,8 +1,9 @@
-'use strict';
+import $ from "jquery"
+import { applyDarkChapterPage, applyDarkGuidePage, applyDarkLessonPage, applyDarkProfileSettingPage, applyDarkTestPage, applyDarkTextPage, applyMovieDarkPage } from "./page-changer/content";
 
 $(window).on("load", function () {
   //localのsetDarkMode値を取得
-  chrome.storage.local.get("setDarkMode", function (data) {
+  chrome.storage.local.get("setDarkMode", function (data: any) {
     //初回起動などで設定したことが無いなどの理由でundefinedな場合は有効化
     if (data.setDarkMode == undefined) {
       chrome.storage.local.set({ 'setDarkMode': true });

@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="popup.css">
-  <link rel="stylesheet" href="../library/checkboxes.min.css">
   <title>Ny0bi Tool Menu</title>
 </head>
 
@@ -26,13 +25,12 @@
   </p>
 
   <h3>この拡張機能について</h3>
-  <p>
+  <div style="margin: 10px">
     <span style="font-size: 15px;">Version:<span id="version"></span></span>
     <br>
+
     <!-- Github Repository -->
-    <a class="github-button" href="https://github.com/CoreNion/Ny0bi_Tool"
-      data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large"
-      aria-label="Star CoreNion/Ny0bi_Tool on GitHub">GitHub Repository</a>
+    <div id="repoLink"></div>
     <!-- Slack Channel -->
     <a href="https://n-highschool.slack.com/archives/C01UTQK4ZSQ" class="snsButton" id="slackChannel" target="_blank"
       rel="noopener noreferrer">(N/S高生用) Ny0bi ToolのSlackチャンネル</a>
@@ -41,17 +39,12 @@
     <span style="font-size: 13px;"><b>不具合や意見などの報告用のリンク</b></span>
     <br>
     <!-- Issues -->
-    <a class="github-button" href="https://github.com/CoreNion/Ny0bi_Tool/issues"
-      data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-issue-opened"
-      data-size="large" aria-label="Issue CoreNion/Ny0bi_Tool on GitHub">GitHub Issues</a>
+    <div id="issuesLink"></div>
     <!-- Google Forms  -->
     <a href="https://forms.gle/o3o4ccZ11Qb6gCiSA" class="snsButton" id="googleForms" target="_blank"
       rel="noopener noreferrer">不具合や意見の報告(フォーム)</a>
+</div>
 
-  </p>
-
-  <script src="../library/jquery-3.5.1.min.js"></script>
-  <script async defer src="../library/github-buttons.js"></script>
   <script src="popup.js"></script>
 </body>
 

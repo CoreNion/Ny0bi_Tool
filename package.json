@@ -1,0 +1,32 @@
+{
+  "name": "ny0bi-tool",
+  "version": "2.0.0",
+  "description": "N予備校をダークモードにするChrome拡張機能。",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/CoreNion/Ny0bi_Tool",
+  "scripts": {
+    "watch": "webpack --mode=development --watch --config config/webpack.config.js",
+    "build": "webpack --mode=production --config config/webpack.config.js"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.181",
+    "@types/jquery": "^3.5.14",
+    "@types/node": "^17.0.31",
+    "copy-webpack-plugin": "^6.4.1",
+    "css-loader": "^4.3.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^0.10.1",
+    "size-plugin": "^2.0.2",
+    "ts-loader": "^8.3.0",
+    "ts-migrate": "^0.1.28",
+    "typescript": "^4.6.3",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "css-checkbox-library": "^1.5.2",
+    "github-buttons": "^2.21.1",
+    "jquery": "^3.6.0"
+  }
+}
