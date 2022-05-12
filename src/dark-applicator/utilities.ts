@@ -1,5 +1,34 @@
 import $ from "jquery"
-import { classCSSPatcher } from "./content";
+
+/**
+ * Elementが所属しているクラスのCSSの変更を恒久的に適用する関数
+ * 
+ * @param {JQuery<HTMLElement>} element 変更したいHTMLElement
+ * @param {string} property CSSの内容({}は不要)
+ * @param {string} pseudoClass 疑似クラス(必要な場合のみ, ":"は不要)
+ * @param {number} classNumber 何番目のクラスに適用するかの値(手動指定する場合のみ、デフォルトは最後尾(最優先のクラス))
+ */
+ export function classCSSPatcher(element: any, property: any, pseudoClass: any, classNumber: any) {
+  //所属しているクラス一覧を取得し、クラス名の一文字目に.を付け、配列化
+  const elementClassArrary = ("." + element.attr("class").split(' ').join(' .')).split(' ');
+
+  //クラスの番号を決定する
+  let className = null;
+  if (classNumber) {
+    className = elementClassArrary[classNumber];
+  } else {
+    //指定されていない場合は最後尾(最優先)のクラスに設定する
+    className = elementClassArrary[elementClassArrary.length - 1]
+  }
+
+  //headにstyleを追加
+  if (pseudoClass) {
+    //疑似クラスが必要な場合
+    $("head").append("<style> " + className + ":" + pseudoClass + " { " + property + " }</style>");
+  } else {
+    $("head").append("<style> " + className + " { " + property + " }</style>");
+  }
+}
 
 /**
  * ホーム系のページにおいて、URLの変更を検知し、検知後にapplyDarkHomePageを実行する関数

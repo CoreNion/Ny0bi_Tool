@@ -1,5 +1,8 @@
-import $ from "jquery"
-import { applyDarkChapterPage, applyDarkGuidePage, applyDarkLessonPage, applyDarkProfileSettingPage, applyDarkTestPage, applyDarkTextPage, applyMovieDarkPage } from "./page-changer/content";
+import $ from "jquery";
+import ContentApplicator from "./dark-applicator/pages/content";
+import CourceApplicator from "./dark-applicator/pages/cource";
+import HomeApplicator from "./dark-applicator/pages/home";
+import { applyDarkTopBar, URLTracker } from "./dark-applicator/utilities";
 
 $(window).on("load", function () {
   //localのsetDarkMode値を取得
@@ -18,34 +21,55 @@ $(window).on("load", function () {
  * N予備校のページをダークモードにする関数
  */
 function applyDarkMode() {
+  console.log("\x1b[44m\x1b[33mDark mode by Ny0bi Tool\x1b[0m");
+
   //URlのパスを取得
   const path = location.pathname;
 
   if (path.match(/guides\/\d+\/content/)) {
-    applyDarkTextPage(false);
+    ContentApplicator.textPage(false);
   } else if (path.match(/guides|evaluation_tests|essay_tests|evaluation_reports|essay_reports/)) {
-    applyDarkGuidePage(false);
+    ContentApplicator.guidePage(false);
   } else if (path.match(/references/)) {
-    applyDarkGuidePage(true);
+    ContentApplicator.guidePage(true);
   } else if (path.match(/movies/)) {
-    applyMovieDarkPage();
+    ContentApplicator.moviePage();
   } else if (path.match(/links/)) {
-    applyDarkGuidePage(false);
+    ContentApplicator.guidePage(false);
   } else if (path.match(/chapters\/\d+/)) {
-    applyDarkChapterPage();
+    CourceApplicator.chapterPage();
   } else if (path.match(/lessons\/\d+/)) {
-    applyDarkLessonPage();
+    CourceApplicator.lessonPage();
   } else if (path.match(/short_tests/)) {
-    applyDarkChapterPage();
+    CourceApplicator.chapterPage();
   } else if (path.match(/short_test_sets/)) {
-    applyDarkGuidePage(true);
+    ContentApplicator.guidePage(true);
   } else if (path.match(/short_test_sessions/)) {
-    applyDarkTestPage();
+    CourceApplicator.testPage();
   } else if (path.match(/setting\/profile/)) {
-    applyDarkProfileSettingPage();
+    CourceApplicator.profilePage();
   } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile|courses/)) {
-    //applyDarkNewHomeCentor();
-    //URLTracker();
+    $("body").css({ "background-color": "#000", "color": "#e8e8e8" });
+
+    if (path.match(/home/)) {
+      HomeApplicator.topPage();
+    } else if (path.match(/genres/)) {
+      HomeApplicator.genrePage();
+    } else if (path.match(/my_course/)) {
+      HomeApplicator.myCourcePage();
+    } else if (path.match(/courses/)) {
+      HomeApplicator.courcePage();
+    } else if (path.match(/questions/)) {
+      HomeApplicator.forumPage();
+    } else if (path.match(/lessons/)) {
+      HomeApplicator.lessonListPage();
+    } else if (path.match(/notices/)) {
+      HomeApplicator.noticesPage();
+    } else if (path.match(/setting/)) {
+      HomeApplicator.settingPage();
+    }
+    applyDarkTopBar();
+    URLTracker();
   }
 
   chrome.storage.local.set({ 'nowPage': path });
