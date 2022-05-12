@@ -8,7 +8,7 @@ export default class ContentApplicator {
  * テキストや問題などにダークモードを適用する関数
  * @param {boolean} needDarkBackColor BackgroundColorをグレーにするか
  */
-  static guidePage(needDarkBackColor: any) {
+  static guidePage(needDarkBackColor: boolean) {
     console.log("Ny0bi_Tool: Detect guide page");
     const body = $("body");
 
@@ -62,7 +62,7 @@ export default class ContentApplicator {
    * テキストや問題などにダークモードを適用する関数
    * @param {boolean} needGrayPage 背景がグレーなダークモードが必要か(授業のページ用)
    */
-  static textPage(needGrayPage: any) {
+  static textPage(needGrayPage: boolean) {
     console.log("Ny0bi_Tool: Detect text page");
     const body = $("body");
     let back_color = null;

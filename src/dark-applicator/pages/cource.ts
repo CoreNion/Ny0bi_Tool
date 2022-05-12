@@ -1,4 +1,5 @@
 import $ from "jquery";
+import { classCSSPatcher } from "../utilities";
 
 /**
  * コース系のページにダークモードを適用するクラス
@@ -122,8 +123,7 @@ export default class CourceApplicator {
       }
 
       //習熟度テストの名前の部分を黒くする
-      // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 2.
-      classCSSPatcher(centorContents.find("div > div"), "background-color: #202124; border-bottom: 1px solid rgb(255 255 255 / 30%);");
+      classCSSPatcher(centorContents.find("div > div"), "background-color: #202124; border-bottom: 1px solid rgb(255 255 255 / 30%);", null, null);
 
       //上のバーにダークモードを適用
       topBar.css("background-color", "#222222");
@@ -137,13 +137,10 @@ export default class CourceApplicator {
       //下のバーにダークモードを適用
       if (inResultPage) {
         //背景にダークモードを適用
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 2.
-        classCSSPatcher(bottomBar, "background-color: #222222;");
+        classCSSPatcher(bottomBar, "background-color: #222222;", null, null);
         //ボタンを黒くする
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 2.
-        classCSSPatcher(bottomBar.find("button"), "background-color: #505050; color:#95c0ff;");
-        // @ts-expect-error ts-migrate(2554) FIXME: Expected 4 arguments, but got 2.
-        classCSSPatcher(bottomBar.find("a"), "background-color: #505050; color: #95c0ff;");
+        classCSSPatcher(bottomBar.find("button"), "background-color: #505050; color:#95c0ff;", null, null);
+        classCSSPatcher(bottomBar.find("a"), "background-color: #505050; color: #95c0ff;", null, null);
       } else {
         //下のバーを黒くする
         bottomBar.css("background-color", "#222222");

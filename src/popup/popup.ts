@@ -14,7 +14,7 @@ gbRender(Object.assign(gbDefaultOption, { "href": "https://github.com/CoreNion/N
 
 $(function () {
   //ストレージから各種情報を取得
-  chrome.storage.local.get(["setDarkMode"], function (data: any) {
+  chrome.storage.local.get(["setDarkMode"], data => {
     //拡張機能が有効かどうか確認し、チェックボックスに反映
     if (data.setDarkMode) {
       $("input[name=darkmodeSwitcher]").prop("checked", true);
@@ -28,7 +28,7 @@ $(function () {
 });
 
 //拡張機能の有効/無効化ボタンが押された時の動作
-$("input[name=darkmodeSwitcher]").on("change", function () {
+$("input[name=darkmodeSwitcher]").on("change", data => {
   if ($("input[name=darkmodeSwitcher]").prop("checked")) {
     //有効化状態を保存
     chrome.storage.local.set({ 'setDarkMode': true });

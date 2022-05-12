@@ -6,12 +6,13 @@ import { applyDarkTopBar, URLTracker } from "./dark-applicator/utilities";
 
 $(window).on("load", function () {
   //localのsetDarkMode値を取得
-  chrome.storage.local.get("setDarkMode", function (data: any) {
+  chrome.storage.local.get("setDarkMode", async data => {
     //初回起動などで設定したことが無いなどの理由でundefinedな場合は有効化
     if (data.setDarkMode == undefined) {
-      chrome.storage.local.set({ 'setDarkMode': true });
-      applyDarkMode();
-    } else if (data.setDarkMode) {
+      await chrome.storage.local.set({ 'setDarkMode': true });
+    }
+    if (data.setDarkMode) {
+      console.log("\x1b[44m\x1b[33mDark mode by Ny0bi Tool\x1b[0m");
       applyDarkMode();
     }
   });
@@ -20,9 +21,7 @@ $(window).on("load", function () {
 /**
  * N予備校のページをダークモードにする関数
  */
-function applyDarkMode() {
-  console.log("\x1b[44m\x1b[33mDark mode by Ny0bi Tool\x1b[0m");
-
+export function applyDarkMode() {
   //URlのパスを取得
   const path = location.pathname;
 
