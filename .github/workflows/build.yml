@@ -4,7 +4,6 @@ on:
   push:
     branches: [ develop ]
   pull_request:
-    branches: [ ** ]
   workflow_dispatch:
 
 jobs:
@@ -22,6 +21,6 @@ jobs:
       - run: yarn run build-dev
 
       - uses: actions/upload-artifact@v2
-          with:
-            name: extension
-            path: build
+        with:
+          name: extension
+          path: build
