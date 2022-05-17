@@ -9,7 +9,7 @@ export default class HomeApplicator {
     console.log("Ny0bi_Tool: Detect top page");
 
     //左のコース一覧の部分にダークモード適用
-    const courseListPath = "#root > div > div:nth-child(2) > div > div:nth-child(1) > div";
+    const courseListPath = "[role=navigation] > div";
     //背景色
     classCSSPatcher($(courseListPath), "background-color: #1d1d1d; color: #e8e8e8;", null, 2);
     //「コースを探す」の文字色
@@ -19,10 +19,10 @@ export default class HomeApplicator {
     classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h3"), "color: #e8e8e8;", null, null);
 
     //右側の各h1タイトルにダークモード適用
-    classCSSPatcher($("#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(1) > h1"), "color: #FFFFFF;", null, null);
+    classCSSPatcher($("[role=main] > div > div:nth-child(1) > div:nth-child(1) > h1"), "color: #FFFFFF;", null, null);
 
     //各コース/途中再開の部分にダークモード適用
-    const coursechapterLinkPath = "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > a > div";
+    const coursechapterLinkPath = "[role=main] > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > a > div";
     //コース名
     classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(1) > div:nth-child(4) > div"), "background-color: #202124cc; color: #e8e8e8;", null, null);
     //教材名や最終閲覧日時などが書かれている部分の背景色
@@ -36,7 +36,7 @@ export default class HomeApplicator {
     //フォーラムの投稿はページロード後に出るので出現次第適用
     let interval!: NodeJS.Timer;
     interval = setInterval(function () {
-      const forumLinkDivPath = "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(9) > div";
+      const forumLinkDivPath = "[role=main] > div > div:nth-child(9) > div";
       if ($(forumLinkDivPath).length) {
         //背景色
         classCSSPatcher($(forumLinkDivPath), "background-color: #202124;", null, null);
@@ -57,7 +57,7 @@ export default class HomeApplicator {
     console.log("Ny0bi_Tool: Detect genre page()");
 
     //左のコース一覧の部分にダークモード適用
-    const courseListPath = "#root > div > div:nth-child(2) > div > div:nth-child(1) > div";
+    const courseListPath = "[role=navigation] > div";
     //背景色
     classCSSPatcher($(courseListPath), "background-color: #1d1d1d; color: #e8e8e8;", null, 2);
     //「コースを探す」の文字色
@@ -67,7 +67,7 @@ export default class HomeApplicator {
     classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h3"), "color: #e8e8e8;", null, null);
 
     //科目の部分にダークモード適用
-    const subjectPath = "#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(1)";
+    const subjectPath = "[role=main] > div > div:nth-child(2) > div:nth-child(1)";
     //科目タイトルの文字色を変更
     classCSSPatcher($(subjectPath + " > div > h1"), "color: #FFFFFF;", null, null);
     //各コースへのリンクの背景色を変更
@@ -83,12 +83,12 @@ export default class HomeApplicator {
     if (location.search) location.replace("https://www.nnn.ed.nico/my_course");
 
     //ページタイトルと概要を黒くする
-    const pageInfo = $("#root > div > div > div > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)");
+    const pageInfo = $("[role=main] > div > div:nth-child(1)");
     pageInfo.find("h1").css("color", "#e8e8ff");
     pageInfo.find("a,div").css("color", "#e8e8e8");
 
     //リストの背景色を変更
-    classCSSPatcher($("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > div"), "background-color: #000000;", null, null);
+    classCSSPatcher($("[role=main] > div > div:nth-child(2) > div > div > div"), "background-color: #000000;", null, null);
     //コースリストの各色を変更
     const applyDarkCourceList = (courceLink: JQuery<HTMLElement>) => {
       //リンクの色
@@ -104,24 +104,24 @@ export default class HomeApplicator {
     }
 
     //コースのリンクがbuttonに変更になったが、一部aのままの部分もあるので分岐
-    if ($("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > div > div > div > button").length) {
-      applyDarkCourceList($("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > div > div > div > button"));
+    if ($("[role=main] > div > div:nth-child(2) > div > div > div > div > div > button").length) {
+      applyDarkCourceList($("[role=main] > div > div:nth-child(2) > div > div > div > div > div > button"));
     }
-    if ($("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > div > div > div > a").length) {
-      applyDarkCourceList($("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div > div > div > div > div > a > div"));
+    if ($("[role=main] > div > div:nth-child(2) > div > div > div > div > div > a").length) {
+      applyDarkCourceList($("[role=main] > div > div:nth-child(2) > div > div > div > div > div > a > div"));
     }
 
     //最初の「コースを選択してください」の部分を黒くする
-    const rightElement = $("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(2)");
+    const rightElement = $("[role=main] > div > div:nth-child(2) > div:nth-child(2)");
     rightElement.css("background-color", "#202124");
     rightElement.find("div").css("background-color", "#202124");
 
     //コース選択後に出てくる概要を黒くする
     //コースが選択された後にしか出ないので、発火後に要素を探す方式を取る
-    const applyDarkOverview = () => $("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > button").on("click", () => {
+    const applyDarkOverview = () => $("[role=main] > div > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > button").on("click", () => {
       let interval!: NodeJS.Timer
       interval = setInterval(function () {
-        const path = "#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(2) > div > div > ";
+        const path = "[role=main] > div > div:nth-child(2) > div:nth-child(2) > div > div > ";
         if ($(path + "div:nth-child(1) > div:nth-child(2) > div:nth-child(2)").length) {
           //コース概要部の背景色適用
           classCSSPatcher($(path + "div:nth-child(1)"), "background-color: #202124;", null, null);
@@ -146,10 +146,10 @@ export default class HomeApplicator {
     applyDarkOverview();
 
     //課外授業選択後に概要へのダークモード適用イベントがリセットされるのでその対策
-    $("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(1) > div > ul").on("click", () => {
+    $("[role=main] > div > div:nth-child(2) > div:nth-child(1) > div > ul").on("click", () => {
       let interval!: NodeJS.Timer;
       interval = setInterval(() => {
-        if ($("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > button").length) {
+        if ($("[role=main] > div > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > button").length) {
           applyDarkOverview();
           clearInterval(interval);
         }
@@ -164,10 +164,10 @@ export default class HomeApplicator {
     console.log("Ny0bi_Tool: Detect cource page");
 
     //ページタイトルの文字色を変更
-    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color", "#e8e8ff");
+    $("[role=main] > div:nth-child(1) > h1").css("color", "#e8e8ff");
 
     //コース概要の部分にダークモード適用
-    const courseDivPath = "#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2)";
+    const courseDivPath = "[role=main] > div:nth-child(2)";
     classCSSPatcher($(courseDivPath), "background-color: #000000; border: solid #7d7d7d !important;", null, 2);
     //受講のオンオフの部分の効果の色を変更
     classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)"), "background: #202124; box-shadow: #202124 0px -12px 12px;", null, null);
@@ -188,7 +188,7 @@ export default class HomeApplicator {
     /* 旧ホーム用の関数から移植 */
     if (path.match(/questions\/\d+/)) {
       /* スレッドのページにダークモード適用 */
-      const topDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(1)");
+      const topDiv = $("[role=main] > div:nth-child(1)");
       //タイトルの文字色を変更
       topDiv.find("h1").css("color", "#e8e8ff");
       //ガイドを見るボタンにダークモード適用
@@ -197,12 +197,12 @@ export default class HomeApplicator {
       topDiv.find("ul > li > a").css("color", "#FFFFFF");
 
       //コメント数やタグなどが書かれている部分にダークモード適用
-      const postInfo = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)");
+      const postInfo = $("[role=main] > div:nth-child(2) > div:nth-child(1)");
       postInfo.css({ "background-color": "#202124", "border-color": "#404040" });
       postInfo.find("div > div > ul > li").css("background-color", "#ffffff0d");
 
       //スレッドの中身にダークモード適用
-      const threads = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:not(:first-child)");
+      const threads = $("[role=main] > div:nth-child(2) > div:not(:first-child)");
       //質問者の名前と登校時刻の部分にダークモード適用
       classCSSPatcher(threads.find("div:nth-child(2) > div").eq(0), "color: rgb(255 255 255 / 83%);", null, null);
       //質問したい教材の部分にダークモード適用(ある場合のみ)
@@ -236,7 +236,7 @@ export default class HomeApplicator {
       }
 
       //返信を送る部分にダークモード適用
-      const replayArea = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(3)");
+      const replayArea = $("[role=main] > div:nth-child(3)");
       classCSSPatcher(replayArea, "background-color: #202124;", null, null);
       classCSSPatcher(replayArea.find("textarea"), "background-color: #202124; color: #e8e8e8;", null, null);
       classCSSPatcher(replayArea.find("div > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;", null, null);
@@ -254,7 +254,7 @@ export default class HomeApplicator {
     } else {
       /* スレッド一覧のページで、タイトル〜表示する投稿を変更する部分にダークモード適用 */
 
-      const mainDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(1)");
+      const mainDiv = $("[role=main] > div:nth-child(1)");
       //タイトルの文字色を変更
       classCSSPatcher(mainDiv.find("h1"), "color: #e8e8ff;", null, null);
       //ガイドを見るボタンの色を変更
@@ -268,9 +268,9 @@ export default class HomeApplicator {
 
       /* 各投稿の一覧の部分にダークモードを適用 */
       //投稿リストの一番上の境界線を削除
-      classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2)"), "border-style: none;", null, null);
+      classCSSPatcher($("[role=main] > div:nth-child(2)"), "border-style: none;", null, null);
       //一番上のリストの名前にダークモード適用
-      const forumListTitleDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)");
+      const forumListTitleDiv = $("[role=main] > div:nth-child(2) > div:nth-child(1)");
       //全体の背景色や境界線関連の色
       classCSSPatcher(forumListTitleDiv, "background-color: #202124; border-color: #2f2f2f;", null, null);
 
@@ -280,7 +280,7 @@ export default class HomeApplicator {
       }
 
       //フォーラムの各投稿のリンクにダークモード適用 
-      const forumLinkDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)");
+      const forumLinkDiv = $("[role=main] > div:nth-child(2) > div:nth-child(2)");
       //全体の背景色や境界線関連の色
       classCSSPatcher(forumLinkDiv, "background-color: #202124; border-color: #2f2f2f; border-bottom-width: 3px; margin-bottom: 0px;", null, null);
       //リンクに触れた時の背景色色
@@ -292,7 +292,7 @@ export default class HomeApplicator {
       //投稿のタグ
       classCSSPatcher(forumLinkDiv.find("a > div:nth-child(2) > ul > li"), "background-color: #ffffff0d;", null, null);
       //次へボタンなどにダークモードダークモード適用
-      classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > ul > li > button"), "background-color: #222222; color:#6187ff;", null, null);
+      classCSSPatcher($("[role=main] > ul > li > button"), "background-color: #222222; color:#6187ff;", null, null);
 
       //(検索用)検索結果の件数の文字色にダークモード適用
       if (path.match(/search/)) {
@@ -306,7 +306,7 @@ export default class HomeApplicator {
       classCSSPatcher($("form > div > input"), "color: #FFFFFF; background-color: #222222; border-color: #404040;", null, null);
 
       //カテゴリーから探すの部分にダークモード適用
-      const findbyTagDiv = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div:nth-child(3)");
+      const findbyTagDiv = $("[role=complementary] > div:nth-child(3)");
       //全体の背景色と境界線の色を変更
       classCSSPatcher(findbyTagDiv, "background-color: #222222; border-color: #404040;", null, null);
       //「カテゴリーから探す」と書いている部分にダークモード設定
@@ -325,33 +325,33 @@ export default class HomeApplicator {
     const path = location.pathname;
 
     //各授業のリンクの部分にダークモード適用
-    const lesson = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > a > div");
+    const lesson = $("[role=main] > div > a > div");
     classCSSPatcher(lesson, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;", null, null);
     //触れた時の背景色を変更
     classCSSPatcher(lesson, "background-color: #383838", "hover", null);
 
     //ページタイトルの文字色を変更
-    classCSSPatcher($("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > h1"), "color: #e8e8ff;", null, null);
+    classCSSPatcher($("[role=main] > div > h1"), "color: #e8e8ff;", null, null);
 
     if (!(path.match(/search/))) {
       //必修授業・課外授業の選択の部分にダークモード適用(授業一覧のページのみ)
-      const selectWhenLesson = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > ul").eq(0);
+      const selectWhenLesson = $("[role=main] > div > ul").eq(0);
       classCSSPatcher(selectWhenLesson, "background-color: #202124; border-color: #2f2f2f;", null, 2);
       classCSSPatcher(selectWhenLesson.find("a"), "color: #ffffffcc;", "hover", null);
       classCSSPatcher(selectWhenLesson.find("a"), "color: #ffffffcc;", "visited", null);
       //もっと見るの部分にダークモード適用(授業一覧のページのみ)
-      const seeMore = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div");
+      const seeMore = $("[role=main] > div:nth-child(2) > div");
       classCSSPatcher(seeMore, "background-color: #202124;", null, 2);
       const seeMoreButton = seeMore.find("button");
       classCSSPatcher(seeMoreButton, "background-color: #505050; border-color: #cad7ff; color: #cad7ff;", null, null);
     } else {
       //検索結果の部分にダークモード適用
-      const searchResults = $("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div");
+      const searchResults = $("[role=main] > div:nth-child(2) > div");
       classCSSPatcher(searchResults, "background-color: #202124; border-color: #8c8c8c;", null, 2);
       classCSSPatcher(searchResults.find("div > div:nth-child(3) > span:nth-child(1)"), "color: #FFF;", null, null);
     }
     //検索系のところにダークモード適用
-    const rightContents = $("#root > div > div:nth-child(2) > div > div > div:nth-child(2) > div");
+    const rightContents = $("[role=complementary] > div");
     //検索窓をダークにする
     classCSSPatcher(rightContents.find("input"), "color: #FFFFFF; background-color: #222222; border-color: #404040;", null, null);
     //タグのボタンをダークにする
@@ -366,10 +366,10 @@ export default class HomeApplicator {
     console.log("Ny0bi_Tool: Detect notices page");
 
     //ページタイトルの文字色を変更
-    $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > h1").css("color", "#e8e8ff");
+    $("[role=main] > div:nth-child(1) > h1").css("color", "#e8e8ff");
 
     //各通知のリンクの部分にダークモード適用
-    const notice = $("#root > div > div:nth-child(2) > div:nth-child(2) > div > div > a > div");
+    const notice = $("[role=main] > div > a > div");
     classCSSPatcher(notice, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;", null, null);
     //触れた時の背景色を変更
     classCSSPatcher(notice, "background-color: #383838", "hover", null);
@@ -379,10 +379,10 @@ export default class HomeApplicator {
     console.log("Ny0bi_Tool: Detect setting page");
 
     //ページタイトルの文字色を変更
-    classCSSPatcher($("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > h1"), "color: #e8e8ff;", null, null);
+    classCSSPatcher($("[role=main] > div:nth-child(2) > h1"), "color: #e8e8ff;", null, null);
 
     //中央部のメインの設定の色を変更
-    const contentPath = "#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)";
+    const contentPath = "[role=main] > div:nth-child(3)";
     classCSSPatcher($(contentPath), "background-color: #222222; color: #FFFFFF;", null, 2);
     //設定一覧の部分の文字色を変更
     classCSSPatcher($(contentPath + " > ul:nth-child(1) > li > a"), "color: #FFFFFF !important;", null, null);

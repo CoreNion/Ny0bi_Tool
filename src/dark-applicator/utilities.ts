@@ -50,25 +50,23 @@ export function URLTracker() {
         if (path.match(/questions\/new/)) {
           Home_needElementSearcher("form > div > div:nth-child(2) > div:nth-child(1)");
         } else if (path.match(/questions\/\d+/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)");
+          Home_needElementSearcher("[role=main] > div:nth-child(2) > div:nth-child(1)");
         } else if (path.match(/questions/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div:nth-child(2) > div > a");
+          Home_needElementSearcher("[role=main] > div:nth-child(2) > div > a");
         } else if (path.match(/lessons/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div > div:nth-child(1) > div > a");
+          Home_needElementSearcher("[role=main] > div > a");
         } else if (path.match(/home/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div:nth-child(2) > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div > a > div > div:nth-child(2) > div:nth-child(3) > div > div");
+          Home_needElementSearcher("[role=main] > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div > a > div > div:nth-child(2) > div:nth-child(3) > div > div");
         } else if (path.match(/genres/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > h1")
+          Home_needElementSearcher("[role=main] > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div > h1")
         } else if (path.match(/setting/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(3)");
+          Home_needElementSearcher("[role=main] > div:nth-child(3)");
         } else if (path.match(/notices|courses\/\d+\/chapters/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div > a > div");
-        } else if (path.match(/package/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > ul:nth-child(2) > li > a");
+          Home_needElementSearcher("[role=main] > div > a > div");
         } else if (path.match(/my_course/)) {
-          Home_needElementSearcher("#root > div > div > div > div:nth-child(1) > div > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > button");
+          Home_needElementSearcher("[role=main] > div > div:nth-child(2) >  div:nth-child(1) > div > div > div > div > button");
         } else if (path.match(/courses/)) {
-          Home_needElementSearcher("#root > div > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a:nth-child(1)");
+          Home_needElementSearcher("[role=main] > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a:nth-child(1)");
         } else {
           location.reload();
         }
@@ -109,7 +107,7 @@ export function Home_needElementSearcher(obj: String) {
  * 上部のバーにダークモードを適用する関数
  */
 export function applyDarkTopBar() {
-  const topBar = $("#root > div > div > div").eq(0);
+  const topBar = $("[role=banner]");
 
   //ダークモード適用
   const apply = () => {

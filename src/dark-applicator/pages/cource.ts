@@ -57,7 +57,7 @@ export default class CourceApplicator {
     body.css({ "background-color": "#000000", "color": "#e8e8e8" });
 
     //上部のバーにダークモードを設定する
-    const topBar = body.find("#root > div > div > div").eq(0);
+    const topBar = $("[role=banner]");
     topBar.css("background-color", "#292A2D");
     //「N予備校とは」などと書かれている部分の文字/背景色の設定
     topBar.find("ul *,ul").css({ "color": "#8AB4F8", "background-color": "#292A2D" });
@@ -66,7 +66,7 @@ export default class CourceApplicator {
     $("head").append('<style>textarea { background-color: #202124; color: #e8e8e8; }</style>');
 
     //タイトルなどが書かれている部分にダークモードを設定する
-    const titleArea = body.find("#root > div > div > div > div").eq(1).find("article");
+    const titleArea = $("[role=main] > aside > div:nth-child(1) > article");
     titleArea.css("background-color", "#202124");
     titleArea.find("li").css({ "background-color": "rgb(255 255 255 / 17%)", "color": "#cccccc" });
 
