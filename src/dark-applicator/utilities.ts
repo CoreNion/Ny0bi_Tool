@@ -137,3 +137,12 @@ export function applyDarkTopBar() {
     attributeFilter: ['class']
   });
 }
+
+/**
+ * headにstyleを注入する関数
+ * @param {String} selector セレクター
+ * @param {string} style Style
+ */
+export function headStyleInjector(selector:String, style: String) {
+  $("head").append(`<style>${selector} { ${style} }</style>`);
+}

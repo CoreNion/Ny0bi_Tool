@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { classCSSPatcher } from "../utilities";
+import { classCSSPatcher, headStyleInjector } from "../utilities";
 
 /**
  * ホーム系のページにダークモードを適用するクラス
@@ -16,21 +16,19 @@ export default class HomeApplicator {
     classCSSPatcher($(courseListPath + " > div:nth-child(2)"), "color: #dadada;", null, null);
     //必修授業/課外授業表記とコース名の文字色
     classCSSPatcher($(courseListPath + " > div:nth-child(3) > button > h2"), "color: #e8e8e8;", null, null);
-    classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h3"), "color: #e8e8e8;", null, null);
+    classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h2"), "color: #e8e8e8;", null, null);
 
     //右側の各h1タイトルにダークモード適用
-    classCSSPatcher($("[role=main] > div > div:nth-child(1) > div:nth-child(1) > h1"), "color: #FFFFFF;", null, null);
+    classCSSPatcher($("[role=main] > div > div > div:nth-child(1) > h1"), "color: #FFFFFF;", null, null);
 
     //各コース/途中再開の部分にダークモード適用
-    const coursechapterLinkPath = "[role=main] > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div > div:nth-child(1) > div > a > div";
-    //コース名
-    classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(1) > div:nth-child(4) > div"), "background-color: #202124cc; color: #e8e8e8;", null, null);
+    const coursechapterLinkPath = "[role=main] > div > div > div:nth-child(2) > div:nth-child(2) > div > div > div > a > div";
     //教材名や最終閲覧日時などが書かれている部分の背景色
-    classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2)"), "background-color: #202124;", null, null);
+    headStyleInjector(coursechapterLinkPath + " > div:nth-child(2)", "background-color: #202124;");
     //教材名の文字色
-    classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(1)"), "color: #FFFFFF;", null, null);
+    headStyleInjector(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(1)", "color: #FFFFFF;");
     //コース名の文字色
-    classCSSPatcher($(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(2)"), "color: #e0e0e0;", null, null);
+    headStyleInjector(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(2)", "color: #e0e0e0;");
 
     //フォーラムの各投稿の部分にダークモード適用
     //フォーラムの投稿はページロード後に出るので出現次第適用
@@ -64,7 +62,7 @@ export default class HomeApplicator {
     classCSSPatcher($(courseListPath + " > div:nth-child(2)"), "color: #dadada;", null, null);
     //必修授業/課外授業表記とコース名の文字色
     classCSSPatcher($(courseListPath + " > div:nth-child(3) > button >  h2"), "color: #e8e8e8;", null, null);
-    classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h3"), "color: #e8e8e8;", null, null);
+    classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h2"), "color: #e8e8e8;", null, null);
 
     //科目の部分にダークモード適用
     const subjectPath = "[role=main] > div > div:nth-child(2) > div:nth-child(1)";
