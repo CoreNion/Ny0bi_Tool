@@ -133,7 +133,8 @@ export default class HomeApplicator {
           //境界線にダークモード適用
           classCSSPatcher($(path + "div:nth-child(3)"), "border-color: #404040;", null, null);
           //各章のリンクにダークモード適用
-          classCSSPatcher($(path + "div:nth-child(3) > a > div"), "background-color: #202124 !important; color: #FFFFFF !important; border-color: #2f2f2f !important;", null, null);
+          classCSSPatcher($(path + "div:nth-child(3) > a"), "background-color: #202124; color: #FFFFFF !important; border-color: #2f2f2f !important;", null, null);
+          classCSSPatcher($(path + "div:nth-child(3) > a"), "background-color: #383838 !important;", "hover", null);
           clearInterval(interval);
         }
       }, 50);
