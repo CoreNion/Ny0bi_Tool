@@ -283,11 +283,11 @@ export default class HomeApplicator {
       //全体の背景色や境界線関連の色
       classCSSPatcher(forumLinkDiv, "background-color: #202124; border-color: #2f2f2f; border-bottom-width: 3px; margin-bottom: 0px;", null, null);
       //リンクに触れた時の背景色色
-      classCSSPatcher(forumLinkDiv, "background-color: #383838;", "hover", null);
+      classCSSPatcher(forumLinkDiv, "background-color: #383838 !important;", "hover", null);
       //投稿のタイトル以外の文字色
       classCSSPatcher(forumLinkDiv.find("a"), "color: #bbbbbb;", null, null);
       //投稿のタイトルの文字色
-      classCSSPatcher(forumLinkDiv.find("a > div:nth-child(1)"), "color: #e8e8e8;", null, null);
+      classCSSPatcher(forumLinkDiv.find("a > div:nth-child(1) > div:nth-child(1)"), "color: #e8e8e8;", null, null);
       //投稿のタグ
       classCSSPatcher(forumLinkDiv.find("a > div:nth-child(2) > ul > li"), "background-color: #ffffff0d;", null, null);
       //次へボタンなどにダークモードダークモード適用
