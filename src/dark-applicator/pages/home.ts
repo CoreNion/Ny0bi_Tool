@@ -323,21 +323,27 @@ export default class HomeApplicator {
     console.log("Ny0bi_Tool: Detect lesson list page");
     const path = location.pathname;
 
-    //各授業のリンクの部分にダークモード適用
-    const lesson = $("[role=main] > div > a > div");
-    classCSSPatcher(lesson, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;", null, null);
-    //触れた時の背景色を変更
-    classCSSPatcher(lesson, "background-color: #383838", "hover", null);
+    if ($("[role=main] > div:nth-child(2) > div > div").length) {
+      // 授業がない場合のお知らせの部分を黒くする
+      const infoPath = "[role=main] > div:nth-child(2) > div > div";
+      headStyleInjector(infoPath, "background-color: #202124; color: #FFFFFF !important; border-color: #2f2f2f;");
+    } else {
+      //各授業のリンクの部分にダークモード適用
+      const lesson = "[role=main] > div > a > div";
+      headStyleInjector(lesson, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+      headStyleInjector(lesson + ":hover", "background-color: #383838");
+    }
 
     //ページタイトルの文字色を変更
     classCSSPatcher($("[role=main] > div > h1"), "color: #e8e8ff;", null, null);
 
     if (!(path.match(/search/))) {
       //必修授業・課外授業の選択の部分にダークモード適用(授業一覧のページのみ)
-      const selectWhenLesson = $("[role=main] > div > ul").eq(0);
-      classCSSPatcher(selectWhenLesson, "background-color: #202124; border-color: #2f2f2f;", null, 2);
-      classCSSPatcher(selectWhenLesson.find("a"), "color: #ffffffcc;", "hover", null);
-      classCSSPatcher(selectWhenLesson.find("a"), "color: #ffffffcc;", "visited", null);
+      classCSSPatcher($("[role=tablist]"), "background-color: #202124;", null, 2);
+      const tab = $("[role=tab]");
+      classCSSPatcher(tab, "background-color: #202124; border-color: #2f2f2f;", null, 2);
+      classCSSPatcher(tab.find("a"), "color: #ffffffcc;", "hover", null);
+      classCSSPatcher(tab.find("a"), "color: #ffffffcc;", "visited", null);
       //もっと見るの部分にダークモード適用(授業一覧のページのみ)
       const seeMore = $("[role=main] > div:nth-child(2) > div");
       classCSSPatcher(seeMore, "background-color: #202124;", null, 2);
@@ -345,20 +351,25 @@ export default class HomeApplicator {
       classCSSPatcher(seeMoreButton, "background-color: #505050; border-color: #cad7ff; color: #cad7ff;", null, null);
     } else {
       //検索結果の部分にダークモード適用
-      const searchResults = $("[role=main] > div:nth-child(2) > div");
-      classCSSPatcher(searchResults, "background-color: #202124; border-color: #8c8c8c;", null, 2);
-      classCSSPatcher(searchResults.find("div > div:nth-child(3) > span:nth-child(1)"), "color: #FFF;", null, null);
+      const searchResults = "[role=main] > div:nth-child(2)";
+      headStyleInjector(searchResults, "background-color: #202124; border-color: #8c8c8c;");
+      headStyleInjector(searchResults + "div > div:nth-child(3) > span:nth-child(1)", "color: #FFF;");
+
+      //各授業のリンクの部分にダークモード適用
+      headStyleInjector("[role=main] > a > div", "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;");
+      headStyleInjector("[role=main] > a > div:hover", "background-color: #383838");
     }
-    //検索系のところにダークモード適用
+
+    // complementaryにダークモード適用
     const rightContents = $("[role=complementary] > div");
-    //検索窓をダークにする
+    classCSSPatcher($("[role=complementary] > div > div:nth-child(2) > div"), "background-color: #202124; border-color: #8c8c8c;", null, null);
+    // 検索窓をダークにする
     classCSSPatcher(rightContents.find("input"), "color: #FFFFFF; background-color: #222222; border-color: #404040;", null, null);
-    //タグのボタンをダークにする
-    classCSSPatcher(rightContents.find("div > ul > li"), "background-color: #202124;", null, null);
-    //学習を効果的に行えるよう〜(略)の部分にダークモードを適用
-    const userInfo = rightContents.find("div:nth-child(2)").eq(0);
-    classCSSPatcher(userInfo, "background-color: #202124; border-color: #8c8c8c;", null, 2);
-    classCSSPatcher(userInfo.find("div:nth-child(1)"), "background-color: #202124; color: #e8e8e8;", null, null);
+    // タグのボタンをダークにする
+    classCSSPatcher($("[role=listitem] > a"), "background-color: #202124;", null, null);
+    // 学習を効果的に行えるよう〜(略)の部分にダークモードを適用
+    const userInfoPath = "[role=complementary] > div > div:nth-child(1)";
+    headStyleInjector(userInfoPath, "background-color: #202124; color: #e8e8e8;");
   }
 
   static noticesPage() {

@@ -54,7 +54,7 @@ export function URLTracker() {
         } else if (path.match(/questions/)) {
           Home_needElementSearcher("[role=main] > div:nth-child(2) > div > a");
         } else if (path.match(/lessons/)) {
-          Home_needElementSearcher("[role=main] > div > a");
+          Home_needElementSearcher("[role=main]");
         } else if (path.match(/home/)) {
           Home_needElementSearcher("[role=main] > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div > a > div > div:nth-child(2) > div:nth-child(3) > div > div");
         } else if (path.match(/genres/)) {
