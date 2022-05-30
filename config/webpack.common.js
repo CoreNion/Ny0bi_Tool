@@ -1,6 +1,5 @@
 'use strict';
 
-const SizePlugin = require('size-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -32,7 +31,17 @@ const common = {
       // Help webpack in understanding CSS files imported in .js files
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+        use: ["style-loader",MiniCssExtractPlugin.loader,'css-loader',],
+      },
+      // sass
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader",
+        ],
       },
       // Check for images imported in .js files and
       {
@@ -54,8 +63,6 @@ const common = {
     extensions: ['.ts', '.js'],
   },
   plugins: [
-    // Print file sizes
-    new SizePlugin(),
     // Copy static assets from `public` folder to `build` folder
     new CopyWebpackPlugin({
       patterns: [
