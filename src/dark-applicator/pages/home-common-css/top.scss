@@ -1,0 +1,101 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+// 左のコース一覧の部分にダークモード適用
+[role=navigation]>div {
+  background-color: #1d1d1d;
+  color: $common-text-color;
+
+  div {
+
+    // 「コースを探す」の文字色
+    &:nth-child(1)>a>h2 {
+      color: $common-text-color;
+    }
+
+    // 「コースを探す」の文字色
+    &:nth-child(2) {
+      color: #dadada;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+
+      // 必修授業・課外授業表記の文字色
+      button>h2 {
+        color: $common-text-color;
+      }
+
+      // 各ジャンル名の文字色
+      div {
+        &:nth-child(3) {
+          div>div>a>h2 {
+            color: $common-text-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// メインの部分にダークモードを適用
+[role=main]>div {
+  div {
+
+    // フォーラムの各投稿の部分にダークモード適用
+    &:nth-child(9)>div {
+      background-color: $common-background-color;
+
+      // 核投稿の文字色
+      a {
+        color: $common-text-color;
+
+        &:hover {
+          color: $common-text-color;
+        }
+
+        // 投稿日時の文字色
+        div {
+          &:nth-child(2)>div {
+            color: #CFCFCF;
+          }
+        }
+      }
+    }
+
+    // フォーラムの項目のタイトルにダークモード適用 (フォーラムのみ別な位置にタイトルがあるため)
+    a>h1 {
+      color: $title-text-color;
+    }
+
+    div {
+
+      // 各項目のタイトルにダークモード適用
+      &:nth-child(1)>h1 {
+        color: $title-text-color;
+      }
+
+      // 各コースや途中再開の部分にダークモード適用
+      div {
+        &:nth-child(2) {
+          div>div>div>a>div>div {
+
+            // 教材名や最終閲覧日時などが書かれている部分の背景色
+            &:nth-child(2) {
+              background-color: $common-background-color;
+
+              div {
+
+                // 教材名の文字色
+                &:nth-child(2) {
+                  color: $title-text-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

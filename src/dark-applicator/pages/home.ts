@@ -7,48 +7,7 @@ import { classCSSPatcher, headStyleInjector } from "../utilities";
 export default class HomeApplicator {
   static topPage() {
     console.log("Ny0bi_Tool: Detect top page");
-
-    //左のコース一覧の部分にダークモード適用
-    const courseListPath = "[role=navigation] > div";
-    //背景色
-    classCSSPatcher($(courseListPath), "background-color: #1d1d1d; color: #e8e8e8;", null, 2);
-    //「コースを探す」の文字色
-    classCSSPatcher($(courseListPath + " > div:nth-child(2)"), "color: #dadada;", null, null);
-    //必修授業/課外授業表記とコース名の文字色
-    classCSSPatcher($(courseListPath + " > div:nth-child(3) > button > h2"), "color: #e8e8e8;", null, null);
-    classCSSPatcher($(courseListPath + " > div:nth-child(3) > div:nth-child(3) > div > div > a > h2"), "color: #e8e8e8;", null, null);
-
-    //右側の各h1タイトルにダークモード適用
-    classCSSPatcher($("[role=main] > div > div > div:nth-child(1) > h1"), "color: #FFFFFF;", null, null);
-
-    //各コース/途中再開の部分にダークモード適用
-    const coursechapterLinkPath = "[role=main] > div > div > div:nth-child(2) > div:nth-child(2) > div > div > div > a > div";
-    //教材名や最終閲覧日時などが書かれている部分の背景色
-    headStyleInjector(coursechapterLinkPath + " > div:nth-child(2)", "background-color: #202124;");
-    //教材名の文字色
-    headStyleInjector(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(1)", "color: #FFFFFF;");
-    //コース名の文字色
-    headStyleInjector(coursechapterLinkPath + " > div:nth-child(2) > div:nth-child(2)", "color: #e0e0e0;");
-
-    //フォーラムの各投稿の部分にダークモード適用
-    //フォーラムの投稿はページロード後に出るので出現次第適用
-    let interval!: NodeJS.Timer;
-    interval = setInterval(function () {
-      const forumLinkDivPath = "[role=main] > div > div:nth-child(9) > div";
-      if ($(forumLinkDivPath).length) {
-        //背景色
-        classCSSPatcher($(forumLinkDivPath), "background-color: #202124;", null, null);
-        //投稿の文字色
-        classCSSPatcher($(forumLinkDivPath + " > a"), "color: #e8e8e8", null, null);
-        classCSSPatcher($(forumLinkDivPath + " > a"), "color: #e8e8e8", "hover", null);
-        //投稿日時の文字色
-        classCSSPatcher($(forumLinkDivPath + " > a > div:nth-child(2) > div"), "color: #CFCFCF;", null, null);
-        clearInterval(interval);
-      }
-    }, 50);
-    setTimeout(function () {
-      clearInterval(interval);
-    }, 5000);
+    require("./home-common-css/top.scss");
   }
 
   static genrePage() {

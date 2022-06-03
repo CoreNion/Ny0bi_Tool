@@ -31,14 +31,13 @@ const common = {
       // Help webpack in understanding CSS files imported in .js files
       {
         test: /\.css$/,
-        use: ["style-loader",MiniCssExtractPlugin.loader,'css-loader',],
+        use: ["style-loader",'css-loader',],
       },
       // sass
       {
         test: /\.s[ac]ss$/i,
         use: [
           "style-loader",
-          MiniCssExtractPlugin.loader,
           "css-loader",
           "sass-loader",
         ],
