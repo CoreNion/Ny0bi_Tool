@@ -1,0 +1,113 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+[role=main]>div {
+  >div {
+
+    // ページタイトルと概要を黒くする
+    &:nth-child(1) {
+      h1 {
+        color: $common-text-color;
+      }
+
+      div {
+        color: $common-text-color;
+      }
+    }
+
+    &:nth-child(2) {
+      >div {
+
+        // 最初の「コースを選択してください」の部分を黒くする
+        &:nth-child(2) {
+
+          // コースが選択されているときは適用しないようにする
+          &:not([role=region]) {
+            background-color: $common-background-color;
+
+            div {
+              background-color: $common-background-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// コースリストにダークモードを適用
+[role=navigation]>div>div {
+  // 背景色(余った部分)を変更
+  background-color: black;
+
+  >div {
+
+    // コースリストの各項目のスタイルを変更
+    button,
+    a {
+      background-color: $common-background-color  !important;
+      color: $title-text-color  !important;
+      border-color: #2f2f2f !important;
+
+      &:hover {
+        background-color: #383838 !important;
+      }
+
+      // アイコンの色(習熟テストの回数以外)
+      div {
+        &:nth-child(1) {
+          i {
+            color: #648aff;
+          }
+        }
+      }
+
+      // コース名の色
+      div>div {
+        color: $common-text-color;
+      }
+    }
+  }
+}
+
+//コース選択後に出てくる概要を黒くする
+[role=region]>div {
+  background-color: $common-background-color;
+
+  // 各章のリンクにダークモードを適用
+  a {
+    background-color: $common-background-color  !important;
+    color: $title-text-color  !important;
+    border-color: #2f2f2f !important;
+
+    &:hover {
+      background-color: #383838 !important;
+    }
+  }
+
+  // 概要の文章のもっと見るボタンを黒くする
+  div>div {
+    &:nth-child(1) {
+      div {
+        &:nth-child(2) {
+          div {
+            &:last-child {
+              div {
+                &:nth-child(2) {
+                  background-color: $common-background-color;
+                  box-shadow: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 進捗度のバーの色
+[role=progressbar] {
+  background-color: aliceblue;
+}
