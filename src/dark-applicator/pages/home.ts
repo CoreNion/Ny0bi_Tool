@@ -22,23 +22,7 @@ export default class HomeApplicator {
 
   static courcePage() {
     console.log("Ny0bi_Tool: Detect cource page");
-
-    //ページタイトルの文字色を変更
-    $("[role=main] > div:nth-child(1) > h1").css("color", "#e8e8ff");
-
-    //コース概要の部分にダークモード適用
-    const courseDivPath = "[role=main] > div:nth-child(2)";
-    classCSSPatcher($(courseDivPath), "background-color: #000000; border: solid #7d7d7d !important;", null, 2);
-    //受講のオンオフの部分の効果の色を変更
-    classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(1) > div:nth-child(2)"), "background: #202124; box-shadow: #202124 0px -12px 12px;", null, null);
-    //受講を止めるボタンがない場合への対応
-    if ($(courseDivPath + " > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div > div > button").length) {
-      classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div > div > button"), "background-color: #2f0000; border-color: #7d7d7d;", null, null);
-    }
-
-    //章のリンクの部分にダークモード適用
-    classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a > div"), "background-color: #000000; border-width: 0px 0px 1px 1px; color: #e8e8e8;", null, null);
-    classCSSPatcher($(courseDivPath + " > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > a > div"), "background-color: #383838;", "hover", null);
+    require("./home-common-css/cource.scss");
   }
 
   static forumPage() {
