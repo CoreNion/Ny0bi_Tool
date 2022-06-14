@@ -1,0 +1,121 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+// ボタン系にダークモード適用
+[type=button],
+[role=button] {
+  background-color: #2b2c2f;
+  color: #a0b7ff;
+  border-color: #6b6b6b;
+}
+
+[role=main] {
+  >div {
+    &:nth-child(1) {
+
+      // タイトルの文字色を変更
+      >h1 {
+        color: $title-text-color;
+      }
+
+      >div {
+
+        // フォーラムの投稿履歴の部分の色を変更
+        &:nth-child(3)>div {
+          background-color: #2c2c2c;
+          color: $common-text-color;
+
+          a>p {
+            color: $common-text-color;
+          }
+        }
+      }
+    }
+
+    // 投稿が表示される部分
+    &:nth-child(2) {
+      // 一番上のborderを削除
+      border: none;
+
+      h2 {
+        color: $title-text-color;
+      }
+
+      // 各投稿にダークモードを適用
+      >div {
+        background-color: $common-background-color;
+        color: $common-text-color;
+        border-color: #2f2f2f;
+        border-bottom-width: 3px;
+        margin-bottom: 0px;
+
+        // タブタイトル以外にhoverを適用
+        &:not(:nth-child(1)) {
+          &:hover {
+            background-color: #383838;
+          }
+        }
+
+        a {
+          // タイトル以外の文字色を設定
+          color: #bbbbbb;
+
+          >div {
+            &:nth-child(1) {
+              >div {
+
+                // 投稿のタイトル
+                &:nth-child(1) {
+                  color: $common-text-color;
+                }
+              }
+            }
+
+            // 投稿のタグの部分
+            &:nth-child(2)>ul>li {
+              background-color: #ffffff0d;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 表示する投稿を変更する部分の文字色を変更
+[role=tab]>a {
+  &:visited {
+    color: $common-text-color;
+  }
+}
+
+// 右側の検索系の部分
+[role=complementary] {
+  >div {
+    &:nth-child(1) {
+
+      // 投稿するボタンの背景色を変更
+      button {
+        background-color: #4f73e3;
+        color: $common-text-color;
+      }
+    }
+
+    // カテゴリーの部分にダークモードを適用
+    &:nth-child(3)>div,
+    &:nth-child(4)>div {
+      background-color: $common-background-color;
+    }
+  }
+}
+
+[role=search] {
+
+  // 検索窓の色を変更
+  [type=text] {
+    color: #FFFFFF;
+    background-color: #222222;
+    border-color: #404040;
+  }
+}

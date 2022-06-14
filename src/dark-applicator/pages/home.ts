@@ -28,6 +28,7 @@ export default class HomeApplicator {
   static forumPage() {
     console.log("Ny0bi_Tool:Detect forum page");
     const path = location.pathname;
+    require("./home-common-css/forum.scss")
 
     /* 旧ホーム用の関数から移植 */
     if (path.match(/questions\/\d+/)) {
@@ -35,8 +36,6 @@ export default class HomeApplicator {
       const topDiv = $("[role=main] > div:nth-child(1)");
       //タイトルの文字色を変更
       topDiv.find("h1").css("color", "#e8e8ff");
-      //ガイドを見るボタンにダークモード適用
-      topDiv.find("div > button").css("background-color", "#2b2c2f;");
       //表示する投稿を変更する部分の、文字色を変更
       topDiv.find("ul > li > a").css("color", "#FFFFFF");
 
@@ -95,72 +94,6 @@ export default class HomeApplicator {
       classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(2)"), "background-color: #202124; color: #FFFFFF; border-color: #424242;", null, 2);
       //画像をアップロードボタンにダークモード適用
       classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;", null, null);
-    } else {
-      /* スレッド一覧のページで、タイトル〜表示する投稿を変更する部分にダークモード適用 */
-
-      const mainDiv = $("[role=main] > div:nth-child(1)");
-      //タイトルの文字色を変更
-      classCSSPatcher(mainDiv.find("h1"), "color: #e8e8ff;", null, null);
-      //ガイドを見るボタンの色を変更
-      classCSSPatcher(mainDiv.find("button"), "background-color: #2b2c2f;", null, null);
-      //フォーラムの履歴の部分の色を変更
-      classCSSPatcher(mainDiv.find("div").eq(2), "background-color: #2c2c2c; color: #e8e8e8;", null, 2);
-      classCSSPatcher(mainDiv.find("p"), "color: #e8e8e8;", null, null);
-
-      //表示する投稿を変更する部分の、文字色を変更
-      mainDiv.find("ul > li > a").css("color", "#FFFFFF");
-
-      /* 各投稿の一覧の部分にダークモードを適用 */
-      //投稿リストの一番上の境界線を削除
-      classCSSPatcher($("[role=main] > div:nth-child(2)"), "border-style: none;", null, null);
-      //一番上のリストの名前にダークモード適用
-      const forumListTitleDiv = $("[role=main] > div:nth-child(2) > div:nth-child(1)");
-      //全体の背景色や境界線関連の色
-      classCSSPatcher(forumListTitleDiv, "background-color: #202124; border-color: #2f2f2f;", null, null);
-
-      //タイトルの文字色(検索以外のページ用)
-      if (!path.match(/search/)) {
-        classCSSPatcher(forumListTitleDiv.find("h2"), "color: #FFFFFF", null, null);
-      }
-
-      //フォーラムの各投稿のリンクにダークモード適用 
-      const forumLinkDiv = $("[role=main] > div:nth-child(2) > div:nth-child(2)");
-      //全体の背景色や境界線関連の色
-      classCSSPatcher(forumLinkDiv, "background-color: #202124; border-color: #2f2f2f; border-bottom-width: 3px; margin-bottom: 0px;", null, null);
-      //リンクに触れた時の背景色色
-      classCSSPatcher(forumLinkDiv, "background-color: #383838 !important;", "hover", null);
-      //投稿のタイトル以外の文字色
-      classCSSPatcher(forumLinkDiv.find("a"), "color: #bbbbbb;", null, null);
-      //投稿のタイトルの文字色
-      classCSSPatcher(forumLinkDiv.find("a > div:nth-child(1) > div:nth-child(1)"), "color: #e8e8e8;", null, null);
-      //投稿のタグ
-      classCSSPatcher(forumLinkDiv.find("a > div:nth-child(2) > ul > li"), "background-color: #ffffff0d;", null, null);
-      //次へボタンなどにダークモードダークモード適用
-      classCSSPatcher($("[role=main] > ul > li > button"), "background-color: #222222; color:#6187ff;", null, null);
-
-      //(検索用)検索結果の件数の文字色にダークモード適用
-      if (path.match(/search/)) {
-        forumListTitleDiv.find("div").eq(3).css("color", "#FFF");
-      }
-    }
-
-    if (!(path.match(/new/))) {
-      /* 右側の部分にダークモード適用(フォーラム投稿ページ以外) */
-      //検索窓の色を変更
-      classCSSPatcher($("form > div > input"), "color: #FFFFFF; background-color: #222222; border-color: #404040;", null, null);
-
-      //カテゴリーから探すの部分にダークモード適用
-      const findbyTagDiv = $("[role=complementary] > div:nth-child(3)");
-      //全体の背景色と境界線の色を変更
-      classCSSPatcher(findbyTagDiv, "background-color: #222222; border-color: #404040;", null, null);
-      //「カテゴリーから探す」と書いている部分にダークモード設定
-      classCSSPatcher(findbyTagDiv.find("div:nth-child(1)"), "border-color: #404040", null, null);
-      classCSSPatcher(findbyTagDiv.find("div > h2"), "color: #FFFFFF", null, null);
-      //タグのジャンルの名前の背景色と線の色を変更
-      classCSSPatcher(findbyTagDiv.find("div > div > h3"), "color: #FFFFFF", null, null);
-      classCSSPatcher(findbyTagDiv.find("div > div > h3"), "background-color: #e8e8e80d;", "before", null);
-      //各タグのボタンにダークモード適用
-      classCSSPatcher(findbyTagDiv.find("div > div > div > div > a"), "background-color: #2b2c2f; border-color: #6b6b6b;", null, null);
     }
   }
 
