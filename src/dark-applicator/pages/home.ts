@@ -88,59 +88,6 @@ class HomeApplicator {
       
       forumQuestCSS.use();
       updateInjectStyle(forumQuestCSS, false);
-
-      /* スレッドのページにダークモード適用 
-      const topDiv = $("[role=main] > div:nth-child(1)");
-      //タイトルの文字色を変更
-      topDiv.find("h1").css("color", "#e8e8ff");
-      //表示する投稿を変更する部分の、文字色を変更
-      topDiv.find("ul > li > a").css("color", "#FFFFFF");
-
-      //コメント数やタグなどが書かれている部分にダークモード適用
-      const postInfo = $("[role=main] > div:nth-child(2) > div:nth-child(1)");
-      postInfo.css({ "background-color": "#202124", "border-color": "#404040" });
-      postInfo.find("div > div > ul > li").css("background-color", "#ffffff0d");
-
-      //スレッドの中身にダークモード適用
-      const threads = $("[role=main] > div:nth-child(2) > div:not(:first-child)");
-      //質問者の名前と登校時刻の部分にダークモード適用
-      classCSSPatcher(threads.find("div:nth-child(2) > div").eq(0), "color: rgb(255 255 255 / 83%);", null, null);
-      //質問したい教材の部分にダークモード適用(ある場合のみ)
-      if (threads.eq(0).find("p").length) {
-        threads.eq(0).css("background-color", "#202124");
-        threads.eq(0).find("p").css("color", "#bdbdbd");
-        threads.eq(0).find("div").css("border-color", "rgb(255 255 255 / 10%)");
-      }
-
-      //各コメントにダークモード適用
-      for (let i = 0; i <= threads.length; i++) {
-        let threed = threads.eq(i);
-        //「回答」の部分だった場合はそのborder等にダークモード適用
-        if (!(threed.css("border-style") == "none")) {
-          threed.css("border-color", "#252525");
-          threed.find("span").css({ "background-color": "#000000", "color": "#FFFFFF" });
-        } else {
-          //質問者の色を設定(色で判定)
-          let threedBody = threed.find("div:nth-child(2)").eq(0);
-          if (threedBody.css("background-color") == "rgb(226, 238, 255)") {
-            //質問者の投稿の色
-            classCSSPatcher(threedBody, "background-color: #607d8b; color:#FFFFFF;", null, null);
-          } else if (threedBody.css("background-color") == "rgb(255, 255, 255)") {
-            //他の人の投稿の色
-            classCSSPatcher(threedBody, "background-color: #01579b; color:#FFFFFF;", null, null);
-          } else if (threedBody.css("background-color") == "rgb(255, 247, 149)" || threedBody.css("background-color") == "rgb(255, 242, 78)") {
-            //運営と先生の投稿の色
-            classCSSPatcher(threedBody, "background-color: #1b5e20; color:#FFFFFF;", null, null);
-          }
-        }
-      }
-
-      //返信を送る部分にダークモード適用
-      const replayArea = $("[role=main] > div:nth-child(3)");
-      classCSSPatcher(replayArea, "background-color: #202124;", null, null);
-      classCSSPatcher(replayArea.find("textarea"), "background-color: #202124; color: #e8e8e8;", null, null);
-      classCSSPatcher(replayArea.find("div > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;", null, null); 
-     */
     } else if (path.match(/new/)) {
       console.log("Ny0bi_Tool:Detect new page");
 

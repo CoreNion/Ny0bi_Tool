@@ -55,3 +55,13 @@ $common-background-color: #202124;
     border-color: #404040;
   }
 }
+
+// ダイアログの色を変更
+[role=dialog] {
+  background-color: $common-background-color;
+  color: $common-text-color;
+
+  div {
+    background-color: $common-background-color;
+  }
+}

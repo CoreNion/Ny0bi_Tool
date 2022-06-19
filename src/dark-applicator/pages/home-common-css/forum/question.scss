@@ -1,0 +1,77 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+[role=main]>div {
+
+  // メインの投稿などが配置される部分
+  &:nth-child(2) {
+    >div {
+
+      // 投稿以外の部分にダークモードを適用
+      &:not([width]) {
+        background-color: $common-background-color;
+        border: #404040;
+
+        // 返信の境界線用
+        >span {
+          background-color: black;
+          color: $title-text-color;
+        }
+      }
+
+      // コメント数やタグなどが書かれている部分にダークモード適用
+      &:nth-child(1) {
+
+        // 各タグの色を変更
+        ul>li {
+          background-color: #ffffff0d;
+        }
+      }
+
+      // 各投稿にダークモードを適用
+      >[width] {
+        color: white;
+        background-color: $common-background-color;
+
+        // 質問者の背景色
+        &[data-group=owner] {
+          background-color: green;
+        }
+
+        // スタッフと先生の背景色
+        &[data-group=staff],
+        &[data-group=teacher] {
+          background-color: darkslategray;
+        }
+
+        >div {
+          // ユーザ名/投稿日時の色
+          &:nth-child(1) {
+            color: white
+          }
+
+          // 通報するボタンの色
+          &:last-child>a {
+            color: red;
+
+            &:active, &:hover {
+              color: orangered;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 返信を投稿する部分
+  &:nth-child(3) {
+    background-color: $common-background-color;
+
+    textarea {
+      background-color: $common-background-color;
+      color: $common-text-color;
+      border-color: #424242;
+    }
+  }
+}
