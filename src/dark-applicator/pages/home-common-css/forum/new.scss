@@ -1,0 +1,46 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+[role=main]>form>div {
+
+  // ページタイトル
+  >h1 {
+    color: $title-text-color;
+  }
+
+  >div {
+    &:nth-child(2) {
+      // 各項目の背景色
+      >div {
+        background-color: $common-background-color;
+        color: $common-text-color;
+        border-color: #424242;
+    
+        [name=commnet] {
+          background-color: $common-background-color;
+          color: $common-text-color;
+        }
+      }
+
+      // 各コメントの色
+      [width] {
+        color: white;
+        background-color: $common-background-color;
+
+        // 質問者の背景色
+        &[data-group=owner] {
+          background-color: green;
+        }
+
+        >div {
+          // ユーザ名/投稿日時の色
+          &:nth-child(1) {
+            color: white
+          }
+        }
+      }
+
+    }
+  }
+}

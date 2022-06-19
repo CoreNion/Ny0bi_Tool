@@ -85,25 +85,14 @@ class HomeApplicator {
     /* 旧ホーム用の関数から移植 */
     if (path.match(/questions\/\d+/)) {
       console.log("Ny0bi_Tool:Detect questions page");
-      
+
       forumQuestCSS.use();
       updateInjectStyle(forumQuestCSS, false);
     } else if (path.match(/new/)) {
       console.log("Ny0bi_Tool:Detect new page");
 
       forumNewQuestCSS.use();
-      updateInjectStyle(forumNewQuestCSS, false)
-
-      /* フォーラムに投稿を行うページにダークモード適用
-      //ページタイトルにダークモード適用
-      classCSSPatcher($("form > div > h1"), "color: #e8e8ff;", null, null);
-      //コメントの内容を入力する部分ににダークモード適用
-      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1)"), "background-color: #202124; color: #FFFFFF; border-color: #424242;", null, 2);
-      classCSSPatcher($("textarea"), "background-color: #202124; color: #e8e8e8;", null, null);
-      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(2)"), "background-color: #202124; color: #FFFFFF; border-color: #424242;", null, 2);
-      //画像をアップロードボタンにダークモード適用
-      classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;", null, null);
-      */
+      updateInjectStyle(forumNewQuestCSS, false);
     } else {
       console.log("Ny0bi_Tool:Detect list page");
 
