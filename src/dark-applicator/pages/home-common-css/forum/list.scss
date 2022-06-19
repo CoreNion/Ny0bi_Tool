@@ -2,22 +2,9 @@ $common-text-color: #e8e8e8;
 $title-text-color: #FFFFFF;
 $common-background-color: #202124;
 
-// ボタン系にダークモード適用
-[type=button],
-[role=button] {
-  background-color: #2b2c2f;
-  color: #a0b7ff;
-  border-color: #6b6b6b;
-}
-
 [role=main] {
   >div {
     &:nth-child(1) {
-
-      // タイトルの文字色を変更
-      >h1 {
-        color: $title-text-color;
-      }
 
       >div {
 
@@ -80,42 +67,5 @@ $common-background-color: #202124;
         }
       }
     }
-  }
-}
-
-// 表示する投稿を変更する部分の文字色を変更
-[role=tab]>a {
-  &:visited {
-    color: $common-text-color;
-  }
-}
-
-// 右側の検索系の部分
-[role=complementary] {
-  >div {
-    &:nth-child(1) {
-
-      // 投稿するボタンの背景色を変更
-      button {
-        background-color: #4f73e3;
-        color: $common-text-color;
-      }
-    }
-
-    // カテゴリーの部分にダークモードを適用
-    &:nth-child(3)>div,
-    &:nth-child(4)>div {
-      background-color: $common-background-color;
-    }
-  }
-}
-
-[role=search] {
-
-  // 検索窓の色を変更
-  [type=text] {
-    color: #FFFFFF;
-    background-color: #222222;
-    border-color: #404040;
   }
 }

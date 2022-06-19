@@ -5,7 +5,10 @@ import genresCSS from "./home-common-css/genres.scss";
 import myCourceCSS from "./home-common-css/my-cource.scss";
 import courceCSS from "./home-common-css/cource.scss";
 import commonCSS from "./home-common-css/common.scss";
-import forumCSS from "./home-common-css/forum.scss";
+import forumCommonCSS from "./home-common-css/forum/common.scss";
+import forumListCSS from "./home-common-css/forum/list.scss";
+import forumQuestCSS from "./home-common-css/forum/question.scss";
+import forumNewQuestCSS from "./home-common-css/forum/new.scss";
 
 export default function applyDarkHomePage() {
   // 全てのページで必要なcssを読み込む
@@ -34,14 +37,14 @@ export default function applyDarkHomePage() {
   branch();
 
   // URLの変化の検知
-  let lastUrl = location.href; 
+  let lastUrl = location.href;
   new MutationObserver(() => {
     const url = location.href;
     if (url !== lastUrl) {
       lastUrl = url;
       branch();
     }
-  }).observe(document, {subtree: true, childList: true});
+  }).observe(document, { subtree: true, childList: true });
 }
 
 /**
@@ -57,7 +60,7 @@ class HomeApplicator {
   static genrePage() {
     console.log("Ny0bi_Tool: Detect genre page");
     genresCSS.use();
-    updateInjectStyle(genresCSS,true);
+    updateInjectStyle(genresCSS, true);
   }
 
   static myCourcePage() {
@@ -76,12 +79,17 @@ class HomeApplicator {
     console.log("Ny0bi_Tool:Detect forum page");
     const path = location.pathname;
 
-    forumCSS.use();
-    updateInjectStyle(forumCSS, true);
+    forumCommonCSS.use();
+    updateInjectStyle(forumCommonCSS, true);
 
     /* 旧ホーム用の関数から移植 */
     if (path.match(/questions\/\d+/)) {
-      /* スレッドのページにダークモード適用 */
+      console.log("Ny0bi_Tool:Detect questions page");
+      
+      forumQuestCSS.use();
+      updateInjectStyle(forumQuestCSS, false);
+
+      /* スレッドのページにダークモード適用 
       const topDiv = $("[role=main] > div:nth-child(1)");
       //タイトルの文字色を変更
       topDiv.find("h1").css("color", "#e8e8ff");
@@ -131,10 +139,15 @@ class HomeApplicator {
       const replayArea = $("[role=main] > div:nth-child(3)");
       classCSSPatcher(replayArea, "background-color: #202124;", null, null);
       classCSSPatcher(replayArea.find("textarea"), "background-color: #202124; color: #e8e8e8;", null, null);
-      classCSSPatcher(replayArea.find("div > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;", null, null);
+      classCSSPatcher(replayArea.find("div > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;", null, null); 
+     */
     } else if (path.match(/new/)) {
-      /* フォーラムに投稿を行うページにダークモード適用 */
+      console.log("Ny0bi_Tool:Detect new page");
 
+      forumNewQuestCSS.use();
+      updateInjectStyle(forumNewQuestCSS, false)
+
+      /* フォーラムに投稿を行うページにダークモード適用
       //ページタイトルにダークモード適用
       classCSSPatcher($("form > div > h1"), "color: #e8e8ff;", null, null);
       //コメントの内容を入力する部分ににダークモード適用
@@ -143,6 +156,12 @@ class HomeApplicator {
       classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(2)"), "background-color: #202124; color: #FFFFFF; border-color: #424242;", null, 2);
       //画像をアップロードボタンにダークモード適用
       classCSSPatcher($("form > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > button"), "background-color: #2b2c2f; border-color: #424242;", null, null);
+      */
+    } else {
+      console.log("Ny0bi_Tool:Detect list page");
+
+      forumListCSS.use();
+      updateInjectStyle(forumListCSS, false);
     }
   }
 

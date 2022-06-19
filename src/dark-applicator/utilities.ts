@@ -69,6 +69,9 @@ export function updateInjectStyle(css: Module, main: boolean) {
       if (!(requireStorage.subPage == null)) {
         // @ts-ignore
         requireStorage.subPage.unuse();
+
+        // 残っているサブページのstyleを削除
+        requireStorage.subPage = null;
       }
     }
     // 現在のメインページのStyleを保存
@@ -82,4 +85,6 @@ export function updateInjectStyle(css: Module, main: boolean) {
 
     requireStorage.subPage = css;
   }
+
+  console.log(requireStorage);
 }
