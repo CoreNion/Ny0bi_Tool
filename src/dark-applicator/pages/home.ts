@@ -1,13 +1,18 @@
 import $ from "jquery";
-import { classCSSPatcher, headStyleInjector } from "../utilities";
+import { classCSSPatcher, headStyleInjector, updateInjectStyle } from "../utilities";
+import topPageCSS from "./home-common-css/top.scss";
+import genresCSS from "./home-common-css/genres.scss";
+import myCourceCSS from "./home-common-css/my-cource.scss";
+import courceCSS from "./home-common-css/cource.scss";
+import commonCSS from "./home-common-css/common.scss";
+import forumCSS from "./home-common-css/forum.scss";
 
 export default function applyDarkHomePage() {
   // 全てのページで必要なcssを読み込む
-  require("./home-common-css/common.scss");
+  commonCSS.use();
 
   const branch = () => {
     const path = location.pathname;
-
     if (path.match(/home/)) {
       HomeApplicator.topPage();
     } else if (path.match(/genres/)) {
@@ -45,28 +50,34 @@ export default function applyDarkHomePage() {
 class HomeApplicator {
   static topPage() {
     console.log("Ny0bi_Tool: Detect top page");
-    require("./home-common-css/top.scss");
+    topPageCSS.use();
+    updateInjectStyle(topPageCSS, true);
   }
 
   static genrePage() {
-    console.log("Ny0bi_Tool: Detect genre page()");
-    require("./home-common-css/genres.scss");
+    console.log("Ny0bi_Tool: Detect genre page");
+    genresCSS.use();
+    updateInjectStyle(genresCSS,true);
   }
 
   static myCourcePage() {
     console.log("Ny0bi_Tool: Detect my cource page");
-    require("./home-common-css/my-cource.scss");
+    myCourceCSS.use();
+    updateInjectStyle(myCourceCSS, true);
   }
 
   static courcePage() {
     console.log("Ny0bi_Tool: Detect cource page");
-    require("./home-common-css/cource.scss");
+    courceCSS.use();
+    updateInjectStyle(courceCSS, true);
   }
 
   static forumPage() {
     console.log("Ny0bi_Tool:Detect forum page");
     const path = location.pathname;
-    require("./home-common-css/forum.scss")
+
+    forumCSS.use();
+    updateInjectStyle(forumCSS, true);
 
     /* 旧ホーム用の関数から移植 */
     if (path.match(/questions\/\d+/)) {

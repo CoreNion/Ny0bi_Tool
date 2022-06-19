@@ -1,4 +1,5 @@
 import $ from "jquery"
+import Module from "module";
 
 /**
  * Elementが所属しているクラスのCSSの変更を恒久的に適用する関数
@@ -38,6 +39,47 @@ export function classCSSPatcher(element: JQuery<HTMLElement>, property: String, 
  * @param {String} selector セレクター
  * @param {string} style Style
  */
-export function headStyleInjector(selector:String, style: String) {
+export function headStyleInjector(selector: String, style: String) {
   $("head").append(`<style>${selector} { ${style} }</style>`);
+}
+
+/**
+ * css(style)のrequire(module)を保存する連想配列
+ * 
+ * (updateInjectStyle用)
+ *  */
+let requireStorage: { [key: string]: Module | null } = {
+  mainPage: null, subPage: null
+};
+
+/**
+ * 現在のstyleを保存し、過去のstyleを削除する関数
+ * @param css cssのrequire(module)
+ * @param main メインページ用であるか、サブページ用であるか
+ */
+export function updateInjectStyle(css: Module, main: boolean) {
+  /* style-loaderの型定義は存在しないためとりあえず@ts-ignore */
+
+  if (main) {
+    if (!(requireStorage.mainPage == null)) {
+      // 保存されているStyleの利用状態を解除
+      // @ts-ignore
+      requireStorage.mainPage.unuse();
+
+      if (!(requireStorage.subPage == null)) {
+        // @ts-ignore
+        requireStorage.subPage.unuse();
+      }
+    }
+    // 現在のメインページのStyleを保存
+    requireStorage.mainPage = css;
+  } else {
+    // 上記の処理をサブページのみ実行
+    if (!(requireStorage.subPage == null)) {
+      // @ts-ignore
+      requireStorage.subPage.unuse();
+    }
+
+    requireStorage.subPage = css;
+  }
 }

@@ -37,7 +37,9 @@ const common = {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          "style-loader",
+          {loader: "style-loader", options: {
+            injectType: "lazyStyleTag"
+          }},
           "css-loader",
           "sass-loader",
         ],
