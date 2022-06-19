@@ -1,0 +1,41 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+body {
+  background-color: black;
+  color: $common-text-color;
+}
+
+// 上部のバーにダークモードを適用
+[role=banner] {
+  background-color: #222222;
+
+  >div {
+    // 各タブへのリンクの色を変更
+    a {
+      color: $title-text-color;
+    }
+
+    >div {
+      &:nth-child(6) {
+        >div {
+          &:nth-child(2) {
+            // アカウント設定などが選択できる場所にダークモードを適用
+            >div>div {
+              background-color: $common-background-color;
+              >div {
+                color: $title-text-color;
+                a {
+                  &:hover {
+                    background-color: #383838;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

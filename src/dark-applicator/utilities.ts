@@ -1,5 +1,6 @@
 import $ from "jquery"
 import { applyDarkMode } from "../content";
+import applyDarkHomePage from "./pages/home";
 
 /**
  * Elementが所属しているクラスのCSSの変更を恒久的に適用する関数
@@ -91,7 +92,7 @@ export function Home_needElementSearcher(obj: String) {
   interval = setInterval(function () {
     if ($(obj).length) {
       try {
-        applyDarkMode();
+        applyDarkHomePage();
       } catch { err = true; }
       if (!err) {
         clearInterval(interval);
@@ -101,41 +102,6 @@ export function Home_needElementSearcher(obj: String) {
   setTimeout(function () {
     clearInterval(interval);
   }, 10000);
-}
-
-/**
- * 上部のバーにダークモードを適用する関数
- */
-export function applyDarkTopBar() {
-  const topBar = $("[role=banner]");
-
-  //ダークモード適用
-  const apply = () => {
-    classCSSPatcher(topBar, "background-color: #222222;", null, null);
-    //各種リンクの文字色を白にする
-    const topBarButtons = topBar.find("div > div > div > a");
-    topBarButtons.css("color", "#FFFFFF");
-    classCSSPatcher(topBarButtons, "color: #FFFFFF", null, null);
-    //アカウント設定などが選択できる場所にダークモード適用
-    const userProfile = topBar.find("div > div > div > div").eq(3);
-    classCSSPatcher(userProfile, "background-color: #202124;", null, null);
-    classCSSPatcher(userProfile.find("div:nth-child(1)"), "color: #FFFFFF;", null, null);
-    classCSSPatcher(userProfile.find("div:nth-child(2) > a"), "background-color: #383838;", "hover", null);
-    classCSSPatcher(userProfile.find("div:nth-child(3) > a"), "background-color: #383838;", "hover", null);
-  }
-  //初回実行
-  apply();
-
-  //バーが変化した時に実行するコード
-  const observer = new MutationObserver(records => {
-    //改めてダークモード適用
-    apply();
-  });
-  //バーの中身の変化の監視を開始
-  observer.observe(topBar[0], {
-    attributes: true,
-    attributeFilter: ['class']
-  });
 }
 
 /**

@@ -1,8 +1,7 @@
 import $ from "jquery";
 import ContentApplicator from "./dark-applicator/pages/content";
 import CourceApplicator from "./dark-applicator/pages/cource";
-import HomeApplicator from "./dark-applicator/pages/home";
-import { applyDarkTopBar, URLTracker } from "./dark-applicator/utilities";
+import applyDarkHomePage from "./dark-applicator/pages/home";
 
 $(window).on("load", function () {
   //localのsetDarkMode値を取得
@@ -48,27 +47,7 @@ export function applyDarkMode() {
   } else if (path.match(/setting\/profile/)) {
     CourceApplicator.profilePage();
   } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile|courses/)) {
-    $("body").css({ "background-color": "#000", "color": "#e8e8e8" });
-
-    if (path.match(/home/)) {
-      HomeApplicator.topPage();
-    } else if (path.match(/genres/)) {
-      HomeApplicator.genrePage();
-    } else if (path.match(/my_course/)) {
-      HomeApplicator.myCourcePage();
-    } else if (path.match(/courses/)) {
-      HomeApplicator.courcePage();
-    } else if (path.match(/questions/)) {
-      HomeApplicator.forumPage();
-    } else if (path.match(/lessons/)) {
-      HomeApplicator.lessonListPage();
-    } else if (path.match(/notices/)) {
-      HomeApplicator.noticesPage();
-    } else if (path.match(/setting/)) {
-      HomeApplicator.settingPage();
-    }
-    applyDarkTopBar();
-    URLTracker();
+    applyDarkHomePage();
   }
 
   chrome.storage.local.set({ 'nowPage': path });

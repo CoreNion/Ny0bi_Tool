@@ -1,10 +1,35 @@
 import $ from "jquery";
-import { classCSSPatcher, headStyleInjector } from "../utilities";
+import { classCSSPatcher, headStyleInjector, URLTracker } from "../utilities";
+
+export default function applyDarkHomePage() {
+  require("./home-common-css/common.scss");
+  const path = location.pathname;
+
+  if (path.match(/home/)) {
+    HomeApplicator.topPage();
+  } else if (path.match(/genres/)) {
+    HomeApplicator.genrePage();
+  } else if (path.match(/my_course/)) {
+    HomeApplicator.myCourcePage();
+  } else if (path.match(/courses/)) {
+    HomeApplicator.courcePage();
+  } else if (path.match(/questions/)) {
+    HomeApplicator.forumPage();
+  } else if (path.match(/lessons/)) {
+    HomeApplicator.lessonListPage();
+  } else if (path.match(/notices/)) {
+    HomeApplicator.noticesPage();
+  } else if (path.match(/setting/)) {
+    HomeApplicator.settingPage();
+  }
+  
+  URLTracker();
+}
 
 /**
  * ホーム系のページにダークモードを適用するクラス
  */
-export default class HomeApplicator {
+class HomeApplicator {
   static topPage() {
     console.log("Ny0bi_Tool: Detect top page");
     require("./home-common-css/top.scss");
