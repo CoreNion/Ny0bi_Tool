@@ -1,29 +1,42 @@
 import $ from "jquery";
-import { classCSSPatcher, headStyleInjector, URLTracker } from "../utilities";
+import { classCSSPatcher, headStyleInjector } from "../utilities";
 
 export default function applyDarkHomePage() {
+  // 全てのページで必要なcssを読み込む
   require("./home-common-css/common.scss");
-  const path = location.pathname;
 
-  if (path.match(/home/)) {
-    HomeApplicator.topPage();
-  } else if (path.match(/genres/)) {
-    HomeApplicator.genrePage();
-  } else if (path.match(/my_course/)) {
-    HomeApplicator.myCourcePage();
-  } else if (path.match(/courses/)) {
-    HomeApplicator.courcePage();
-  } else if (path.match(/questions/)) {
-    HomeApplicator.forumPage();
-  } else if (path.match(/lessons/)) {
-    HomeApplicator.lessonListPage();
-  } else if (path.match(/notices/)) {
-    HomeApplicator.noticesPage();
-  } else if (path.match(/setting/)) {
-    HomeApplicator.settingPage();
+  const branch = () => {
+    const path = location.pathname;
+
+    if (path.match(/home/)) {
+      HomeApplicator.topPage();
+    } else if (path.match(/genres/)) {
+      HomeApplicator.genrePage();
+    } else if (path.match(/my_course/)) {
+      HomeApplicator.myCourcePage();
+    } else if (path.match(/courses/)) {
+      HomeApplicator.courcePage();
+    } else if (path.match(/questions/)) {
+      HomeApplicator.forumPage();
+    } else if (path.match(/lessons/)) {
+      HomeApplicator.lessonListPage();
+    } else if (path.match(/notices/)) {
+      HomeApplicator.noticesPage();
+    } else if (path.match(/setting/)) {
+      HomeApplicator.settingPage();
+    }
   }
-  
-  URLTracker();
+  branch();
+
+  // URLの変化の検知
+  let lastUrl = location.href; 
+  new MutationObserver(() => {
+    const url = location.href;
+    if (url !== lastUrl) {
+      lastUrl = url;
+      branch();
+    }
+  }).observe(document, {subtree: true, childList: true});
 }
 
 /**
