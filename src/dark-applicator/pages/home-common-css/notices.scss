@@ -1,0 +1,25 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+[role=main]>div {
+
+  // ページ名の文字色を変更
+  h1 {
+    color: $title-text-color;
+  }
+
+  &:nth-child(2) {
+
+    // 各リンクの色を変更
+    a>div {
+      background-color: $common-background-color  !important;
+      color: $title-text-color  !important;
+      border-color: #2f2f2f !important;
+
+      &:hover {
+        background-color: #383838 !important;
+      }
+    }
+  }
+}

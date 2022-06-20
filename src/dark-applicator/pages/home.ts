@@ -10,6 +10,7 @@ import forumListCSS from "./home-common-css/forum/list.scss";
 import forumQuestCSS from "./home-common-css/forum/question.scss";
 import forumNewQuestCSS from "./home-common-css/forum/new.scss";
 import lessonCSS from "./home-common-css/lesson.scss";
+import noticesCSS from "./home-common-css/notices.scss"
 
 export default function applyDarkHomePage() {
   // 全てのページで必要なcssを読み込む
@@ -83,7 +84,6 @@ class HomeApplicator {
     forumCommonCSS.use();
     updateInjectStyle(forumCommonCSS, true);
 
-    /* 旧ホーム用の関数から移植 */
     if (path.match(/questions\/\d+/)) {
       console.log("Ny0bi_Tool:Detect questions page");
 
@@ -112,14 +112,8 @@ class HomeApplicator {
   static noticesPage() {
     console.log("Ny0bi_Tool: Detect notices page");
 
-    //ページタイトルの文字色を変更
-    $("[role=main] > div:nth-child(1) > h1").css("color", "#e8e8ff");
-
-    //各通知のリンクの部分にダークモード適用
-    const notice = $("[role=main] > div > a > div");
-    classCSSPatcher(notice, "background-color: #202124; color: #FFFFFF; border-color: #2f2f2f;", null, null);
-    //触れた時の背景色を変更
-    classCSSPatcher(notice, "background-color: #383838", "hover", null);
+    noticesCSS.use();
+    updateInjectStyle(noticesCSS, false);
   }
 
   static settingPage() {
