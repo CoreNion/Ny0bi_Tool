@@ -1,0 +1,117 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+[role=main] {
+
+  // 授業のリンクの色を変更
+  a>div {
+    background-color: $common-background-color  !important;
+    color: $title-text-color  !important;
+    border-color: #2f2f2f !important;
+
+    &:hover {
+      background-color: #383838 !important;
+    }
+  }
+
+  >div {
+    &:nth-child(1) {
+
+      // ページタイトルの文字色を変更
+      h1 {
+        color: $title-text-color;
+      }
+    }
+
+    &:nth-child(2) {
+
+      // 授業がない場合のお知らせの部分を黒くする
+      >div>div {
+        background-color: $common-background-color;
+        color: $title-text-color  !important;
+        border-color: #2f2f2f;
+      }
+
+      // 検索結果の部分の色を変更(検索ページのみ)
+      background-color: $common-background-color;
+      color: $title-text-color  !important;
+    }
+
+    // もっと見るの部分にダークモード適用
+    >div {
+      background-color: $common-background-color;
+    }
+  }
+}
+
+// 授業一覧の種類を切り替える部分の色を変更
+[role=tablist] {
+  background-color: $common-background-color;
+  color: $title-text-color;
+}
+
+// 表示する投稿を変更する部分の文字色を変更
+[role=tab]>a {
+  &:visited {
+    color: $common-text-color;
+  }
+
+  >div {
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+}
+
+[role=search] {
+
+  // 検索窓の色を変更
+  [type=text] {
+    color: #FFFFFF;
+    background-color: #222222;
+    border-color: #404040;
+  }
+}
+
+// 右側の検索系の部分
+[role=complementary] {
+  >div {
+
+    // カテゴリー選択の部分にダークモードを適用
+    &:nth-child(1)>div>div {
+      background-color: $common-background-color;
+    }
+
+    // 「N予備校」では〜の部分の色を変更
+    &:nth-child(2)>div {
+      background-color: $common-background-color;
+    }
+  }
+}
+
+// 各ボタンの色を変更
+[type=button],
+[role=button] {
+  background-color: #2b2c2f;
+  color: #a0b7ff;
+  border-color: #6b6b6b;
+}
+
+// ダイアログの色を変更
+[role=dialog] {
+  background: $common-background-color;
+  >div>div>div {
+    &:nth-child(2) {
+      // タグの色を変更
+      >ul>li {
+        background-color: #ffffff0d;
+      }
+    }
+
+    // 下のボタンの部分の背景色を変更
+    &:nth-child(3) {
+      background-color: $common-background-color;
+    }
+  }
+}
