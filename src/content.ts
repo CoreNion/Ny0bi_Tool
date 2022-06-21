@@ -44,7 +44,7 @@ export function applyDarkMode() {
     ContentApplicator.guidePage(true);
   } else if (path.match(/short_test_sessions/)) {
     CourceApplicator.testPage();
-  } else if (path.match(/setting\/profile/)) {
+  } else if (path.match(/setting\/profile\/private|setting\/profile\/school/)) {
     CourceApplicator.profilePage();
   } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile|courses/)) {
     applyDarkHomePage();

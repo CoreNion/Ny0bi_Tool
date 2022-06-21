@@ -1,5 +1,4 @@
-import $ from "jquery";
-import { classCSSPatcher, headStyleInjector, updateInjectStyle } from "../utilities";
+import { updateInjectStyle } from "../utilities";
 import topPageCSS from "./home-common-css/top.scss";
 import genresCSS from "./home-common-css/genres.scss";
 import myCourceCSS from "./home-common-css/my-cource.scss";
@@ -10,7 +9,9 @@ import forumListCSS from "./home-common-css/forum/list.scss";
 import forumQuestCSS from "./home-common-css/forum/question.scss";
 import forumNewQuestCSS from "./home-common-css/forum/new.scss";
 import lessonCSS from "./home-common-css/lesson.scss";
-import noticesCSS from "./home-common-css/notices.scss"
+import noticesCSS from "./home-common-css/notices.scss";
+import accountSettingCSS from "./home-common-css/setting/account.scss";
+import profileSettingCSS from "./home-common-css/setting/profile.scss";
 
 export default function applyDarkHomePage() {
   // 全てのページで必要なcssを読み込む
@@ -117,20 +118,19 @@ class HomeApplicator {
   }
 
   static settingPage() {
-    console.log("Ny0bi_Tool: Detect setting page");
+    console.log("Ny0bi_Tool: Detect home setting page");
+    const path = location.pathname;
 
-    //ページタイトルの文字色を変更
-    classCSSPatcher($("[role=main] > div:nth-child(2) > h1"), "color: #e8e8ff;", null, null);
+    if (path.match(/profile/)) {
+      console.log("Ny0bi_Tool: Detect profile page");
 
-    //中央部のメインの設定の色を変更
-    const contentPath = "[role=main] > div:nth-child(3)";
-    classCSSPatcher($(contentPath), "background-color: #222222; color: #FFFFFF;", null, 2);
-    //設定一覧の部分の文字色を変更
-    classCSSPatcher($(contentPath + " > ul:nth-child(1) > li > a"), "color: #FFFFFF !important;", null, null);
-    //所属先の部分の色を変更
-    classCSSPatcher($(contentPath + " > div:nth-child(3) > div:nth-child(2) > div > ul > li:nth-child(2)"), "background-color: #b8fdac; color: #000000;", null, null);
-    //右側のボタンの色を変更
-    classCSSPatcher($(contentPath + " > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > a > button"), "background-color: #4f73e3; color: #FFF; border: 0px", null, null);
-    classCSSPatcher($(contentPath + " > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > a > button"), "color: #FFF;", "hover", null);
+      profileSettingCSS.use();
+      updateInjectStyle(profileSettingCSS, true);
+    } else {
+      console.log("Ny0bi_Tool: Detect account page");
+
+      accountSettingCSS.use();
+      updateInjectStyle(accountSettingCSS, true);
+    }
   }
 }

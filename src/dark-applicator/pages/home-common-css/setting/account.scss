@@ -1,0 +1,60 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+[role=main] {
+  >div {
+
+    &:nth-child(2) {
+
+      // ページタイトルの文字色を変更
+      h1 {
+        color: $common-text-color;
+      }
+    }
+
+    // 設定画面の部分の色を変更
+    &:nth-child(3) {
+      background-color: $common-background-color;
+      color: $common-text-color;
+
+      >div {
+        &:nth-child(3) {
+          // 所属のタグの色を変更
+          ul>li {
+            background-color: #b8fdac;
+            color: black;
+          }
+        }
+
+        // 各ボタンの色を変更
+        a {
+          background-color: #4f73e3;
+          color: $title-text-color;
+          border-radius: 50px;
+      
+          &:hover {
+            color: $title-text-color;
+          }
+        }
+      }
+    }
+  }
+
+  // 各ボタンの色を変更 (なぜかこのページではrole=buttonは設定されず)
+  button {
+    background-color: #4f73e3;
+    color: $title-text-color;
+
+    &:hover {
+      color: $title-text-color;
+    }
+  }
+}
+
+// 表示する設定を変更する部分の文字色を変更
+[role=tab]>a {
+  &:visited {
+    color: $title-text-color;
+  }
+}

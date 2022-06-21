@@ -1,0 +1,49 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+// なぜかrole=mainは無いため#rootから辿る
+#root>div>div {
+  &:nth-child(2) {
+    >div {
+
+      // [role=main]に当たる場所
+      &:nth-child(2)>div>div {
+        &:nth-child(1) {
+
+          // ページタイトルの文字色を変更
+          h1 {
+            color: $common-text-color;
+          }
+        }
+
+        // 設定画面の部分の色を変更
+        &:nth-child(2) {
+          background-color: $common-background-color;
+          color: $common-text-color;
+        }
+      }
+    }
+  }
+}
+
+// 表示する設定を変更する部分の文字色を変更
+[role=tab]>a {
+  &:visited {
+    color: $title-text-color;
+  }
+}
+
+// ボタン系の色を変更
+[type=button] {
+  background-color: #2b2c2f;
+  color: #a0b7ff;
+  border-color: #6b6b6b;
+}
+
+// テキスト入力部の色を変更
+[type=text] {
+  color: $title-text-color;
+  background-color: #222222;
+  border-color: #6b6b6b;
+}

@@ -85,6 +85,4 @@ export function updateInjectStyle(css: Module, main: boolean) {
 
     requireStorage.subPage = css;
   }
-
-  console.log(requireStorage);
 }
