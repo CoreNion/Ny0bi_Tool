@@ -12,6 +12,7 @@ import lessonCSS from "./home-common-css/lesson.scss";
 import noticesCSS from "./home-common-css/notices.scss";
 import accountSettingCSS from "./home-common-css/setting/account.scss";
 import profileSettingCSS from "./home-common-css/setting/profile.scss";
+import kdEduCSS from "./home-common-css/kd-edu.scss";
 
 export default function applyDarkHomePage() {
   // 全てのページで必要なcssを読み込む
@@ -35,6 +36,8 @@ export default function applyDarkHomePage() {
       HomeApplicator.noticesPage();
     } else if (path.match(/setting/)) {
       HomeApplicator.settingPage();
+    } else if (path.match(/kd-edu/)) {
+      HomeApplicator.kdEduPage();
     }
   }
   branch();
@@ -132,5 +135,12 @@ class HomeApplicator {
       accountSettingCSS.use();
       updateInjectStyle(accountSettingCSS, true);
     }
+  }
+
+  static kdEduPage() {
+    console.log("Ny0bi_Tool: Detect kd-edu page");
+
+    kdEduCSS.use();
+    updateInjectStyle(kdEduCSS, false)
   }
 }

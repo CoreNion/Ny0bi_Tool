@@ -12,20 +12,30 @@ body {
   background-color: #222222;
 
   >div {
+
     // 各タブへのリンクの色を変更
     a {
       color: $title-text-color;
     }
 
+    // イベントカレンダーなどのリンクの色を変更
+    >a>div {
+      color: aliceblue;
+    }
+
     >div {
-      &:nth-child(6) {
+
+      &:last-child {
         >div {
           &:nth-child(2) {
+
             // アカウント設定などが選択できる場所にダークモードを適用
             >div>div {
               background-color: $common-background-color;
+
               >div {
                 color: $title-text-color;
+
                 a {
                   &:hover {
                     background-color: #383838;

@@ -1,0 +1,15 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+main {
+  // ページタイトルの文字色を変更
+  >h1 {
+    color: $title-text-color !important;
+  }
+
+  // 文章などが書かれている部分の色を変更
+  >div>div {
+    background-color: $common-background-color !important;
+  }
+}

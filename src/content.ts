@@ -46,7 +46,7 @@ export function applyDarkMode() {
     CourceApplicator.testPage();
   } else if (path.match(/setting\/profile\/private|setting\/profile\/school/)) {
     CourceApplicator.profilePage();
-  } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile|courses/)) {
+  } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile|courses|kd-edu/)) {
     applyDarkHomePage();
   }
 
