@@ -8,41 +8,46 @@
 </head>
 
 <body>
-  <h2>Ny0bi Tool Menu</h2>
+  <h1>Ny0bi Tool Menu</h1>
 
-  <h3 style="display:inline;">ダークモードの有効化/無効化</h3>
-  <div style="float: right;">
+  <div class="setting">
+    <h3>ダークモードの有効化/無効化</h3>
     <div class="ckbx-style-9 ckbx-xlarge">
       <input type="checkbox" id="ckbx-style-9-1" value="0" name="darkmodeSwitcher">
       <label for="ckbx-style-9-1"></label>
     </div>
   </div>
-  <p>
-    <b>現在、ホーム画面へのダークモード適用は無効化しています。</b>
-    <a href="https://github.com/CoreNion/Ny0bi_Tool/issues/4" target="_blank" rel="noopener noreferrer"
-      style="color: aqua;">2022年度のN予備校への対応状況</a>
-  </p>
 
-  <h3>この拡張機能について</h3>
-  <div style="margin: 10px">
-    <span style="font-size: 15px;">Version:<span id="version"></span></span>
-    <br>
+  <div class="setting">
+    <h3>ホーム画面のダークモードの有効化/無効化</h3>
+    <div class="ckbx-style-9 ckbx-xlarge">
+      <input type="checkbox" id="ckbx-style-9-2" value="0" name="homeDarkmodeSwitcher">
+      <label for="ckbx-style-9-2"></label>
+    </div>
+  </div>
 
-    <!-- Github Repository -->
-    <div id="repoLink"></div>
-    <!-- Slack Channel -->
-    <a href="https://n-highschool.slack.com/archives/C01UTQK4ZSQ" class="snsButton" id="slackChannel" target="_blank"
-      rel="noopener noreferrer">(N/S高生用) Ny0bi ToolのSlackチャンネル</a>
-    <br> <br>
+  <h2>この拡張機能について</h2>
+  <div class="about">
+    <h3>拡張機能のバージョン: <b id="version"></b></h3>
 
-    <span style="font-size: 13px;"><b>不具合や意見などの報告用のリンク</b></span>
-    <br>
-    <!-- Issues -->
-    <div id="issuesLink"></div>
-    <!-- Google Forms  -->
-    <a href="https://forms.gle/o3o4ccZ11Qb6gCiSA" class="snsButton" id="googleForms" target="_blank"
-      rel="noopener noreferrer">不具合や意見の報告(フォーム)</a>
-</div>
+    <div class="links">
+      <!-- Github Repository -->
+      <div id="repoLink"></div>
+      <!-- Slack Channel -->
+      <a href="https://n-highschool.slack.com/archives/C01UTQK4ZSQ" class="snsButton" id="slackChannel" target="_blank"
+        rel="noopener noreferrer">(N/S高生用)Slackチャンネル</a>
+    </div>
+
+    <h3 style="font-size: 13px;"><b>不具合や意見などの報告用のリンク</b></h3>
+
+    <div class="links">
+      <!-- Issues -->
+      <div id="issuesLink"></div>
+      <!-- Google Forms  -->
+      <a href="https://forms.gle/o3o4ccZ11Qb6gCiSA" class="snsButton" id="googleForms" target="_blank"
+        rel="noopener noreferrer">不具合や意見の報告(フォーム)</a>
+    </div>
+  </div>
 
   <script src="popup.js"></script>
 </body>

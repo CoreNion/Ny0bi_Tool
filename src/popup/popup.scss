@@ -1,17 +1,32 @@
 body {
-  background-color: #343946;
+  background-color: darkslategray;
   color: white;
   width: 380px;
-  height: 330px;
+  height: 350px;
 }
 
-h2 {
+h1 {
   text-align: center;
 }
 
-p {
-  margin-left: 15px;
-  margin-right: 10px;
+.setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about {
+  margin: 10px;
+
+  span {
+    font-size: 15px;
+  }
+
+  .links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+  }
 }
 
 .snsButton {
@@ -22,7 +37,7 @@ p {
   padding: 5px 10px;
   transition-duration: 0.4s;
   cursor: pointer;
-  text-decoration: none;;
+  text-decoration: none;
 }
 
 #slackChannel {
@@ -31,7 +46,7 @@ p {
 }
 
 #slackChannel:hover {
-  background-color: white; 
+  background-color: white;
   color: #1F286F;
 }
 
