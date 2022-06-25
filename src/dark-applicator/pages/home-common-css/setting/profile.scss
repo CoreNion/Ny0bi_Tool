@@ -9,28 +9,17 @@ $common-background-color: #202124;
 
       // [role=main]に当たる場所
       &:nth-child(2)>div>div {
-        &:nth-child(1) {
-
-          // ページタイトルの文字色を変更
-          h1 {
-            color: $common-text-color;
-          }
+        h1 {
+          color: $common-text-color;
         }
 
         // 設定画面の部分の色を変更
-        &:nth-child(2) {
+        &:nth-child(3) {
           background-color: $common-background-color;
           color: $common-text-color;
         }
       }
     }
-  }
-}
-
-// 表示する設定を変更する部分の文字色を変更
-[role=tab]>a {
-  &:visited {
-    color: $title-text-color;
   }
 }
 

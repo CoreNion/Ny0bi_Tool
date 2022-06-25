@@ -5,12 +5,8 @@ $common-background-color: #202124;
 [role=main] {
   >div {
 
-    &:nth-child(2) {
-
-      // ページタイトルの文字色を変更
-      h1 {
-        color: $common-text-color;
-      }
+    h1 {
+      color: $common-text-color;
     }
 
     // 設定画面の部分の色を変更
@@ -19,7 +15,7 @@ $common-background-color: #202124;
       color: $common-text-color;
 
       >div {
-        &:nth-child(3) {
+        &:nth-child(2) {
           // 所属のタグの色を変更
           ul>li {
             background-color: #b8fdac;
@@ -49,12 +45,5 @@ $common-background-color: #202124;
     &:hover {
       color: $title-text-color;
     }
-  }
-}
-
-// 表示する設定を変更する部分の文字色を変更
-[role=tab]>a {
-  &:visited {
-    color: $title-text-color;
   }
 }
