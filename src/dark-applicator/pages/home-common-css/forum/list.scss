@@ -4,21 +4,6 @@ $common-background-color: #202124;
 
 [role=main] {
   >div {
-    &:nth-child(1) {
-
-      >div {
-
-        // フォーラムの投稿履歴の部分の色を変更
-        &:nth-child(3)>div {
-          background-color: #2c2c2c;
-          color: $common-text-color;
-
-          a>p {
-            color: $common-text-color;
-          }
-        }
-      }
-    }
 
     // 投稿が表示される部分
     &:nth-child(2) {
@@ -56,12 +41,12 @@ $common-background-color: #202124;
                 &:nth-child(1) {
                   color: $common-text-color;
                 }
-              }
-            }
 
-            // 投稿のタグの部分
-            &:nth-child(2)>ul>li {
-              background-color: #ffffff0d;
+                // 投稿のタグの部分
+                &:nth-child(2)>ul>li {
+                  background-color: #ffffff0d;
+                }
+              }
             }
           }
         }

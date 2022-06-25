@@ -8,6 +8,22 @@ $common-background-color: #202124;
     >h1 {
       color: $title-text-color;
     }
+
+    >div {
+
+      &:nth-child(3)>div {
+
+        // フォーラムの投稿履歴の部分の色を変更
+        &:nth-child(1)>div {
+          background-color: #2c2c2c;
+          color: $common-text-color;
+
+          a>p {
+            color: $common-text-color;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -19,17 +35,10 @@ $common-background-color: #202124;
   border-color: #6b6b6b;
 }
 
-// 表示する投稿を変更する部分の文字色を変更
-[role=tab]>a {
-  &:visited {
-    color: $common-text-color;
-  }
-}
-
 // 右側の検索系の部分
 [role=complementary] {
   >div {
-    &:nth-child(1) {
+    &:first-child {
 
       // 投稿するボタンの背景色を変更
       button {
@@ -39,8 +48,7 @@ $common-background-color: #202124;
     }
 
     // カテゴリーの部分にダークモードを適用
-    &:nth-child(3)>div,
-    &:nth-child(4)>div {
+    &:not(:first-child)>div {
       background-color: $common-background-color;
     }
   }
