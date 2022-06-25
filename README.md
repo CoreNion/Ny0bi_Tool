@@ -4,24 +4,21 @@
 [![GitHub Issues](https://img.shields.io/github/issues/CoreNion/Ny0bi_Tool?style=plastic)](https://github.com/CoreNion/Ny0bi_Tool/issues)
 [![GitHub Release (latest)](https://img.shields.io/github/v/release/CoreNion/Ny0bi_Tool?label=Latest%20Release&style=plastic)](https://github.com/CoreNion/Ny0bi_Tool/releases/latest)
 
-| 現在閲覧しているBranch | Branch        | 備考                                  | 
-| ---------------------- | ------------ | -------------------------------------- | 
-|                       | main         | ベータ版、安定板のブランチ               | 
-|                       | WebStore      | Chrome Web Store版のソースコード       | 
-|           ✅          | develop  | 新機能の開発などが行われるブランチ   | 
+| Branch        | 備考                                  | 
+| ------------ | -------------------------------------- | 
+| main         | ベータ版、安定板のブランチ               | 
+| WebStore      | Chrome Web Store版のソースコード       | 
+| develop  | 新機能の開発などが行われるブランチ   | 
 
 N予備校をダークモードにする拡張機能です！ ※このツールは非公式です。
 
 **Issue・Pull Requestsの提出は大歓迎です！！**
 
-## [2022年度のN予備校への対応状況](https://github.com/CoreNion/Ny0bi_Tool/issues/4)
-
-# ダークモードに対応しているページ(v1.1.2)
+# ダークモードに対応しているページ(v2.0.0)
 
 - 生放送
 - 教材
-- 習熟度テスト
-- ~~ホーム~~ **現在無効化中**
+- ホーム
 
 # [インストール (Chrome Web Store)](https://chrome.google.com/webstore/detail/ny0bi-tool/lkmfjlmabmkedlocaclfgbemmdofjfjg)
 **v1.0より、ついにChrome Web Storeでの配信がスタートしました！**
