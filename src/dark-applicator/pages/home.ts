@@ -22,6 +22,9 @@ export default function applyDarkHomePage() {
     const path = location.pathname;
     if (path.match(/home/)) {
       HomeApplicator.topPage();
+    } else if (path.match(/short_tests/)) {
+      // テストページでは無効化(トラブル防止)
+      location.reload();
     } else if (path.match(/genres/)) {
       HomeApplicator.genrePage();
     } else if (path.match(/my_course/)) {
