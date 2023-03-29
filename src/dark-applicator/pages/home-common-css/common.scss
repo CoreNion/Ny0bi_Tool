@@ -72,3 +72,8 @@ body {
     }
   }
 }
+
+// 進捗度のバーの背景色
+[role=progressbar] {
+  background-color: aliceblue;
+}
