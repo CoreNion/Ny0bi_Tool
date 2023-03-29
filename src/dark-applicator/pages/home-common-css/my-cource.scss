@@ -2,35 +2,78 @@ $common-text-color: #e8e8e8;
 $title-text-color: #FFFFFF;
 $common-background-color: #202124;
 
-[role=main]>div {
+// 色のセレクターがある場合はそれを利用
+[color=black] {
+  color: $common-text-color;
+}
+
+[color=gray\.darkness2] {
+  color: $title-text-color;
+}
+
+#root>div>div {
+  &:nth-child(2) {
+    >div {
+
+      // マイコース内のナビゲーションバー
+      &:nth-child(1) {
+        background-color: $common-background-color;
+        box-shadow: rgba(255, 255, 255, 0.1) 0px 0.5px 0.5px, rgba(255, 255, 255, 0.2) 0px 0px 1px;
+
+        nav {
+          a {
+            color: $common-text-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+[role=tabpanel] {
   >div {
 
-    // ページタイトルと概要を黒くする
-    &:nth-child(1) {
-      h1 {
-        color: $common-text-color;
+    // 左側の各要素
+    &:nth-child(1)>div>div>div>div>div>div>div>div,
+    [aria-label=コース一覧]>div {
+      background-color: $common-background-color;
+      color: $common-text-color;
+
+      h3 {
+        color: $title-text-color;
       }
 
-      div {
+      // リンク系
+      a {
+        background-color: $common-background-color;
         color: $common-text-color;
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+      }
+
+      a>div:not([role=progressbar]) {
+        background-color: transparent;
+      }
+
+      a:hover {
+        background-color: #383838;
       }
     }
 
+    // 「新しい学習を見つけよう」の部分
     &:nth-child(2) {
-      >div {
+      background-color: $common-background-color;
 
-        // 最初の「コースを選択してください」の部分を黒くする
-        &:nth-child(2) {
+      div {
+        background-color: $common-background-color;
+      }
 
-          // コースが選択されているときは適用しないようにする
-          &:not([role=region]) {
-            background-color: $common-background-color;
+      h3 {
+        color: $title-text-color;
+      }
 
-            div {
-              background-color: $common-background-color;
-            }
-          }
-        }
+      a,
+      a>div {
+        color: #c1ceff;
       }
     }
   }
@@ -46,8 +89,8 @@ $common-background-color: #202124;
     // コースリストの各項目のスタイルを変更
     button,
     a {
-      background-color: $common-background-color  !important;
-      color: $title-text-color  !important;
+      background-color: $common-background-color !important;
+      color: $title-text-color !important;
       border-color: #2f2f2f !important;
 
       &:hover {
@@ -77,8 +120,8 @@ $common-background-color: #202124;
 
   // 各章のリンクにダークモードを適用
   a {
-    background-color: $common-background-color  !important;
-    color: $title-text-color  !important;
+    background-color: $common-background-color !important;
+    color: $title-text-color !important;
     border-color: #2f2f2f !important;
 
     &:hover {

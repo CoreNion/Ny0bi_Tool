@@ -52,10 +52,12 @@ body {
 
 // 項目(タブ)選択の部分の色を変更
 [role=tab] {
+  color: $title-text-color;
+
   // 選択されている項目(タブ)
   &[aria-selected=true] {
     background-color: #383838;
-    
+
     >a {
       color: $title-text-color;
     }
@@ -64,7 +66,7 @@ body {
   // 選択されていない項目(タブ)
   &[aria-selected=false] {
     background-color: #1c1c1c;
-    
+
     >a {
       color: $common-text-color;
     }
