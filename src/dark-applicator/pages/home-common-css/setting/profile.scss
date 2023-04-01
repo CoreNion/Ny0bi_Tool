@@ -14,7 +14,7 @@ $common-background-color: #202124;
         }
 
         // 設定画面の部分の色を変更
-        &:nth-child(3) {
+        &:last-child {
           background-color: $common-background-color;
           color: $common-text-color;
         }
