@@ -1,0 +1,66 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+#root>div>div {
+  &:nth-child(2) {
+    >div {
+
+      // マイコース内のナビゲーションバー
+      &:nth-child(1) {
+        background-color: $common-background-color;
+        box-shadow: rgba(255, 255, 255, 0.1) 0px 0.5px 0.5px, rgba(255, 255, 255, 0.2) 0px 0px 1px;
+
+        nav {
+          a {
+            color: $common-text-color;
+          }
+
+          // 戻るボタン
+          [type=button] {
+            background-color: $common-background-color;
+            color: #c1ceff;
+          }
+        }
+      }
+
+      // メインコンテンツ
+      &:nth-child(2)>div>div {
+
+        // チャプター一覧
+        &:nth-child(1)>div>div>div>div {
+          background-color: $common-background-color;
+          box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px, rgba(255, 255, 255, 0.2) 0px 0px 2px;
+
+          h3 {
+            color: $common-text-color;
+          }
+
+          // リンク系
+          a {
+            background-color: $common-background-color;
+            color: $common-text-color;
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+
+            >div>div {
+
+              // チャプター名
+              &:nth-child(2) {
+                color: $title-text-color;
+              }
+            }
+          }
+
+          a:hover {
+            background-color: #383838;
+          }
+        }
+
+        // レポート概要
+        &:nth-child(2)>div {
+          background-color: $common-background-color;
+        }
+      }
+    }
+  }
+}

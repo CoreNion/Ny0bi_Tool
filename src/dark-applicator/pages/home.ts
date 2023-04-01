@@ -13,6 +13,7 @@ import noticesCSS from "./home-common-css/notices.scss";
 import accountSettingCSS from "./home-common-css/setting/account.scss";
 import profileSettingCSS from "./home-common-css/setting/profile.scss";
 import kdEduCSS from "./home-common-css/kd-edu.scss";
+import studyPlans from "./home-common-css/study-plans.scss";
 
 export default function applyDarkHomePage() {
   // 全てのページで必要なcssを読み込む
@@ -41,6 +42,8 @@ export default function applyDarkHomePage() {
       HomeApplicator.settingPage();
     } else if (path.match(/kd-edu/)) {
       HomeApplicator.kdEduPage();
+    } else if (path.match(/study_plans/)) {
+      HomeApplicator.studyPlans();
     }
   }
   branch();
@@ -145,5 +148,12 @@ class HomeApplicator {
 
     kdEduCSS.use();
     updateInjectStyle(kdEduCSS, false)
+  }
+
+  static studyPlans() {
+    console.log("Ny0bi_Tool: Detect study-plans page");
+
+    studyPlans.use();
+    updateInjectStyle(studyPlans, false)
   }
 }

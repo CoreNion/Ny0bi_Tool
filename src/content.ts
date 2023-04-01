@@ -43,7 +43,7 @@ export function applyDarkMode(applyDarkHome: boolean) {
     CourceApplicator.lessonPage();
   } else if (path.match(/setting\/profile\/private|setting\/profile\/school/)) {
     CourceApplicator.profilePage();
-  } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile|courses|kd-edu/) && applyDarkHome) {
+  } else if (path.match(/home|genres|my_course|lessons|questions|notices|setting|courses\/\d+\/chapters|packages|setting\/profile|courses|kd-edu|study_plans/) && applyDarkHome) {
     applyDarkHomePage();
   } else {
     return;
