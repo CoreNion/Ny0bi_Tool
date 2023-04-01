@@ -2,48 +2,96 @@ $common-text-color: #e8e8e8;
 $title-text-color: #FFFFFF;
 $common-background-color: #202124;
 
+[color=gray\.darkness2] {
+  color: $common-text-color;
+}
+
+[role=dialog] {
+  color: black;
+}
+
 [role=main] {
   >div {
 
     h1 {
-      color: $common-text-color;
+      color: $title-text-color;
     }
 
-    // 設定画面の部分の色を変更
-    &:nth-child(3) {
-      background-color: $common-background-color;
-      color: $common-text-color;
+    // メインコンテンツ
+    &:nth-child(2)>div {
 
-      >div {
-        &:nth-child(2) {
-          // 所属のタグの色を変更
+      // 左側
+      &:nth-child(1)>div>div>div>div>div {
+
+        // ユーザー情報
+        &:nth-child(1) {
+          background-color: $common-background-color;
+
+          // 所属のタグの色
           ul>li {
             background-color: #b8fdac;
             color: black;
           }
         }
 
-        // 各ボタンの色を変更
-        a {
-          background-color: #4f73e3;
-          color: $title-text-color;
-          border-radius: 50px;
-      
-          &:hover {
+        // 各プロフィール系の設定のリンク
+        &:nth-child(3) {
+          background-color: $common-background-color;
+
+          h2 {
             color: $title-text-color;
+          }
+
+          // リンクタイトル
+          p {
+            color: $common-text-color;
+          }
+        }
+
+        &:last-child>div>div>div>a {
+          color: red;
+        }
+
+        // リンク系
+        a {
+          background-color: $common-background-color;
+          color: $common-text-color;
+          border-color: $common-text-color;
+        }
+
+        a:hover {
+          background-color: #383838;
+        }
+
+        button {
+          background-color: $common-background-color;
+          color: $common-text-color;
+
+          // ボタンタイトル
+          p {
+            color: $common-text-color;
           }
         }
       }
-    }
-  }
 
-  // 各ボタンの色を変更 (なぜかこのページではrole=buttonは設定されず)
-  button {
-    background-color: #4f73e3;
-    color: $title-text-color;
+      // 右側
+      &:nth-child(2)>div>div>div>div>div {
+        background-color: $common-background-color;
 
-    &:hover {
-      color: $title-text-color;
+        // 項目タイトル
+          h2 {
+            color: $title-text-color;
+          }
+
+        // 各設定項目
+        ul>li>div {
+          >div {
+            p {
+              color: $common-text-color;
+            }
+          }
+        }
+      }
     }
   }
 }
