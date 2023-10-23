@@ -3,7 +3,7 @@ $title-text-color: #FFFFFF;
 $common-background-color: #202124;
 
 // 色のセレクターがある場合はそれを利用
-[color=black] {
+[color=black], [color="#222222"] {
   color: $common-text-color;
 }
 
