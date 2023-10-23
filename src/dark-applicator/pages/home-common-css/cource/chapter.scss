@@ -1,0 +1,76 @@
+$common-text-color: #e8e8e8;
+$title-text-color: #FFFFFF;
+$common-background-color: #202124;
+
+// ナビゲーションの、現在のページのタイトル文字色を変更
+nav>ol>li[aria-current=page] {
+
+  a,
+  a:hover,
+  a:visited {
+    color: $common-text-color;
+  }
+}
+
+// ページ本体
+main>div {
+
+  // ヘッダー部分
+  &:nth-child(1) {
+
+    // ページタイトル
+    h1 {
+      color: $title-text-color !important;
+    }
+  }
+
+  &:nth-child(2)>div {
+
+    // 教材・レポート一覧
+    &:nth-child(1)>div {
+
+      // タイトル部
+      >div {
+        background-color: $common-background-color;
+
+        >div {
+          color: $title-text-color;
+        }
+      }
+
+      // 各教材
+      ul>li {
+        border-color: #2f2f2f;
+        border-bottom-width: 3px;
+        border-left: 1px;
+        border-right: 1px;
+        margin-bottom: 0px;
+
+        >div {
+          background-color: $common-background-color;
+
+          &:hover {
+            background-color: #383838;
+          }
+
+          // 進めないレポートをグレーアウト
+          &::after {
+            background-image: none;
+            background-color: rgba(0, 0, 0, 70%);
+          }
+        }
+      }
+    }
+
+    // 教科概要
+    &:nth-child(2) {
+      >div {
+        background-color: $common-background-color;
+
+        >div {
+          color: $title-text-color;
+        }
+      }
+    }
+  }
+}

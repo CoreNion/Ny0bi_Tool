@@ -1,6 +1,7 @@
 import { updateInjectStyle } from "../utilities";
 import topPageCSS from "./home-common-css/top.scss";
 import genresCSS from "./home-common-css/genres.scss";
+import chaperCSS from "./home-common-css/cource/chapter.scss";
 import myCourceCSS from "./home-common-css/my-cource.scss";
 import courceCSS from "./home-common-css/cource.scss";
 import commonCSS from "./home-common-css/common.scss";
@@ -28,6 +29,8 @@ export default function applyDarkHomePage() {
       location.reload();
     } else if (path.match(/genres/)) {
       HomeApplicator.genrePage();
+    } else if (path.match(/chapters/)) {
+      HomeApplicator.chapterPage();
     } else if (path.match(/my_course/)) {
       HomeApplicator.myCourcePage();
     } else if (path.match(/courses/)) {
@@ -73,6 +76,12 @@ class HomeApplicator {
     console.log("Ny0bi_Tool: Detect genre page");
     genresCSS.use();
     updateInjectStyle(genresCSS, true);
+  }
+
+  static chapterPage() {
+    console.log("Ny0bi_Tool: Detect chapter page");
+    chaperCSS.use();
+    updateInjectStyle(chaperCSS, true);
   }
 
   static myCourcePage() {
