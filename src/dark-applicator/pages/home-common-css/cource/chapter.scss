@@ -64,11 +64,33 @@ main>div {
 
     // 教科概要
     &:nth-child(2) {
-      >div {
+
+      // 「概要」と書かれている部分
+      >div:nth-child(1) {
         background-color: $common-background-color;
 
         >div {
           color: $title-text-color;
+        }
+      }
+
+      // 授業リンク以外の要素の背景色
+      >div:nth-child(2) {
+        background-color: $common-background-color;
+
+        >div {
+          background-color: $common-background-color;
+        }
+      }
+
+      // 授業リンクの色
+      a>div:not([role=tab]>a>div) {
+        background-color: $common-background-color !important;
+        color: $title-text-color !important;
+        border-color: #2f2f2f !important;
+
+        &:hover {
+          background-color: #383838 !important;
         }
       }
     }
