@@ -39,29 +39,47 @@ $common-background-color: #202124;
   }
 }
 
-[role=main]>div>div {
-  &:nth-child(2) {
+[role=main]>div {
 
-    // 各科目の部分にダークモード適用
-    div {
+  // ホーム自体のナビゲーションバー
+  &:nth-child(1) {
+    background-color: $common-background-color;
+
+    ol>li>a {
+      color: $common-text-color !important;
+    } 
+
+    // 戻るボタン
+    button {
+      color: thistle;
+      background-color: $common-background-color;
+    }
+  }
+
+  &:nth-child(2)>div {
+    &:nth-child(2) {
+
+      // 各科目の部分にダークモード適用
       div {
+        div {
 
-        // 科目タイトルの文字色を変更
-        h1 {
-          color: $title-text-color;
-        }
+          // 科目タイトルの文字色を変更
+          h3 {
+            color: $title-text-color;
+          }
 
-        &:nth-child(2)>div {
+          &:nth-child(2)>div {
 
-          // 各コースへのリンクボタンの色を変更
-          a>div {
-            background-color: $common-background-color;
+            // 各コースへのリンクボタンの色を変更
+            a>div {
+              background-color: $common-background-color;
 
-            div {
+              div {
 
-              // 文字色
-              &:nth-child(2) {
-                color: $title-text-color;
+                // 文字色
+                &:nth-child(2) {
+                  color: $title-text-color;
+                }
               }
             }
           }
