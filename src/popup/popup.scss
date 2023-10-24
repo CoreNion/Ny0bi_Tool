@@ -2,7 +2,7 @@ body {
   background-color: darkslategray;
   color: white;
   width: 380px;
-  height: 350px;
+  height: 480px;
 }
 
 h1 {
@@ -58,4 +58,9 @@ h1 {
 #googleForms:hover {
   background-color: white;
   color: #00508D;
+}
+
+#deprecated {
+  padding: 5px;
+  border: 1px solid #FF0000;
 }
